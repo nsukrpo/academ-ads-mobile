@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TitleText">
+        <item name="android:textAppearance">@style/TextAppearance.Material3.TitleMedium</item>
+        <item name="android:textColor">#2D0C57</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:lineHeight">35dp</item>
+    </style>
+
+    <style name="SignInButton" parent="@style/Widget.MaterialComponents.Button.Icon">
+        <item name="android:backgroundTint">#FFFFFF</item>
+        <item name="android:textColor">#2D0C57</item>
+    </style>
+</resources>
