@@ -5,9 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardCornerRadius="8dp"
     android:backgroundTint="#F6F5F5"
-    >
+    app:cardCornerRadius="8dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -19,7 +18,7 @@
             android:layout_width="177dp"
             android:layout_height="128dp"
             android:layout_marginHorizontal="20dp"
-            android:layout_marginVertical="16dp"
+            android:layout_margin="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -32,10 +31,9 @@
             android:layout_width="190dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/image"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/image"
             tools:text="Репетитор по матанализу" />
 
         <com.google.android.material.textview.MaterialTextView
@@ -44,6 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="14dp"
             app:layout_constraintStart_toEndOf="@+id/image"
             app:layout_constraintTop_toBottomOf="@+id/product_item"
             tools:text="23.10.2023" />
@@ -53,19 +52,20 @@
             style="@style/ProductTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
             app:layout_constraintStart_toEndOf="@+id/image"
             app:layout_constraintTop_toBottomOf="@+id/date"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="4dp"
             tools:text="800"/>
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/materialTextView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
             android:text="@string/rubles"
             android:textSize="16sp"
-            android:layout_marginTop="4dp"
-            android:layout_marginStart="4dp"
+            android:layout_marginBottom="4dp"
             app:layout_constraintStart_toEndOf="@+id/price"
             app:layout_constraintTop_toBottomOf="@+id/date" />
 
@@ -73,29 +73,30 @@
             android:id="@+id/like"
             android:layout_width="70dp"
             android:layout_height="40dp"
-            app:cornerRadius="8dp"
             android:layout_marginStart="20dp"
-            android:layout_marginBottom="11dp"
             android:backgroundTint="@color/white"
-            app:strokeColor="#D9D0E3"
-            app:strokeWidth="1dp"
+            app:cornerRadius="8dp"
             app:icon="@drawable/heart"
             app:iconTint="#9586A8"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/image" />
+            app:layout_constraintBottom_toBottomOf="@+id/image"
+            app:layout_constraintStart_toEndOf="@+id/image"
+            app:layout_constraintTop_toBottomOf="@id/price"
+            app:strokeColor="#D9D0E3"
+            app:strokeWidth="1dp" />
+
         <com.google.android.material.button.MaterialButton
             android:layout_width="70dp"
             android:layout_height="40dp"
-            app:cornerRadius="8dp"
             android:layout_marginStart="20dp"
-            android:layout_marginBottom="11dp"
             android:backgroundTint="#0BCE83"
-            app:strokeColor="#D9D0E3"
-            app:strokeWidth="1dp"
+            app:cornerRadius="8dp"
             app:icon="@drawable/message"
             app:iconTint="@color/white"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/like" />
+            app:layout_constraintBottom_toBottomOf="@id/image"
+            app:layout_constraintStart_toEndOf="@+id/like"
+            app:layout_constraintTop_toBottomOf="@+id/price"
+            app:strokeColor="#D9D0E3"
+            app:strokeWidth="1dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
