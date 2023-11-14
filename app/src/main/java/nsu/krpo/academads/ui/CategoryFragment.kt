@@ -5,22 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import nsu.krpo.academads.databinding.FragmentAuthBinding
+import nsu.krpo.academads.databinding.FragmentCategoryBinding
 
-class AuthFragment : Fragment() {
+class CategoryFragment : Fragment() {
 
-    private lateinit var binding: FragmentAuthBinding
-
+    private lateinit var binding: FragmentCategoryBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentAuthBinding.inflate(inflater, container, false)
+        binding = FragmentCategoryBinding.inflate(inflater, container, false)
         return binding.root
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
     }
 }
