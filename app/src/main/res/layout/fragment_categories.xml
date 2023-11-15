@@ -23,11 +23,11 @@
         style="@style/ShapeAppearanceOverlay.Material3.SearchBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="27dp"
+        android:layout_marginTop="24dp"
         android:backgroundTint="#FFFFFF"
         android:hint="@string/search_hint"
-        android:paddingRight="6dp"
+        android:paddingHorizontal="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/materialTextView"
         app:menu="@menu/search_menu"
@@ -43,7 +43,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchBar"
-        app:layout_constraintVertical_bias="0.238"
+        android:layout_marginTop="20dp"
         app:spanCount="2"
         tools:listitem="@layout/item_category" />
 
