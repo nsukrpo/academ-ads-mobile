@@ -1,4 +1,4 @@
-package nsu.krpo.academads.domen
+package nsu.krpo.academads.domain
 
 import com.google.gson.annotations.SerializedName
 import java.io.Serializable
