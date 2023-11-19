@@ -1,0 +1,48 @@
+package nsu.krpo.academads.ui.image_slider
+
+import android.content.Context
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import androidx.viewpager.widget.PagerAdapter
+import androidx.viewpager.widget.ViewPager
+import com.bumptech.glide.Glide
+import nsu.krpo.academads.R
+
+class ImageSliderAdapter(
+    private val context: Context,
+    private val imageList: ArrayList<String>
+) : PagerAdapter() {
+
+    val ids: IntArray = intArrayOf(R.drawable.category_example, R.drawable.product_example)
+    override fun getCount(): Int = ids.size
+
+    override fun isViewFromObject(view: View, `object`: Any): Boolean = (view === `object`)
+
+    //TODO: implement
+    override fun instantiateItem(container: ViewGroup, position: Int): Any {
+        val view =
+            (context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater).inflate(
+                R.layout.item_image_slider,
+                null
+            )
+        val ivImages = view.findViewById<ImageView>(R.id.iv_images)
+
+
+            Glide.with(context)
+                .load(ids[position])
+                .into(ivImages)
+
+
+        val vp = container as ViewPager
+        vp.addView(view, 0)
+        return view
+    }
+
+    override fun destroyItem(container: ViewGroup, position: Int, `object`: Any) {
+        val vp = container as ViewPager
+        val view = `object` as View
+        vp.removeView(view)
+    }
+}

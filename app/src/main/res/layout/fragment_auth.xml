@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F6F5F5">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/auth_text"
+        style="@style/TitleText"
+        android:layout_width="330dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="312dp"
+        android:breakStrategy="high_quality"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="@string/auth_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/vk_sign_in_button"
+        style="@style/SignInButton"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="64dp"
+        app:cornerRadius="8dp"
+        app:icon="@drawable/ic_vk"
+        app:iconGravity="textStart"
+        app:iconTint="@null"
+        android:text="@string/sign_in_with_vk"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/auth_text" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/google_sign_in_button"
+        style="@style/SignInButton"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:paddingHorizontal="20dp"
+        app:icon="@drawable/ic_google"
+        app:iconTint="@null"
+        android:text="@string/sign_in_with_google"
+        app:iconGravity="start"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vk_sign_in_button" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

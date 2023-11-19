@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/secondary_nav_graph"
+    app:startDestination="@id/categoriesFragment3">
+
+    <fragment
+        android:id="@+id/categoriesFragment3"
+        android:name="nsu.krpo.academads.ui.CategoriesFragment"
+        android:label="CategoriesFragment"
+        tools:layout="@layout/fragment_categories"/>
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="nsu.krpo.academads.ui.CategoryFragment"
+        android:label="CategoryFragment"
+        tools:layout="@layout/fragment_category"/>
+
+</navigation>

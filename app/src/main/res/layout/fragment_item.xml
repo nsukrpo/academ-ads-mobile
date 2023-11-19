@@ -1,0 +1,170 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/Background">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/view_pager"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_gravity="top|center_vertical"
+                android:background="#AFAEFF"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="27dp" />
+
+            <me.relex.circleindicator.CircleIndicator
+                android:id="@+id/indicator"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:elevation="4dp"
+                app:layout_constraintBottom_toTopOf="@+id/info_constraint"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/info_constraint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="320dp"
+                    android:background="@drawable/item_background"
+                    app:layout_constraintTop_toTopOf="parent"
+                    >
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/item_title"
+                        style="@style/ItemTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="40dp"
+                        android:layout_marginHorizontal="20dp"
+                        tools:text="Репетитор по матанализу"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/price"
+                        style="@style/ItemTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
+                        tools:text="800"
+                        android:layout_marginStart="20dp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/item_title" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/currency"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="10dp"
+                        android:lineHeight="43sp"
+                        android:paddingHorizontal="4dp"
+                        android:text="@string/roubles"
+                        android:textAppearance="@style/TextAppearance.Material3.TitleSmall"
+                        android:textColor="@color/TextSecondary"
+                        android:textSize="28sp"
+                        app:layout_constraintStart_toEndOf="@id/price"
+                        app:layout_constraintTop_toBottomOf="@+id/item_title" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/book_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginHorizontal="24dp"
+                        android:backgroundTint="@color/PrimaryButtom"
+                        android:paddingHorizontal="4dp"
+                        android:text="@string/booking"
+                        android:textAppearance="@style/PrimaryButtonText"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/item_title"
+                        app:shapeAppearanceOverlay="@style/RoundedRectangle" />
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/chips_category"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="20dp"
+                        android:layout_marginTop="72dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/book_button">
+                        <com.google.android.material.chip.Chip
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:chipStrokeColor="@color/Border"
+                            android:clickable="false"
+                            tools:text="Учебные услуги"/>
+                        <com.google.android.material.chip.Chip
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:chipStrokeColor="@color/Border"
+                            android:clickable="false"
+                            tools:text="Хорошее хорошее"/>
+                    </com.google.android.material.chip.ChipGroup>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        tools:text="20.10.2023"
+                        android:layout_marginStart="20dp"
+                        android:textSize="17sp"
+                        android:textColor="@color/PrimaryButtom"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/chips_category" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/views"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:textColor="@color/TextSecondary"
+                        android:textSize="17sp"
+                        tools:text="34 просмотра, 5 откликов"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/date" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/write_seller"
+        android:layout_width="276dp"
+        android:layout_height="56dp"
+        android:layout_gravity="bottom|end"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginVertical="28dp"
+        android:backgroundTint="@color/Violet"
+        android:text="@string/write_seller"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        app:shapeAppearanceOverlay="@style/RoundedRectangle" />
+
+    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+        android:id="@+id/like"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_gravity="bottom|left"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginVertical="28dp"
+        android:backgroundTint="@color/white"
+        android:text=""
+        app:icon="@drawable/heart"
+        app:iconTint="@color/TextSecondary"
+        app:shapeAppearanceOverlay="@style/RoundedRectangle"
+        app:strokeColor="#D9D0E3"
+        app:strokeWidth="1dp" />
+
+</FrameLayout>

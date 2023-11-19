@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/itemFragment">
+
+    <fragment
+        android:id="@+id/authFragment"
+        android:name="nsu.krpo.academads.ui.AuthFragment"
+        android:label="AuthFragment"
+        tools:layout="@layout/fragment_auth"/>
+    <fragment
+        android:id="@+id/categoriesFragment2"
+        android:name="nsu.krpo.academads.ui.CategoriesFragment"
+        android:label="CategoriesFragment"
+        tools:layout="@layout/fragment_main_screen"/>
+    <fragment
+        android:id="@+id/mainScreenFragment"
+        android:name="nsu.krpo.academads.ui.MainScreenFragment"
+        android:label="MainScreenFragment"
+        tools:layout="@layout/fragment_main_screen"/>
+    <fragment
+        android:id="@+id/itemFragment"
+        android:name="nsu.krpo.academads.ui.ItemFragment"
+        android:label="ItemFragment"
+        tools:layout="@layout/fragment_item"/>
+</navigation>
