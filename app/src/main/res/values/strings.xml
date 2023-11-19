@@ -7,4 +7,7 @@
     <string name="search_hint">Поиск товаров</string>
     <string name="rubles">руб</string>
     <string name="subscribe_text">Подписаться</string>
+    <string name="write_seller">НАПИСАТЬ ПРОДАВЦУ</string>
+    <string name="roubles">руб</string>
+    <string name="booking">ЗАБРОНИРОВАТЬ</string>
 </resources>

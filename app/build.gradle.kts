@@ -53,4 +53,15 @@ dependencies {
     implementation("androidx.navigation:navigation-fragment-ktx:$navVersion")
     implementation("androidx.navigation:navigation-ui-ktx:$navVersion")
 
+    implementation("com.google.code.gson:gson:2.10.1")
+
+    //Viewpager Implementation
+    implementation ("androidx.viewpager2:viewpager2:1.0.0")
+
+    //CircleIndicator
+    implementation ("me.relex:circleindicator:2.1.6")
+
+    //Glide
+    implementation("com.github.bumptech.glide:glide:4.12.0")
+
 }

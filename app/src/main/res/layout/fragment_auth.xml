@@ -12,11 +12,12 @@
         style="@style/TitleText"
         android:layout_width="330dp"
         android:layout_height="85dp"
-        android:layout_marginTop="320dp"
+        android:layout_marginTop="312dp"
+        android:breakStrategy="high_quality"
         android:gravity="center_vertical|center_horizontal"
         android:text="@string/auth_text"
-        android:breakStrategy="high_quality"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

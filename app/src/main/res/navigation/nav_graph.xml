@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/mainScreenFragment">
+    app:startDestination="@id/itemFragment">
 
     <fragment
         android:id="@+id/authFragment"
@@ -20,4 +20,9 @@
         android:name="nsu.krpo.academads.ui.MainScreenFragment"
         android:label="MainScreenFragment"
         tools:layout="@layout/fragment_main_screen"/>
+    <fragment
+        android:id="@+id/itemFragment"
+        android:name="nsu.krpo.academads.ui.ItemFragment"
+        android:label="ItemFragment"
+        tools:layout="@layout/fragment_item"/>
 </navigation>

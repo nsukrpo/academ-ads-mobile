@@ -15,4 +15,5 @@
         android:name="nsu.krpo.academads.ui.CategoryFragment"
         android:label="CategoryFragment"
         tools:layout="@layout/fragment_category"/>
+
 </navigation>
