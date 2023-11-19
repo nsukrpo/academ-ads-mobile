@@ -10,4 +10,6 @@
     <string name="write_seller">НАПИСАТЬ ПРОДАВЦУ</string>
     <string name="roubles">руб</string>
     <string name="booking">ЗАБРОНИРОВАТЬ</string>
+    <string name="about">О товаре</string>
+    <string name="subscribe">ПОДПИСАТЬСЯ</string>
 </resources>
