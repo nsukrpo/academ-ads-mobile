@@ -12,4 +12,9 @@
     <string name="booking">ЗАБРОНИРОВАТЬ</string>
     <string name="about">О товаре</string>
     <string name="subscribe">ПОДПИСАТЬСЯ</string>
+    <string name="user_info">Информация о пользователе</string>
+    <string name="dont_show_text">Не показывать отклоненные</string>
+    <string name="create_ad">СОЗДАТЬ ОБЪЯВЛЕНИЕ</string>
+    <string name="bans">Блокировки</string>
+    <string name="chat_button_text">Чат с поддержкой</string>
 </resources>
