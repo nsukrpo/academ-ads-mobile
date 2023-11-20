@@ -126,6 +126,8 @@
                 android:layout_marginStart="20dp"
                 android:checked="false"
                 android:text="@string/dont_show_text"
+                app:thumbTint="@color/Background"
+                app:trackDecorationTint="@color/Background"
                 android:textAppearance="@style/ProductTitle"
                 android:textColor="@color/TextPrimary"
                 app:layout_constraintStart_toStartOf="parent"

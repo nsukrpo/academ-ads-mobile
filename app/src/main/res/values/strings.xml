@@ -17,4 +17,14 @@
     <string name="create_ad">СОЗДАТЬ ОБЪЯВЛЕНИЕ</string>
     <string name="bans">Блокировки</string>
     <string name="chat_button_text">Чат с поддержкой</string>
+    <string name="think_up_title">Придумайте заголовок:</string>
+    <string name="think_up_description">Дайте описание:</string>
+    <string name="title_input_text">Заголовок</string>
+    <string name="description_input_text">Описание</string>
+    <string name="think_up_price">Назовите цену</string>
+    <string name="price_edit_text">Цена</string>
+    <string name="free_text">Отдать бесплатно</string>
+    <string name="check_categories">Выберите категории</string>
+    <string name="pin_photos">Прикрепите фотографии:</string>
+    <string name="send_to_moderation">ОТПРАВИТЬ НА МОДЕРАЦИЮ</string>
 </resources>
