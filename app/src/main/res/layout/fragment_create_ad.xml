@@ -26,7 +26,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="10dp"
+        android:layout_height="24dp"
         android:background="@drawable/toolbar_dropshadow" />
 
     <androidx.core.widget.NestedScrollView
@@ -35,7 +35,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="@color/Background">
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/think_up_title"

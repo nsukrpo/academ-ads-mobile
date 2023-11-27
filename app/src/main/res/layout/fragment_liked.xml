@@ -19,7 +19,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="10dp"
+        android:layout_height="24dp"
         android:background="@drawable/toolbar_dropshadow" />
 
     <com.google.android.material.search.SearchBar
@@ -46,7 +46,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/searchBar"
-        tools:listitem="@layout/item_product" />
+        tools:listitem="@layout/item_liked" />
 
 
 </LinearLayout>
