@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F6F5F5"
+    android:background="@color/Background"
     android:orientation="vertical">
 
-    <com.google.android.material.appbar.MaterialToolbar
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#F6F5F5"
-        android:paddingTop="56dp"
-        android:paddingBottom="16dp"
-        app:title="Рекомендации"
-        app:titleCentered="true" />
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/Background"
+            android:paddingTop="56dp"
+            android:paddingBottom="16dp"
+            app:navigationIcon="@drawable/back"
+            app:title="Мои объявления"
+            app:titleCentered="true" />
+    </com.google.android.material.appbar.AppBarLayout>
 
     <View
         android:layout_width="match_parent"
@@ -30,7 +36,7 @@
         android:layout_marginTop="36dp"
         android:layout_marginBottom="20dp"
         android:backgroundTint="#FFFFFF"
-        android:hint="@string/search_hint"
+        android:hint="@string/search_ad"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/subscribe_button"
@@ -46,8 +52,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/searchBar"
-        tools:listitem="@layout/item_product" />
-
+        tools:listitem="@layout/item_my_ad" />
 
 </LinearLayout>
-

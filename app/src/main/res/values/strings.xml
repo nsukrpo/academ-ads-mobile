@@ -10,4 +10,23 @@
     <string name="write_seller">НАПИСАТЬ ПРОДАВЦУ</string>
     <string name="roubles">руб</string>
     <string name="booking">ЗАБРОНИРОВАТЬ</string>
+    <string name="about">О товаре</string>
+    <string name="subscribe">ПОДПИСАТЬСЯ</string>
+    <string name="user_info">Информация о пользователе</string>
+    <string name="dont_show_text">Не показывать отклоненные</string>
+    <string name="create_ad">СОЗДАТЬ ОБЪЯВЛЕНИЕ</string>
+    <string name="bans">Блокировки</string>
+    <string name="chat_button_text">Чат с поддержкой</string>
+    <string name="think_up_title">Придумайте заголовок:</string>
+    <string name="think_up_description">Дайте описание:</string>
+    <string name="title_input_text">Заголовок</string>
+    <string name="description_input_text">Описание</string>
+    <string name="think_up_price">Назовите цену</string>
+    <string name="price_edit_text">Цена</string>
+    <string name="free_text">Отдать бесплатно</string>
+    <string name="check_categories">Выберите категории</string>
+    <string name="pin_photos">Прикрепите фотографии:</string>
+    <string name="send_to_moderation">ОТПРАВИТЬ НА МОДЕРАЦИЮ</string>
+    <string name="search_ad">Поиск объявлений</string>
+    <string name="selled">ПРОДАНО</string>
 </resources>
