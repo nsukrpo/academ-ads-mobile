@@ -1,8 +1,9 @@
 package nsu.krpo.academads.domain
 
-import java.io.Serializable
-
-data class Category(
-        val id: Long,
-        val name: String
-) : Serializable
+enum class Category {
+        EDUCATIONAL_SUPPLIES,
+        APPLIANCES,
+        ELECTRONICS,
+        EDUCATIONAL_SERVICE,
+        OTHER,
+}

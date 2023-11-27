@@ -1,7 +1,8 @@
 package nsu.krpo.academads.domain
 
-import java.io.Serializable
 import java.sql.Timestamp
+import java.math.BigDecimal
+
 
 data class Booking(
         val id: Long,
@@ -9,4 +10,4 @@ data class Booking(
         val claimant: BigDecimal,
         val dateStart: Timestamp,
         val dateUntil: Timestamp
-) : Serializable
+)

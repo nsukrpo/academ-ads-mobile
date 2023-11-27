@@ -1,6 +1,5 @@
 package nsu.krpo.academads.domain
 
-import java.io.Serializable
 import java.math.BigDecimal
 import java.sql.Timestamp
 
@@ -14,5 +13,6 @@ data class Advertisement(
         val publicationDate: Timestamp,
         val countWatch: Int,
         val status: AdvertisementStatus,
-        val editDate: Timestamp
-) : Serializable
+        val editDate: Timestamp,
+        val photos: ArrayList<AdvertisementPhoto>,
+)

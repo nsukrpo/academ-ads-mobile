@@ -1,6 +1,5 @@
 package nsu.krpo.academads.domain
 
-import java.io.Serializable
 import java.sql.Timestamp
 
 data class FavoriteAdvertisement(
@@ -8,4 +7,4 @@ data class FavoriteAdvertisement(
     val ads: Advertisement,
     val user: User,
     val dateAdd: Timestamp
-) : Serializable
+)
