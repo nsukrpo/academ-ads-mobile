@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import me.relex.circleindicator.CircleIndicator
 import nsu.krpo.academads.R
 import nsu.krpo.academads.databinding.FragmentItemBinding
-import nsu.krpo.academads.domain.ImagesModel
+import nsu.krpo.academads.domain.model.ads.ImagesModel
 import nsu.krpo.academads.ui.image_slider.ImageSliderAdapter
 
 class ItemFragment : Fragment() {
