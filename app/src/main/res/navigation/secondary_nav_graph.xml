@@ -3,17 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/secondary_nav_graph"
-    app:startDestination="@id/categoriesFragment3">
+    app:startDestination="@id/categoriesFragment">
+
 
     <fragment
-        android:id="@+id/categoriesFragment3"
-        android:name="nsu.krpo.academads.ui.CategoriesFragment"
+        android:id="@+id/categoriesFragment"
+        android:name="nsu.krpo.academads.ui.categories.CategoriesFragment"
         android:label="CategoriesFragment"
         tools:layout="@layout/fragment_categories"/>
     <fragment
-        android:id="@+id/categoryFragment"
-        android:name="nsu.krpo.academads.ui.CategoryFragment"
-        android:label="CategoryFragment"
-        tools:layout="@layout/fragment_category"/>
+        android:id="@+id/recommendationsFragment"
+        android:name="nsu.krpo.academads.ui.recommendations.RecommendationsFragment"
+        android:label="RecommendationsFragment"
+        tools:layout="@layout/fragment_recomendations"/>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="nsu.krpo.academads.ui.profile.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile"/>
 
 </navigation>

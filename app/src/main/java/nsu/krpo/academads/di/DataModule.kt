@@ -4,7 +4,7 @@ import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import nsu.krpo.academads.data.StubCredantialsStorageImpl
+import nsu.krpo.academads.data.credentials.StubCredantialsStorageImpl
 import nsu.krpo.academads.domain.repository.CredentialsStorage
 
 @Module

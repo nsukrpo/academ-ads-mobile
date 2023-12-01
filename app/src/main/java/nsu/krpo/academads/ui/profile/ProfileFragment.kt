@@ -1,22 +1,19 @@
-package nsu.krpo.academads.ui
+package nsu.krpo.academads.ui.profile
 
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
-import dagger.hilt.android.AndroidEntryPoint
-import nsu.krpo.academads.databinding.FragmentRecomendationsBinding
+import nsu.krpo.academads.databinding.FragmentProfileBinding
 import nsu.krpo.academads.ui.base.view.BaseFragment
-import nsu.krpo.academads.ui.base.view.BaseViewModel
 import nsu.krpo.academads.ui.base.view.viewBinding
 
-@AndroidEntryPoint
-class AuthFragment : BaseFragment() {
+class ProfileFragment : BaseFragment() {
 
     override val binding by viewBinding { inflater, container ->
-        FragmentRecomendationsBinding.inflate(inflater, container, false)
+        FragmentProfileBinding.inflate(inflater, container, false)
     }
+    override val viewModel: ProfileViewModel by viewModels()
 
-    override val viewModel: BaseViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

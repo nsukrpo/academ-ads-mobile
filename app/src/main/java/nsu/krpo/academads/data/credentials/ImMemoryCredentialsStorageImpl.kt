@@ -1,4 +1,4 @@
-package nsu.krpo.academads.data
+package nsu.krpo.academads.data.credentials
 
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single

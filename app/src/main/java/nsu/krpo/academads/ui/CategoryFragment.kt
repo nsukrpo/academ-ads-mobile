@@ -1,21 +1,22 @@
 package nsu.krpo.academads.ui
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import nsu.krpo.academads.databinding.FragmentCategoryBinding
+import nsu.krpo.academads.ui.base.view.BaseFragment
+import nsu.krpo.academads.ui.base.view.BaseViewModel
+import nsu.krpo.academads.ui.base.view.ViewBindingDelegate
 
-class CategoryFragment : Fragment() {
+class CategoryFragment : BaseFragment() {
 
-    private lateinit var binding: FragmentCategoryBinding
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentCategoryBinding.inflate(inflater, container, false)
-        return binding.root
+    override var _viewBindingDelegate: ViewBindingDelegate<*>?
+        get() = super._viewBindingDelegate
+        set(value) {}
+    override val viewModel: BaseViewModel
+        get() = TODO("Not yet implemented")
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
     }
+
+
 }

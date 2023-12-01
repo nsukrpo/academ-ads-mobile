@@ -13,11 +13,6 @@
         android:title="Recomendations"
         />
     <item
-        android:id="@+id/messengerFragment"
-        android:icon="@drawable/message"
-        android:title="Messenger"
-        />
-    <item
         android:id="@+id/profileFragment"
         android:icon="@drawable/user"
         android:title="Profile"

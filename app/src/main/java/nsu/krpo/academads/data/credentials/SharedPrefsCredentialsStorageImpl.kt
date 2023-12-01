@@ -1,4 +1,4 @@
-package nsu.krpo.academads.data
+package nsu.krpo.academads.data.credentials
 
 import android.content.Context
 import com.google.gson.Gson
