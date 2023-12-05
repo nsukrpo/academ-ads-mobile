@@ -42,8 +42,8 @@ class CategoriesFragment : BaseFragment() {
         //navEvent.observe(viewLifecycleOwner, ::obtainNavEvent)
     }
 
-    private fun onCategoriesList(animals: List<CategoryWrapper>) {
-        categoriesAdapter.items = animals
+    private fun onCategoriesList(categories: List<CategoryWrapper>) {
+        categoriesAdapter.items = categories
     }
 
    /* private fun obtainNavEvent(direction: AnimalsListDirections) = when (direction) {

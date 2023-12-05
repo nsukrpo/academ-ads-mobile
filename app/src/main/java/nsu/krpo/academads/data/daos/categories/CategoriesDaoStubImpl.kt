@@ -4,7 +4,7 @@ import io.reactivex.rxjava3.core.Single
 import nsu.krpo.academads.domain.model.ads.Category
 import javax.inject.Inject
 
-class CategoriesDaoImpl @Inject constructor() : CategoriesDao {
+class CategoriesDaoStubImpl @Inject constructor() : CategoriesDao {
     override fun getAll(): Single<List<Category>> =
             Single.just(
                 listOf(

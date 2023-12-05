@@ -6,7 +6,7 @@ import java.util.EnumSet
 data class User(
     val id: Long,
     val name: String,
-    val avatar: UsersAvatar?,
+    val avatar: UsersAvatar,
     val regDate: Date,
-    val type: EnumSet<UserType>
+    val type: EnumSet<UserType>,
 )
