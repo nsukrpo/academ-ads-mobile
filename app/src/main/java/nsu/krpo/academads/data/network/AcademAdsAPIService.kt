@@ -1,8 +1,40 @@
 package nsu.krpo.academads.data.network
 
+import nsu.krpo.academads.data.network.models.AdvertisementCreate
+import nsu.krpo.academads.data.network.models.AdvertisementResponse
+import nsu.krpo.academads.data.network.models.AdvertisementUpdate
+import nsu.krpo.academads.data.network.models.ApiResponse
+import nsu.krpo.academads.data.network.models.Avatar
+import nsu.krpo.academads.data.network.models.BlockingCreate
+import nsu.krpo.academads.data.network.models.BlockingResponse
+import nsu.krpo.academads.data.network.models.BlockingUpdate
+import nsu.krpo.academads.data.network.models.BookingRequest
+import nsu.krpo.academads.data.network.models.BookingResponse
 import nsu.krpo.academads.data.network.models.CategoryResponse
+import nsu.krpo.academads.data.network.models.FavoriteAdvertisementsRequest
+import nsu.krpo.academads.data.network.models.FavoriteCategoryRequest
+import nsu.krpo.academads.data.network.models.FavoriteUserRequest
+import nsu.krpo.academads.data.network.models.LoginCreate
+import nsu.krpo.academads.data.network.models.MessageResponse
+import nsu.krpo.academads.data.network.models.Photo
+import nsu.krpo.academads.data.network.models.PurchaseRequest
+import nsu.krpo.academads.data.network.models.PurchaseResponse
+import nsu.krpo.academads.data.network.models.StrikeCreate
+import nsu.krpo.academads.data.network.models.StrikeResponse
+import nsu.krpo.academads.data.network.models.StrikeUpdate
+import nsu.krpo.academads.data.network.models.TokenRequest
+import nsu.krpo.academads.data.network.models.TokenResponse
+import nsu.krpo.academads.data.network.models.UserCreate
+import nsu.krpo.academads.data.network.models.UserResponse
+import nsu.krpo.academads.data.network.models.UserUpdate
 import retrofit2.Response
+import retrofit2.http.Body
+import retrofit2.http.DELETE
 import retrofit2.http.GET
+import retrofit2.http.POST
+import retrofit2.http.PUT
+import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface AcademAdsAPIService {
     //TODO: add rest methods using Retrofit2
@@ -17,11 +49,11 @@ interface AcademAdsAPIService {
     suspend fun createUser(@Body newUser: UserCreate): Response<ApiResponse>
     @GET("/user")
     suspend fun getUsers(
-            @Query("rejected_ads") rejectedAds: Long?,
-            @Query("reject_reason") rejectReason: String?,
-            @Query("published_ads") publishedAds: Long?,
-            @Query("blockings") blockings: Int?,
-            @Query("blocking_status") blockingStatus: Int?
+        @Query("rejected_ads") rejectedAds: Long?,
+        @Query("reject_reason") rejectReason: String?,
+        @Query("published_ads") publishedAds: Long?,
+        @Query("blockings") blockings: Int?,
+        @Query("blocking_status") blockingStatus: Int?
     ): Response<List<UserResponse>>
     @PUT("/login")
     suspend fun createLogin(@Body loginCreate: LoginCreate): Response<ApiResponse>
@@ -72,8 +104,8 @@ interface AcademAdsAPIService {
             @Query("from") fromUserId: Long,
             @Query("to") toUserId: Long
     ): Response<List<MessageResponse>>
-    @POST("/message")
-    suspend fun createMessage(@Body newMessage: NewMessage): Response<ApiResponse>
+   // @POST("/message")
+   // suspend fun createMessage(@Body newMessage: NewMessage): Response<ApiResponse>
     @GET("/message/{id}")
     suspend fun getMessageById(@Path("id") messageId: Long): Response<MessageResponse>
     @GET("/favorite/advertisment")
@@ -102,7 +134,7 @@ interface AcademAdsAPIService {
     suspend fun removeFromFavoriteUsers(
             @Query("subject_id") userId: Long,
             @Query("object_id") objectId: Long
-    ): Response<RemoveFavoriteUserResponse>
+    ): Response<ApiResponse>
     @GET("/booking")
     suspend fun getBookings(@Query("user_id") userId: Long): Response<List<BookingResponse>>
     @POST("/booking")
