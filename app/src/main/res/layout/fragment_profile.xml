@@ -7,24 +7,6 @@
     android:background="@color/Background"
     android:orientation="vertical">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/topBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/Background"
-            android:paddingTop="56dp"
-            android:paddingBottom="16dp"
-            app:title="Личный кабинет"
-            app:titleTextAppearance="@style/TitleText"
-            app:titleCentered="true" />
-    </com.google.android.material.appbar.AppBarLayout>
-
-
-
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -35,13 +17,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <View
-                android:id="@+id/view"
-                android:layout_width="match_parent"
-                android:layout_height="24dp"
-                android:background="@drawable/toolbar_dropshadow"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/user_info"
@@ -49,10 +24,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="40dp"
                 android:text="@string/user_info"
                 android:textSize="22sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/view" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/user_avatar"

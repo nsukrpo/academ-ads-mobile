@@ -8,33 +8,31 @@
     android:background="#F6F5F5"
     android:orientation="vertical">
 
-    <com.google.android.material.appbar.MaterialToolbar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#F6F5F5"
-        android:paddingTop="56dp"
-        android:paddingBottom="16dp"
-        app:titleTextAppearance="@style/TitleText"
-        app:title="Рекомендации"
-        app:titleCentered="true" />
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/title"
+        style="@style/TitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="41dp"
+        android:layout_marginTop="80dp"
+        android:layout_marginStart="20dp"
+        android:text="@string/recommendation_header"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="24dp"
-        android:background="@drawable/toolbar_dropshadow" />
+
 
     <com.google.android.material.search.SearchBar
         android:id="@+id/searchBar"
         style="@style/ShapeAppearanceOverlay.Material3.SearchBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="40dp"
         android:layout_marginBottom="20dp"
         android:backgroundTint="#FFFFFF"
         android:hint="@string/search_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/subscribe_button"
+        app:layout_constraintTop_toBottomOf="@+id/title"
         app:menu="@menu/search_menu"
         app:navigationIcon="@drawable/search"
         app:strokeColor="#D9D0E3"
