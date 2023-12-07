@@ -20,6 +20,43 @@
         android:id="@+id/profileFragment"
         android:name="nsu.krpo.academads.ui.profile.ProfileFragment"
         android:label="ProfileFragment"
-        tools:layout="@layout/fragment_profile"/>
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/ToMyAds"
+            app:destination="@id/myAdsFragment" />
+        <action
+            android:id="@+id/ToMyAd"
+            app:destination="@id/myAdvertisementFragment" />
+        <action
+            android:id="@+id/ToPurchases"
+            app:destination="@id/purchasesFragment" />
+        <action
+            android:id="@+id/ToItem"
+            app:destination="@id/navigation" />
+        <action
+            android:id="@+id/ToLikes"
+            app:destination="@id/myLikesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myAdsFragment"
+        android:name="nsu.krpo.academads.ui.my_ads.MyAdsFragment"
+        android:label="MyAdsFragment"
+        tools:layout="@layout/fragment_my_ads"/>
+    <fragment
+        android:id="@+id/myAdvertisementFragment"
+        android:name="nsu.krpo.academads.ui.my_advertisement.MyAdvertisementFragment"
+        android:label="MyAdvertisementFragment"
+        tools:layout="@layout/fragment_my_ad"/>
+    <fragment
+        android:id="@+id/purchasesFragment"
+        android:name="nsu.krpo.academads.ui.purchases.PurchasesFragment"
+        android:label="PurchasesFragment"
+        tools:layout="@layout/fragment_my_purchases"/>
+    <include app:graph="@navigation/item_graph" />
+    <fragment
+        android:id="@+id/myLikesFragment"
+        android:name="nsu.krpo.academads.ui.my_likes.MyLikesFragment"
+        android:label="MyLikesFragment"
+        tools:layout="@layout/fragment_liked"/>
 
 </navigation>

@@ -3,6 +3,7 @@ plugins {
     id("org.jetbrains.kotlin.android")
     kotlin("kapt")
     id("com.google.dagger.hilt.android")
+    id("kotlin-parcelize")
 }
 
 android {
@@ -59,10 +60,10 @@ dependencies {
     implementation("com.google.code.gson:gson:2.10.1")
 
     //Viewpager Implementation
-    implementation ("androidx.viewpager2:viewpager2:1.0.0")
+    implementation("androidx.viewpager2:viewpager2:1.0.0")
 
     //CircleIndicator
-    implementation ("me.relex:circleindicator:2.1.6")
+    implementation("me.relex:circleindicator:2.1.6")
 
     //Glide
     implementation("com.github.bumptech.glide:glide:4.12.0")
@@ -75,19 +76,13 @@ dependencies {
     implementation("com.google.dagger:hilt-android:2.44")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
 
-    //Room
-    implementation("androidx.room:room-runtime:2.6.1")
-    implementation("androidx.room:room-rxjava3:2.6.1")
-
     //Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:adapter-rxjava3:2.9.0")
-    implementation ("com.squareup.retrofit2:converter-moshi:2.9.0")
+    implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
 
     //Moshi
     implementation("com.squareup.moshi:moshi-kotlin:1.14.0")
-
-
 }
 
 kapt {

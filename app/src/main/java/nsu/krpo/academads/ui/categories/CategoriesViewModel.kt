@@ -3,17 +3,22 @@ package nsu.krpo.academads.ui.categories
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
+import io.reactivex.rxjava3.core.Single
+import nsu.krpo.academads.data.daos.advertisments.AdvertisementsDao
+import nsu.krpo.academads.data.daos.categories.CategoriesDao
+import nsu.krpo.academads.data.daos.purchases.PurchasesDao
 import nsu.krpo.academads.domain.model.ads.Category
 import nsu.krpo.academads.ui.base.live_data.SingleLiveEvent
 import nsu.krpo.academads.ui.base.live_data.update
 import nsu.krpo.academads.ui.base.view.BaseViewModel
 import nsu.krpo.academads.ui.categories.rv.CategoryWrapper
 import javax.inject.Inject
-//TODO database example
+
 @HiltViewModel
 class CategoriesViewModel @Inject constructor(
-   // private val categoriesDao: CategoriesDao,
-   // private val advertismentsDao: AdvertismentsDao,
+    private val categoriesDao: CategoriesDao,
+    private val advertisementsDao: AdvertisementsDao,
+    private val purchasesDao: PurchasesDao,
 ) : BaseViewModel() {
 
     private val _categories: MutableLiveData<List<CategoryWrapper>> = MutableLiveData()
@@ -26,14 +31,15 @@ class CategoriesViewModel @Inject constructor(
 
     init {
         loadCategoriesList()
+
     }
 
 
     private fun loadCategoriesList() {
 
-    /*    Single.zip(
+        Single.zip(
             categoriesDao.getAll(),
-            advertismentsDao.getAll(),
+            advertisementsDao.getAll(),
         ) {
             categories, ads ->
                 categories.map { category ->
@@ -44,7 +50,7 @@ class CategoriesViewModel @Inject constructor(
                     CategoryWrapper(
                         category,
                         adCounter,
-                        category.getImage()
+                        null
                     )
                 }
         }
@@ -53,7 +59,7 @@ class CategoriesViewModel @Inject constructor(
             .subscribe(
                 ::onCategoriesResult,
                 ::onError,
-            ).unsubscribeOnCleared()*/
+            ).unsubscribeOnCleared()
     }
 
     private fun onCategoriesResult(categories: List<CategoryWrapper>) =
