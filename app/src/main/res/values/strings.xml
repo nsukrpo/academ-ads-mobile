@@ -29,4 +29,8 @@
     <string name="send_to_moderation">ОТПРАВИТЬ НА МОДЕРАЦИЮ</string>
     <string name="search_ad">Поиск объявлений</string>
     <string name="selled">ПРОДАНО</string>
+    <string name="login">Логин</string>
+    <string name="log_in">ВОЙТИ</string>
+    <string name="password">Пароль</string>
+    <string name="registration">Регистрация</string>
 </resources>
