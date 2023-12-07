@@ -5,12 +5,16 @@ import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
+import nsu.krpo.academads.R
 import nsu.krpo.academads.databinding.FragmentProfileBinding
 import nsu.krpo.academads.domain.model.ads.AdvertisementStatus
 import nsu.krpo.academads.domain.model.ads.User
+import nsu.krpo.academads.ui.advertisement.AdvertisementFragment
 import nsu.krpo.academads.ui.base.view.BaseFragment
 import nsu.krpo.academads.ui.base.view.viewBinding
+import nsu.krpo.academads.ui.my_advertisement.MyAdvertisementFragment
 import nsu.krpo.academads.ui.profile.ads_rv.AdsAdapter
 import nsu.krpo.academads.ui.profile.ads_rv.AdvertismentWrapper
 import nsu.krpo.academads.ui.profile.likes_rv.LikedAdapter
@@ -40,7 +44,7 @@ class ProfileFragment : BaseFragment() {
 
     private val likesAdapter by lazy {
         LikedAdapter(
-            viewModel::onAdItemClicked
+            viewModel::onLikedItemClicked
         )
     }
 
@@ -52,6 +56,7 @@ class ProfileFragment : BaseFragment() {
         binding.rvMyLikes.adapter = likesAdapter
         setupSwitchListener()
         setupVmObservers()
+        setupViewListeners()
     }
 
     private fun setupVmObservers() = viewModel.run {
@@ -59,17 +64,56 @@ class ProfileFragment : BaseFragment() {
         ads.observe(viewLifecycleOwner, ::onAdsLoaded)
         purchases.observe(viewLifecycleOwner, ::onPurchasesLoaded)
         likes.observe(viewLifecycleOwner, ::onLikesLoaded)
+        navEvent.observe(viewLifecycleOwner, ::obtainNavEvent)
     }
 
     private fun setupSwitchListener() {
         binding.dontShowSwitch.setOnCheckedChangeListener { button, isChecked ->
             if (isChecked) {
                 adsAdapter.items = viewModel.ads.value!!.filter {
-                    it.status != AdvertisementStatus.REJECTED
+                    it.ad.status != AdvertisementStatus.REJECTED
                 }
             } else {
                 adsAdapter.items = viewModel.myAdsList
             }
+        }
+    }
+
+    private fun setupViewListeners() {
+        binding.run {
+            myItemsButton.setOnClickListener { viewModel.onMyItems() }
+            myAdvertismentsButton.setOnClickListener { viewModel.onMyAds() }
+            myLikesButton.setOnClickListener { viewModel.onMyLikes() }
+            createAdButton.setOnClickListener { viewModel.onCreateAd() }
+            bansButton.setOnClickListener { viewModel.onBans() }
+        }
+    }
+
+    private fun obtainNavEvent(direction: ProfileScreenRoutes) = when(direction) {
+        is ProfileScreenRoutes.ToMyAds -> {
+            findNavController().navigate(R.id.ToMyAds)
+        }
+        is ProfileScreenRoutes.ToMyAd -> {
+            findNavController().navigate(R.id.ToMyAd, Bundle().apply {
+                putParcelable(MyAdvertisementFragment.ARGS_KEY, direction.ad)
+            })
+        }
+        is ProfileScreenRoutes.ToAd -> {
+            findNavController().navigate(R.id.ToItem, Bundle().apply {
+                putParcelable(AdvertisementFragment.ARGS_KEY, direction.ad)
+            })
+        }
+        is ProfileScreenRoutes.ToMyPurchases -> {
+            findNavController().navigate(R.id.ToPurchases)
+        }
+        is ProfileScreenRoutes.ToLikes -> {
+            findNavController().navigate(R.id.ToLikes)
+        }
+        is ProfileScreenRoutes.ToCreateAd -> {
+           // TODO: findNavController().navigate()
+        }
+        is ProfileScreenRoutes.ToBans -> {
+            //TODO
         }
     }
 

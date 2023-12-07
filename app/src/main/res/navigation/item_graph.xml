@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/itemFragment">
+    <fragment
+        android:id="@+id/itemFragment"
+        android:name="nsu.krpo.academads.ui.ItemFragment"
+        android:label="ItemFragment"
+        tools:layout="@layout/fragment_item" />
+</navigation>

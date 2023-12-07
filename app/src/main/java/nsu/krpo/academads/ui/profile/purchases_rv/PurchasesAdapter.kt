@@ -4,10 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import nsu.krpo.academads.databinding.ItemPurchaseMiniBinding
-import nsu.krpo.academads.domain.model.ads.Purchase
+import nsu.krpo.academads.domain.model.ads.Advertisement
 
 class PurchasesAdapter(
-    private val onItemClicked: (Purchase) -> Unit
+    private val onItemClicked: (Advertisement) -> Unit
 ) : RecyclerView.Adapter<PurchasesViewHolder>() {
 
     var items: List<PurchaseWrapper> = emptyList()

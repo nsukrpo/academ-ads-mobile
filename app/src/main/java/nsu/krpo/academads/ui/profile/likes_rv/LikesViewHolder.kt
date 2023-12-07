@@ -10,7 +10,8 @@ class LikesViewHolder(private val binding: ItemLikedMiniBinding) : RecyclerView.
     fun bind(likedWrapper: LikedWrapper, onItemClicked: (Advertisement) -> Unit) =
         binding.run {
             image.setImageDrawable(likedWrapper.cover)
-            titleText.text = likedWrapper.title
-            price.text = likedWrapper.price.toPlainString()
+            titleText.text = likedWrapper.ad.header
+            price.text = likedWrapper.ad.price.toPlainString()
+            binding.root.setOnClickListener { onItemClicked(likedWrapper.ad) }
         }
 }

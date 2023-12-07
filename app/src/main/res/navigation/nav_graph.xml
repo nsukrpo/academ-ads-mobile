@@ -15,19 +15,10 @@
         android:name="nsu.krpo.academads.ui.main_screen.MainScreenFragment"
         android:label="MainScreenFragment"
         tools:layout="@layout/fragment_main_screen">
-        <argument
-            android:name="userId"
-            app:argType="long"
-            android:defaultValue="0L"/>
         <action
-            android:id="@+id/action_mainScreenFragment_to_itemFragment"
-            app:destination="@id/itemFragment" />
+            android:id="@+id/ToItem"
+            app:destination="@id/navigation" />
     </fragment>
-    <fragment
-        android:id="@+id/itemFragment"
-        android:name="nsu.krpo.academads.ui.ItemFragment"
-        android:label="ItemFragment"
-        tools:layout="@layout/fragment_item"/>
     <fragment
         android:id="@+id/splashFragment"
         android:name="nsu.krpo.academads.ui.splash_screen.SplashFragment"
@@ -39,4 +30,6 @@
             android:id="@+id/toLogin"
             app:destination="@id/authFragment" />
     </fragment>
+    <include app:graph="@navigation/item_graph" />
+
 </navigation>

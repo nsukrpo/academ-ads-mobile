@@ -12,7 +12,9 @@ class AdsViewHolder(
     fun bind(ad: AdvertismentWrapper, onItemClicked: (Advertisement) -> Unit) =
         binding.run {
             image.setImageDrawable(ad.cover)
-            titleText.text = ad.title
-            status.text = ad.status.title()
+            titleText.text = ad.ad.header
+            status.text = ad.ad.status.title()
+            binding.root.setOnClickListener { onItemClicked(ad.ad) }
         }
+
 }

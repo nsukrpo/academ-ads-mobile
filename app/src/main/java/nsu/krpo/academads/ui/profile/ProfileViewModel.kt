@@ -11,7 +11,6 @@ import nsu.krpo.academads.data.daos.purchases.PurchasesDao
 import nsu.krpo.academads.data.daos.saved_info.SavedRep
 import nsu.krpo.academads.data.daos.users.UsersDao
 import nsu.krpo.academads.domain.model.ads.Advertisement
-import nsu.krpo.academads.domain.model.ads.Purchase
 import nsu.krpo.academads.domain.model.ads.User
 import nsu.krpo.academads.ui.base.live_data.SingleLiveEvent
 import nsu.krpo.academads.ui.base.live_data.update
@@ -56,9 +55,21 @@ class ProfileViewModel @Inject constructor(
         loadMyLikes()
     }
 
-    fun onAdItemClicked(ad: Advertisement) = _navEvent.update { ProfileScreenRoutes.ToAd(ad) }
+    fun onAdItemClicked(ad: Advertisement) = _navEvent.update { ProfileScreenRoutes.ToMyAd(ad) }
 
-    fun onPurchaseItemClicked(purchase: Purchase) = _navEvent.update { ProfileScreenRoutes.ToPurchase(purchase) }
+    fun onPurchaseItemClicked(ad: Advertisement) = _navEvent.update { ProfileScreenRoutes.ToAd(ad) }
+
+    fun onLikedItemClicked(ad: Advertisement) = _navEvent.update { ProfileScreenRoutes.ToAd(ad) }
+
+    fun onMyItems() = _navEvent.update { ProfileScreenRoutes.ToMyPurchases() }
+
+    fun onMyAds() = _navEvent.update { ProfileScreenRoutes.ToMyAds() }
+
+    fun onMyLikes() = _navEvent.update { ProfileScreenRoutes.ToLikes() }
+
+    fun onCreateAd() = _navEvent.update { ProfileScreenRoutes.ToCreateAd() }
+
+    fun onBans() = _navEvent.update { ProfileScreenRoutes.ToBans() }
 
     private fun loadProfileInfo() {
         usersDao.getById(userId)
@@ -76,6 +87,7 @@ class ProfileViewModel @Inject constructor(
             .map {
                 it.map { advertisement ->
                     AdvertismentWrapper(
+                        advertisement,
                         BitmapDrawable(
                             BitmapFactory.decodeByteArray(
                                 advertisement.photos[0].photo,
@@ -83,8 +95,6 @@ class ProfileViewModel @Inject constructor(
                                 advertisement.photos[0].photo.size
                             )
                         ),
-                        advertisement.header,
-                        advertisement.status
                     )
                 }
             }
@@ -99,13 +109,16 @@ class ProfileViewModel @Inject constructor(
     private fun loadMyPurchases() {
         purchasesDao.getById(userId)
             .map {
-                it.map {purchase ->
+                it.map { purchase ->
                     PurchaseWrapper(
-                        purchase.ads,
-                        purchase.price,
-                        purchase.date,
-                        purchase.buyer,
-                        BitmapDrawable(BitmapFactory.decodeByteArray(purchase.ads.photos[0].photo, 0, purchase.ads.photos[0].photo.size))
+                        purchase,
+                        BitmapDrawable(
+                            BitmapFactory.decodeByteArray(
+                                purchase.ads.photos[0].photo,
+                                0,
+                                purchase.ads.photos[0].photo.size
+                            )
+                        )
                     )
                 }
             }
@@ -122,9 +135,14 @@ class ProfileViewModel @Inject constructor(
             .map {
                 it.map { advertisement ->
                     LikedWrapper(
-                        advertisement.header,
-                        advertisement.price,
-                        BitmapDrawable(BitmapFactory.decodeByteArray(advertisement.photos[0].photo, 0, advertisement.photos[0].photo.size))
+                        advertisement,
+                        BitmapDrawable(
+                            BitmapFactory.decodeByteArray(
+                                advertisement.photos[0].photo,
+                                0,
+                                advertisement.photos[0].photo.size
+                            )
+                        )
                     )
                 }
             }

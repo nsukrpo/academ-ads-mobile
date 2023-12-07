@@ -1,13 +1,12 @@
 package nsu.krpo.academads.ui.profile
 
 import nsu.krpo.academads.domain.model.ads.Advertisement
-import nsu.krpo.academads.domain.model.ads.Purchase
 
 sealed interface ProfileScreenRoutes {
 
-    class ToAd(ad: Advertisement): ProfileScreenRoutes
+    class ToMyAd(val ad: Advertisement): ProfileScreenRoutes
 
-    class ToPurchase(purchase: Purchase): ProfileScreenRoutes
+    class ToAd(val ad: Advertisement): ProfileScreenRoutes
 
     class ToMyAds(): ProfileScreenRoutes
 

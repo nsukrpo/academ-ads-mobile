@@ -33,4 +33,6 @@ class AdsAdapter(
     }
 
     override fun getItemCount(): Int = items.size
+
+
 }
