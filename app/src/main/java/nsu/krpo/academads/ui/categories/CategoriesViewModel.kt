@@ -6,6 +6,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.core.Single
 import nsu.krpo.academads.data.daos.advertisments.AdvertisementsDao
 import nsu.krpo.academads.data.daos.categories.CategoriesDao
+import nsu.krpo.academads.data.daos.purchases.PurchasesDao
 import nsu.krpo.academads.domain.model.ads.Category
 import nsu.krpo.academads.ui.base.live_data.SingleLiveEvent
 import nsu.krpo.academads.ui.base.live_data.update
@@ -17,6 +18,7 @@ import javax.inject.Inject
 class CategoriesViewModel @Inject constructor(
     private val categoriesDao: CategoriesDao,
     private val advertisementsDao: AdvertisementsDao,
+    private val purchasesDao: PurchasesDao,
 ) : BaseViewModel() {
 
     private val _categories: MutableLiveData<List<CategoryWrapper>> = MutableLiveData()
@@ -29,6 +31,7 @@ class CategoriesViewModel @Inject constructor(
 
     init {
         loadCategoriesList()
+
     }
 
 

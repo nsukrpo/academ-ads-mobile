@@ -12,6 +12,10 @@ import nsu.krpo.academads.data.daos.advertisments.AdvertisementsDao
 import nsu.krpo.academads.data.daos.advertisments.AdvertisementsDaoStubImpl
 import nsu.krpo.academads.data.daos.categories.CategoriesDao
 import nsu.krpo.academads.data.daos.categories.CategoriesDaoStubImpl
+import nsu.krpo.academads.data.daos.likes.LikesDao
+import nsu.krpo.academads.data.daos.likes.LikesDaoStubImpl
+import nsu.krpo.academads.data.daos.purchases.PurchasesDao
+import nsu.krpo.academads.data.daos.purchases.PurchasesDaoStubImpl
 import nsu.krpo.academads.data.daos.saved_info.SavedRep
 import nsu.krpo.academads.data.daos.saved_info.SavedRepImpl
 import nsu.krpo.academads.data.daos.users.UsersDao
@@ -33,6 +37,12 @@ abstract class DataModule {
 
     @Binds
     abstract fun bindUserDao(impl: UsersDaoStubImpl): UsersDao
+
+    @Binds
+    abstract fun bindPurchasesDao(impl: PurchasesDaoStubImpl): PurchasesDao
+
+    @Binds
+    abstract fun bindLikesDao(impl: LikesDaoStubImpl): LikesDao
 
     companion object {
         @Singleton

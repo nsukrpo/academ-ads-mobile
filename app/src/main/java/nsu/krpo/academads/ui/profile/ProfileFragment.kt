@@ -13,6 +13,10 @@ import nsu.krpo.academads.ui.base.view.BaseFragment
 import nsu.krpo.academads.ui.base.view.viewBinding
 import nsu.krpo.academads.ui.profile.ads_rv.AdsAdapter
 import nsu.krpo.academads.ui.profile.ads_rv.AdvertismentWrapper
+import nsu.krpo.academads.ui.profile.likes_rv.LikedAdapter
+import nsu.krpo.academads.ui.profile.likes_rv.LikedWrapper
+import nsu.krpo.academads.ui.profile.purchases_rv.PurchaseWrapper
+import nsu.krpo.academads.ui.profile.purchases_rv.PurchasesAdapter
 
 @AndroidEntryPoint
 class ProfileFragment : BaseFragment() {
@@ -24,7 +28,19 @@ class ProfileFragment : BaseFragment() {
 
     private val adsAdapter by lazy {
         AdsAdapter(
-            viewModel::onItemClicked
+            viewModel::onAdItemClicked
+        )
+    }
+
+    private val purchasesAdapter by lazy {
+        PurchasesAdapter(
+            viewModel::onPurchaseItemClicked
+        )
+    }
+
+    private val likesAdapter by lazy {
+        LikedAdapter(
+            viewModel::onAdItemClicked
         )
     }
 
@@ -32,6 +48,8 @@ class ProfileFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.rvMyAds.adapter = adsAdapter
+        binding.rvMyItems.adapter = purchasesAdapter
+        binding.rvMyLikes.adapter = likesAdapter
         setupSwitchListener()
         setupVmObservers()
     }
@@ -39,6 +57,8 @@ class ProfileFragment : BaseFragment() {
     private fun setupVmObservers() = viewModel.run {
         user.observe(viewLifecycleOwner, ::onUserLoaded)
         ads.observe(viewLifecycleOwner, ::onAdsLoaded)
+        purchases.observe(viewLifecycleOwner, ::onPurchasesLoaded)
+        likes.observe(viewLifecycleOwner, ::onLikesLoaded)
     }
 
     private fun setupSwitchListener() {
@@ -75,6 +95,16 @@ class ProfileFragment : BaseFragment() {
     private fun onAdsLoaded(ads: List<AdvertismentWrapper>) {
         binding.myAdvertismentsButton.text = "Мои объявления (%s)".format(ads.size)
         adsAdapter.items = ads
+    }
+
+    private fun onPurchasesLoaded(purchases: List<PurchaseWrapper>) {
+        binding.myItemsButton.text = "Мои покупки (%s)".format(purchases.size)
+        purchasesAdapter.items = purchases
+    }
+
+    private fun onLikesLoaded(likes: List<LikedWrapper>) {
+        binding.myLikesButton.text = "Избранное (%s)".format(likes.size)
+        likesAdapter.items = likes
     }
 
     private fun monthByNumber(number: Int): String {

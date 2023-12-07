@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="wrap_content"
+    android:layout_width="136dp"
+    app:cardCornerRadius="8dp"
+    android:layout_marginBottom="4dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/image"
+            android:layout_width="136dp"
+            android:layout_height="112dp"
+            tools:src="@drawable/bread" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/title_text"
+            style="@style/TextAppearance.Material3.TitleMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:textColor="#2D0C57"
+            android:textSize="16sp"
+            android:maxLines="1"
+            tools:text="Учебные принадлежности" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/date"
+            style="@style/DateText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            app:layout_constraintStart_toEndOf="@+id/image"
+            app:layout_constraintTop_toBottomOf="@+id/title"
+            tools:text="23.10.2023" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/price"
+            style="@style/ProductTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/image"
+            app:layout_constraintTop_toBottomOf="@+id/date"
+            android:layout_marginStart="15dp"
+            tools:text="800"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/materialTextView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="@string/rubles"
+            android:textSize="16sp"
+            android:layout_marginBottom="4dp"
+            app:layout_constraintStart_toEndOf="@+id/price"
+            app:layout_constraintTop_toBottomOf="@+id/date" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
