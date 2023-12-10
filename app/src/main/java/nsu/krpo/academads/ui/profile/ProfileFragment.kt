@@ -68,7 +68,7 @@ class ProfileFragment : BaseFragment() {
     }
 
     private fun setupSwitchListener() {
-        binding.dontShowSwitch.setOnCheckedChangeListener { button, isChecked ->
+        binding.dontShowSwitch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 adsAdapter.items = viewModel.ads.value!!.filter {
                     it.ad.status != AdvertisementStatus.REJECTED
@@ -110,7 +110,7 @@ class ProfileFragment : BaseFragment() {
             findNavController().navigate(R.id.ToLikes)
         }
         is ProfileScreenRoutes.ToCreateAd -> {
-           // TODO: findNavController().navigate()
+           findNavController().navigate(R.id.ToCreateAd)
         }
         is ProfileScreenRoutes.ToBans -> {
             //TODO

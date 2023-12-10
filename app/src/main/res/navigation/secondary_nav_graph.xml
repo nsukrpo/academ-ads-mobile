@@ -36,6 +36,9 @@
         <action
             android:id="@+id/ToLikes"
             app:destination="@id/myLikesFragment" />
+        <action
+            android:id="@+id/ToCreateAd"
+            app:destination="@id/create_ad_graph" />
     </fragment>
     <fragment
         android:id="@+id/myAdsFragment"
@@ -58,5 +61,6 @@
         android:name="nsu.krpo.academads.ui.my_likes.MyLikesFragment"
         android:label="MyLikesFragment"
         tools:layout="@layout/fragment_liked"/>
+    <include app:graph="@navigation/create_ad_graph" />
 
 </navigation>
