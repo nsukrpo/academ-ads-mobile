@@ -1,5 +1,6 @@
 package nsu.krpo.academads.data.daos.advertisments
 
+import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 import nsu.krpo.academads.domain.model.ads.Advertisement
 import nsu.krpo.academads.domain.model.ads.AdvertisementPhoto
@@ -73,4 +74,14 @@ class AdvertisementsDaoStubImpl @Inject constructor() : AdvertisementsDao {
             ad,
         )
     )
+
+    override fun createAd(
+        header: String,
+        description: String,
+        price: BigDecimal,
+        category: Category,
+        authorId: Long
+    ): Completable {
+        return Completable.complete()
+    }
 }

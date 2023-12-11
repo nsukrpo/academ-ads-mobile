@@ -24,19 +24,23 @@
     </com.google.android.material.appbar.AppBarLayout>
 
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="24dp"
-        android:background="@drawable/toolbar_dropshadow" />
-
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/Background">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:background="@drawable/toolbar_dropshadow"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/think_up_title"
@@ -177,42 +181,48 @@
                 android:layout_marginTop="30dp"
                 app:chipSpacingVertical="1dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/check_category">
+                app:layout_constraintTop_toBottomOf="@id/check_category"
+                app:singleSelection="true">
 
                 <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_ed_services"
                     style="@style/Widget.Material3.Chip.Filter.Elevated"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Учебные услуги"
+                    android:text="@string/ed_services"
                     app:chipStrokeColor="@color/Border" />
 
                 <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_ed_supplies"
                     style="@style/Widget.Material3.Chip.Filter.Elevated"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Учебные принадлежности"
+                    android:text="@string/ed_supplies"
                     app:chipStrokeColor="@color/Border" />
 
                 <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_appliances"
                     style="@style/Widget.Material3.Chip.Filter.Elevated"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Бытовая техника"
+                    android:text="@string/appliances"
                     app:chipStrokeColor="@color/Border" />
 
                 <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_electronics"
                     style="@style/Widget.Material3.Chip.Filter.Elevated"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Электроника"
+                    android:text="@string/electronics"
                     app:chipStrokeColor="@color/Border" />
 
-                <com.google.android.material.chip.Chip
-                    style="@style/Widget.Material3.Chip.Filter.Elevated"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Другое"
-                    app:chipStrokeColor="@color/Border" />
+                <!-- <com.google.android.material.chip.Chip
+                     android:id="@+id/chip_other"
+                     style="@style/Widget.Material3.Chip.Filter.Elevated"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="@string/chip_other"
+                     app:chipStrokeColor="@color/Border" /> -->
             </com.google.android.material.chip.ChipGroup>
 
             <com.google.android.material.textview.MaterialTextView
@@ -252,8 +262,9 @@
                     android:id="@+id/rv_photos"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
                     android:layout_marginStart="20dp"
+                    android:layout_marginBottom="4dp"
+                    android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/pin_photo_button"
@@ -261,6 +272,19 @@
                     tools:listitem="@layout/item_photo" />
 
             </LinearLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/error_tv"
+                style="@style/SimpleText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/Error"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ll"
+                tools:text="Error text" />
+
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/create_ad_button"
                 android:layout_width="300dp"
@@ -274,7 +298,7 @@
                 android:textAppearance="@style/PrimaryButtonText"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ll"
+                app:layout_constraintTop_toBottomOf="@+id/error_tv"
                 app:shapeAppearanceOverlay="@style/RoundedRectangle" />
 
             <TextView

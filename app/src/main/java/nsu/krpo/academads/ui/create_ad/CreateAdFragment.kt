@@ -1,19 +1,18 @@
 package nsu.krpo.academads.ui.create_ad
 
-import android.content.ContentResolver
 import android.content.Intent
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
-import nsu.krpo.academads.R
 import nsu.krpo.academads.databinding.FragmentCreateAdBinding
+import nsu.krpo.academads.domain.model.ads.Category
 import nsu.krpo.academads.ui.base.view.BaseFragment
 import nsu.krpo.academads.ui.base.view.viewBinding
-import nsu.krpo.academads.ui.create_ad.photos_rv.ItemPhotoWrapper
 import nsu.krpo.academads.ui.create_ad.photos_rv.PhotoAdapter
-import java.io.InputStream
 
 @AndroidEntryPoint
 class CreateAdFragment : BaseFragment() {
@@ -37,15 +36,23 @@ class CreateAdFragment : BaseFragment() {
     private fun setupViewListeners() {
         setupSwitchListener()
         setupPhotoButtonListener()
+        setupCreateAdButtonListener()
     }
 
     private fun setupVmObservers() {
+        viewModel.createAdEvent.observe(
+            viewLifecycleOwner
+        ) { str ->
+            Toast.makeText(context, str, Toast.LENGTH_LONG).show()
+            findNavController().popBackStack()
+        }
         viewModel.photo.observe(
             viewLifecycleOwner
         ) { photos ->
             adapter.items = photos
         }
     }
+
 
     private fun setupSwitchListener() {
         binding.forFreeSwitch.setOnCheckedChangeListener { _, isChecked ->
@@ -76,6 +83,47 @@ class CreateAdFragment : BaseFragment() {
         }
     }
 
+    private fun setupCreateAdButtonListener() {
+
+        binding.createAdButton.setOnClickListener {
+            val category =
+                when (binding.chipsCategory.checkedChipId) {
+                    binding.chipEdServices.id -> Category.EDUCATIONAL_SERVICE
+                    binding.chipEdServices.id -> Category.EDUCATIONAL_SERVICE
+                    binding.chipEdSupplies.id -> Category.EDUCATIONAL_SUPPLIES
+                    binding.chipAppliances.id -> Category.APPLIANCES
+                    binding.chipElectronics.id -> Category.ELECTRONICS
+                    else -> Category.OTHER
+                }
+
+            var price = binding.priceEt.text.toString()
+            if (binding.forFreeSwitch.isChecked) {
+                price = "0"
+            }
+
+            val dataValidation = viewModel.validateAd(
+                title = binding.titleEt.text.toString(),
+                priceText = price,
+            )
+
+            dataValidation.onSuccess {
+                viewModel.createAd(
+                    title = binding.titleEt.text.toString(),
+                    description = binding.descriptionEt.text.toString(),
+                    priceText = price,
+                    category = category
+                )
+            }
+
+            dataValidation.onFailure {exception ->
+                run {
+                    binding.errorTv.text =exception.message
+                }
+            }
+        }
+    }
+
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (resultCode == -1) {
