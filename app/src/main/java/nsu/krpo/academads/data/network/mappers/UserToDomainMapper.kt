@@ -1,3 +1,7 @@
+package nsu.krpo.academads.data.network.mappers
+
+import nsu.krpo.academads.data.network.models.*
+import nsu.krpo.academads.domain.model.ads.*
 
 class UserToDomainMapper {
     fun fromResponse(response: UserResponse): User {

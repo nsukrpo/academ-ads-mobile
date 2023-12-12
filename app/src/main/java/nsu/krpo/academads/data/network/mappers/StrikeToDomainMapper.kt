@@ -1,3 +1,8 @@
+package nsu.krpo.academads.data.network.mappers
+
+import nsu.krpo.academads.data.network.models.*
+import nsu.krpo.academads.domain.model.ads.*
+
 class StrikeToDomainMapper {
     fun fromResponse(response: StrikeResponse): Strike {
         val user = User(id = response.user)

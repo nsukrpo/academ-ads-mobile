@@ -1,3 +1,8 @@
+package nsu.krpo.academads.data.network.mappers
+
+import nsu.krpo.academads.data.network.models.*
+import nsu.krpo.academads.domain.model.ads.*
+
 class MessageToDomainMapper {
     fun fromCreate(create: MessageCreate): Message {
         val fromUser = User(create.from)
