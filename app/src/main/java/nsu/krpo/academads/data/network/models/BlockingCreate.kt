@@ -9,6 +9,9 @@ data class BlockingCreate(
         @Json(name = "reason")
         val reason: String,
 
+        @Json(name = "otherReason")
+        val otherReason: String,
+
         @Json(name = "time_minutes")
         val timeMinutes: Long
 )

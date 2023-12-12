@@ -7,5 +7,8 @@ data class StrikeCreate(
         val user: Long,
 
         @Json(name = "reason")
-        val reason: String
+        val reason: String,
+
+        @Json(name = "otherReason")
+        val otherReason: String
 )
