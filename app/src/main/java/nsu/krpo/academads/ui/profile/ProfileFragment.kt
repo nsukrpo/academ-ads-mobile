@@ -68,7 +68,7 @@ class ProfileFragment : BaseFragment() {
     }
 
     private fun setupSwitchListener() {
-        binding.dontShowSwitch.setOnCheckedChangeListener { _, isChecked ->
+        binding.dontShowSwitch.setOnCheckedChangeListener { button, isChecked ->
             if (isChecked) {
                 adsAdapter.items = viewModel.ads.value!!.filter {
                     it.ad.status != AdvertisementStatus.REJECTED
@@ -89,36 +89,29 @@ class ProfileFragment : BaseFragment() {
         }
     }
 
-    private fun obtainNavEvent(direction: ProfileScreenRoutes) = when (direction) {
+    private fun obtainNavEvent(direction: ProfileScreenRoutes) = when(direction) {
         is ProfileScreenRoutes.ToMyAds -> {
             findNavController().navigate(R.id.ToMyAds)
         }
-
         is ProfileScreenRoutes.ToMyAd -> {
             findNavController().navigate(R.id.ToMyAd, Bundle().apply {
                 putParcelable(MyAdvertisementFragment.ARGS_KEY, direction.ad)
             })
         }
-
         is ProfileScreenRoutes.ToAd -> {
             findNavController().navigate(R.id.ToItem, Bundle().apply {
                 putParcelable(AdvertisementFragment.ARGS_KEY, direction.ad)
             })
-
         }
-
         is ProfileScreenRoutes.ToMyPurchases -> {
             findNavController().navigate(R.id.ToPurchases)
         }
-
         is ProfileScreenRoutes.ToLikes -> {
             findNavController().navigate(R.id.ToLikes)
         }
-
         is ProfileScreenRoutes.ToCreateAd -> {
-            findNavController().navigate(R.id.ToCreateAd)
+           // TODO: findNavController().navigate()
         }
-
         is ProfileScreenRoutes.ToBans -> {
             //TODO
         }
