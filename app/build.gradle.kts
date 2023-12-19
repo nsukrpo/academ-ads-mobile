@@ -83,9 +83,6 @@ dependencies {
 
     //Moshi
     implementation("com.squareup.moshi:moshi-kotlin:1.14.0")
-
-    implementation ("com.caverock:androidsvg-aar:1.4")
-
 }
 
 kapt {

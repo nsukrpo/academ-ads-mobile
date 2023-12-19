@@ -24,23 +24,19 @@
     </com.google.android.material.appbar.AppBarLayout>
 
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="24dp"
+        android:background="@drawable/toolbar_dropshadow" />
+
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/Background">
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="24dp"
-                android:background="@drawable/toolbar_dropshadow"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/think_up_title"
@@ -181,48 +177,43 @@
                 android:layout_marginTop="30dp"
                 app:chipSpacingVertical="1dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/check_category"
-                app:singleSelection="true">
+                app:layout_constraintTop_toBottomOf="@id/check_category">
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_ed_services"
                     style="@style/Widget.Material3.Chip.Filter.Elevated"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/ed_services"
+                    android:checked="true"
+                    android:text="Учебные услуги"
                     app:chipStrokeColor="@color/Border" />
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_ed_supplies"
                     style="@style/Widget.Material3.Chip.Filter.Elevated"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/ed_supplies"
+                    android:text="Учебные принадлежности"
                     app:chipStrokeColor="@color/Border" />
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_appliances"
                     style="@style/Widget.Material3.Chip.Filter.Elevated"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/appliances"
+                    android:text="Бытовая техника"
                     app:chipStrokeColor="@color/Border" />
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_electronics"
                     style="@style/Widget.Material3.Chip.Filter.Elevated"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/electronics"
+                    android:text="Электроника"
                     app:chipStrokeColor="@color/Border" />
 
-                <!-- <com.google.android.material.chip.Chip
-                     android:id="@+id/chip_other"
-                     style="@style/Widget.Material3.Chip.Filter.Elevated"
-                     android:layout_width="wrap_content"
-                     android:layout_height="wrap_content"
-                     android:text="@string/chip_other"
-                     app:chipStrokeColor="@color/Border" /> -->
+                <com.google.android.material.chip.Chip
+                    style="@style/Widget.Material3.Chip.Filter.Elevated"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Другое"
+                    app:chipStrokeColor="@color/Border" />
             </com.google.android.material.chip.ChipGroup>
 
             <com.google.android.material.textview.MaterialTextView
@@ -237,53 +228,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/chips_category" />
 
-            <LinearLayout
-                android:id="@+id/ll"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
+            <ImageButton
+                android:id="@+id/pin_photo_button"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginStart="20dp"
+                android:backgroundTint="#E2CBFF"
+                android:src="@drawable/camera"
+                android:background="@drawable/camera_button"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/pin_photos">
-
-                <ImageButton
-                    android:id="@+id/pin_photo_button"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginTop="30dp"
-                    android:background="@drawable/camera_button"
-                    android:backgroundTint="#E2CBFF"
-                    android:src="@drawable/camera"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/pin_photos" />
-
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rv_photos"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginBottom="4dp"
-                    android:orientation="horizontal"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/pin_photo_button"
-                    app:layout_constraintTop_toBottomOf="@id/pin_photos"
-                    tools:listitem="@layout/item_photo" />
-
-            </LinearLayout>
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/error_tv"
-                style="@style/SimpleText"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:textColor="@color/Error"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/ll"
-                tools:text="Error text" />
+                app:layout_constraintTop_toBottomOf="@id/pin_photos" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/create_ad_button"
@@ -298,15 +253,15 @@
                 android:textAppearance="@style/PrimaryButtonText"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/error_tv"
+                app:layout_constraintTop_toBottomOf="@+id/pin_photo_button"
                 app:shapeAppearanceOverlay="@style/RoundedRectangle" />
-
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="24dp"
-                android:text=""
-                app:layout_constraintTop_toBottomOf="@id/create_ad_button" />
+                app:layout_constraintTop_toBottomOf="@id/create_ad_button"
+                android:text=""/>
         </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
     </androidx.core.widget.NestedScrollView>

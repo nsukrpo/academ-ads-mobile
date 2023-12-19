@@ -44,10 +44,11 @@
             app:shapeAppearanceOverlay="@style/RoundedRectangle"
             tools:src="@drawable/product_example" />
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/product_title"
+            android:id="@+id/product_item"
             style="@style/ProductTitle"
             android:layout_width="190dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/image"
             app:layout_constraintTop_toTopOf="@+id/image"
@@ -61,7 +62,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="14dp"
             app:layout_constraintStart_toEndOf="@+id/image"
-            app:layout_constraintTop_toBottomOf="@+id/product_title"
+            app:layout_constraintTop_toBottomOf="@+id/product_item"
             tools:text="23.10.2023" />
 
         <com.google.android.material.textview.MaterialTextView
@@ -85,16 +86,6 @@
             android:layout_marginBottom="4dp"
             app:layout_constraintStart_toEndOf="@+id/price"
             app:layout_constraintTop_toBottomOf="@+id/date" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="8dp"
-            app:layout_constraintStart_toEndOf="@+id/image"
-            app:layout_constraintTop_toBottomOf="@+id/price"
-            tools:text="Sold" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/watches"
