@@ -10,12 +10,12 @@
         android:id="@+id/categoriesFragment"
         android:name="nsu.krpo.academads.ui.categories.CategoriesFragment"
         android:label="CategoriesFragment"
-        tools:layout="@layout/fragment_categories"/>
+        tools:layout="@layout/fragment_categories" />
     <fragment
         android:id="@+id/recommendationsFragment"
         android:name="nsu.krpo.academads.ui.recommendations.RecommendationsFragment"
         android:label="RecommendationsFragment"
-        tools:layout="@layout/fragment_recomendations"/>
+        tools:layout="@layout/fragment_recomendations" />
     <fragment
         android:id="@+id/profileFragment"
         android:name="nsu.krpo.academads.ui.profile.ProfileFragment"
@@ -32,7 +32,7 @@
             app:destination="@id/purchasesFragment" />
         <action
             android:id="@+id/ToItem"
-            app:destination="@id/navigation" />
+            app:destination="@id/item_graph"/>
         <action
             android:id="@+id/ToLikes"
             app:destination="@id/myLikesFragment" />
@@ -44,23 +44,23 @@
         android:id="@+id/myAdsFragment"
         android:name="nsu.krpo.academads.ui.my_ads.MyAdsFragment"
         android:label="MyAdsFragment"
-        tools:layout="@layout/fragment_my_ads"/>
+        tools:layout="@layout/fragment_my_ads" />
     <fragment
         android:id="@+id/myAdvertisementFragment"
         android:name="nsu.krpo.academads.ui.my_advertisement.MyAdvertisementFragment"
         android:label="MyAdvertisementFragment"
-        tools:layout="@layout/fragment_my_ad"/>
+        tools:layout="@layout/fragment_my_ad" />
     <fragment
         android:id="@+id/purchasesFragment"
         android:name="nsu.krpo.academads.ui.purchases.PurchasesFragment"
         android:label="PurchasesFragment"
-        tools:layout="@layout/fragment_my_purchases"/>
+        tools:layout="@layout/fragment_my_purchases" />
     <include app:graph="@navigation/item_graph" />
     <fragment
         android:id="@+id/myLikesFragment"
         android:name="nsu.krpo.academads.ui.my_likes.MyLikesFragment"
         android:label="MyLikesFragment"
-        tools:layout="@layout/fragment_liked"/>
+        tools:layout="@layout/fragment_liked" />
     <include app:graph="@navigation/create_ad_graph" />
 
 </navigation>

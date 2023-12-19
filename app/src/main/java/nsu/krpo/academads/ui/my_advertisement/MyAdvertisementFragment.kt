@@ -5,18 +5,13 @@ import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
-import nsu.krpo.academads.R
 import nsu.krpo.academads.databinding.FragmentMyAdBinding
 import nsu.krpo.academads.domain.model.ads.Advertisement
 import nsu.krpo.academads.domain.model.ads.AdvertisementStatus
 import nsu.krpo.academads.domain.model.ads.title
-import nsu.krpo.academads.ui.advertisement.AdvertisementFragment
 import nsu.krpo.academads.ui.base.view.BaseFragment
 import nsu.krpo.academads.ui.base.view.viewBinding
-import nsu.krpo.academads.ui.profile.ProfileScreenRoutes
-import java.text.DateFormat
 import java.text.SimpleDateFormat
 
 @AndroidEntryPoint
@@ -36,7 +31,7 @@ class MyAdvertisementFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        ad = this.requireArguments().getParcelable(ARGS_KEY)!!
+        ad = requireArguments().getParcelable(ARGS_KEY)!!
         setupView(ad)
         setupViewListeners()
         setupVmObservers()
