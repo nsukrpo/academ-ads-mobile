@@ -19,7 +19,7 @@ class AdvertisementsDaoStubImpl @Inject constructor() : AdvertisementsDao {
     val user = User(
         1,
         "Evgeny",
-        UsersAvatar(0, byteArrayOf(1, 123, 56, 89)),
+        UsersAvatar(byteArrayOf(1, 123, 56, 89)),
         Date(18999),
         EnumSet.of(UserType.USER)
     )
@@ -51,7 +51,7 @@ class AdvertisementsDaoStubImpl @Inject constructor() : AdvertisementsDao {
         user,
         Timestamp(454564564),
         countWatch = 0,
-        status = AdvertisementStatus.REJECTED,
+        status = AdvertisementStatus.DECLINE_FRAUD,
         editDate = Timestamp(454564564),
         photos = arrayListOf(
             AdvertisementPhoto(

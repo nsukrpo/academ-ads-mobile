@@ -14,7 +14,7 @@ class UsersDaoStubImpl @Inject constructor() : UsersDao {
         User(
             id,
             "Evgeny",
-            UsersAvatar(0, byteArrayOf(1, 123, 56, 89)),
+            UsersAvatar(byteArrayOf(1, 123, 56, 89)),
             Date(18999),
             EnumSet.of(UserType.USER)
         ),

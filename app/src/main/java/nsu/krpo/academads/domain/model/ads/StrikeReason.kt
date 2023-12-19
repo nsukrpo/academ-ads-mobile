@@ -1,8 +1,8 @@
 package nsu.krpo.academads.domain.model.ads
 
-enum class Reason {
+enum class StrikeReason {
         SPAM,
-        PORN,
+        NUDITY,
         OBSCENE_LANG,
         VIOLENCE,
         OTHER,

@@ -10,7 +10,7 @@ data class CategoryResponse(
 
 data class Category(
     @Json(name = "id")
-    val id: Int,
+    val id: Long,
 
     @Json(name = "name")
     val name: String

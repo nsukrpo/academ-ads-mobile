@@ -4,7 +4,7 @@ import nsu.krpo.academads.data.network.models.CategoryResponse
 import nsu.krpo.academads.domain.model.ads.Category
 
 //TODO: mappers for everything
-class CategoryToDomainMapper {
+class CategoriesToDomainMapper {
 
     fun fromResponse(response: CategoryResponse): List<Category> {
         val domainCategories: MutableList<Category> = mutableListOf()
@@ -18,5 +18,25 @@ class CategoryToDomainMapper {
             }
         }
         return domainCategories
+    }
+
+    fun getCategoryById(response: CategoryResponse, id: Long): Category {
+        var name = ""
+        response.categoriesItems.forEach{
+            if (it.id == id) {
+                name = it.name
+            }
+        }
+        return fromName(name)
+    }
+
+    fun fromName(name: String): Category {
+        return when(name) {
+            "EDUCATIONAL_STUFF" -> Category.EDUCATIONAL_SUPPLIES
+            "HOUSEHOLD_APPLIANCE" -> Category.APPLIANCES
+            "DEVICES" -> Category.ELECTRONICS
+            "STUDY_SERVICE" -> Category.EDUCATIONAL_SERVICE
+            else -> Category.OTHER
+        }
     }
 }

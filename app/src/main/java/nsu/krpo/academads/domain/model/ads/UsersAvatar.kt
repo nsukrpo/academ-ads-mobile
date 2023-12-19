@@ -5,6 +5,5 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class UsersAvatar(
-        val id: Long,
         val photo: ByteArray
 ) : Parcelable

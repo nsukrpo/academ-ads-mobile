@@ -17,5 +17,5 @@ data class Advertisement(
     val countWatch: Int,
     val status: AdvertisementStatus,
     val editDate: Timestamp,
-    val photos: ArrayList<AdvertisementPhoto>,
+    val photos: List<AdvertisementPhoto>,
 ) : Parcelable

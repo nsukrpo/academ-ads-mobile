@@ -68,10 +68,14 @@ class ProfileFragment : BaseFragment() {
     }
 
     private fun setupSwitchListener() {
-        binding.dontShowSwitch.setOnCheckedChangeListener { button, isChecked ->
+        binding.dontShowSwitch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 adsAdapter.items = viewModel.ads.value!!.filter {
-                    it.ad.status != AdvertisementStatus.REJECTED
+                    (it.ad.status != AdvertisementStatus.DECLINE_FRAUD) ||
+                            (it.ad.status != AdvertisementStatus.DECLINE_VIOLENCE) ||
+                            (it.ad.status != AdvertisementStatus.DECLINE_NUDITY) ||
+                            (it.ad.status != AdvertisementStatus.DECLINE_RUDE_WORDS) ||
+                            (it.ad.status != AdvertisementStatus.DECLINE_UNINFORMATIVE)
                 }
             } else {
                 adsAdapter.items = viewModel.myAdsList
@@ -89,29 +93,35 @@ class ProfileFragment : BaseFragment() {
         }
     }
 
-    private fun obtainNavEvent(direction: ProfileScreenRoutes) = when(direction) {
+    private fun obtainNavEvent(direction: ProfileScreenRoutes) = when (direction) {
         is ProfileScreenRoutes.ToMyAds -> {
             findNavController().navigate(R.id.ToMyAds)
         }
+
         is ProfileScreenRoutes.ToMyAd -> {
             findNavController().navigate(R.id.ToMyAd, Bundle().apply {
                 putParcelable(MyAdvertisementFragment.ARGS_KEY, direction.ad)
             })
         }
+
         is ProfileScreenRoutes.ToAd -> {
             findNavController().navigate(R.id.ToItem, Bundle().apply {
                 putParcelable(AdvertisementFragment.ARGS_KEY, direction.ad)
             })
         }
+
         is ProfileScreenRoutes.ToMyPurchases -> {
             findNavController().navigate(R.id.ToPurchases)
         }
+
         is ProfileScreenRoutes.ToLikes -> {
             findNavController().navigate(R.id.ToLikes)
         }
+
         is ProfileScreenRoutes.ToCreateAd -> {
-           // TODO: findNavController().navigate()
+            // TODO: findNavController().navigate()
         }
+
         is ProfileScreenRoutes.ToBans -> {
             //TODO
         }
@@ -126,14 +136,11 @@ class ProfileFragment : BaseFragment() {
             )
         )
         binding.userName.text = user.name
-        binding.registrationDate.text =
-            "Дата регистрации: %s".format(
-                "%s %s, %s".format(
-                    monthByNumber(user.regDate.month),
-                    user.regDate.day,
-                    user.regDate.year
-                )
+        binding.registrationDate.text = "Дата регистрации: %s".format(
+            "%s %s, %s".format(
+                monthByNumber(user.regDate.month), user.regDate.day, user.regDate.year
             )
+        )
     }
 
     private fun onAdsLoaded(ads: List<AdvertismentWrapper>) {

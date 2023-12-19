@@ -20,7 +20,7 @@ class PurchasesDaoStubImpl @Inject constructor() : PurchasesDao {
     val user = User(
         1,
         "Evgeny",
-        UsersAvatar(0, byteArrayOf(1, 123, 56, 89)),
+        UsersAvatar(byteArrayOf(1, 123, 56, 89)),
         Date(18999),
         EnumSet.of(UserType.USER)
     )
