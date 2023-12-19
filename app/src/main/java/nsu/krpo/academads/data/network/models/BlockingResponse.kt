@@ -11,8 +11,6 @@ data class BlockingResponse(
 
         @Json(name = "reason")
         val reason: String,
-        @Json(name = "otherReason")
-        val otherReason: String,
 
         @Json(name = "time")
         val time: Long,
