@@ -17,7 +17,7 @@
         tools:layout="@layout/fragment_main_screen">
         <action
             android:id="@+id/ToItem"
-            app:destination="@id/navigation" />
+            app:destination="@id/item_graph" />
     </fragment>
     <fragment
         android:id="@+id/splashFragment"

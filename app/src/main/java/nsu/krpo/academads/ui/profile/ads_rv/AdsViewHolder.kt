@@ -5,7 +5,7 @@ import nsu.krpo.academads.databinding.ItemProductMiniBinding
 import nsu.krpo.academads.domain.model.ads.Advertisement
 import nsu.krpo.academads.domain.model.ads.title
 
-class AdsViewHolder(
+class   AdsViewHolder(
     private val binding: ItemProductMiniBinding,
 ) : RecyclerView.ViewHolder(binding.root) {
 

@@ -18,5 +18,10 @@ class MyAdsFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setupVmObservers()
+    }
+
+    private fun setupVmObservers() {
+
     }
 }
