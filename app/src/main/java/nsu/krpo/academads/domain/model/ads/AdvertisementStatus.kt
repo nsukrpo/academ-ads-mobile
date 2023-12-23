@@ -27,6 +27,6 @@ fun AdvertisementStatus.title(): String {
         AdvertisementStatus.WITHDREW -> return "Снято с продажи"
         AdvertisementStatus.BOOKED -> return "Забронировано"
         AdvertisementStatus.PURCHASED -> return "Продано"
-        AdvertisementStatus.UNKNOWN -> return "Неизветсный статус"
+        AdvertisementStatus.UNKNOWN -> return "Неизвестный статус"
     }
 }

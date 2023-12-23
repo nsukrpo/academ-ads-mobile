@@ -71,10 +71,10 @@ class ProfileFragment : BaseFragment() {
         binding.dontShowSwitch.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 adsAdapter.items = viewModel.ads.value!!.filter {
-                    (it.ad.status != AdvertisementStatus.DECLINE_FRAUD) ||
-                            (it.ad.status != AdvertisementStatus.DECLINE_VIOLENCE) ||
-                            (it.ad.status != AdvertisementStatus.DECLINE_NUDITY) ||
-                            (it.ad.status != AdvertisementStatus.DECLINE_RUDE_WORDS) ||
+                    (it.ad.status != AdvertisementStatus.DECLINE_FRAUD) &&
+                            (it.ad.status != AdvertisementStatus.DECLINE_VIOLENCE) &&
+                            (it.ad.status != AdvertisementStatus.DECLINE_NUDITY) &&
+                            (it.ad.status != AdvertisementStatus.DECLINE_RUDE_WORDS) &&
                             (it.ad.status != AdvertisementStatus.DECLINE_UNINFORMATIVE)
                 }
             } else {
@@ -123,7 +123,7 @@ class ProfileFragment : BaseFragment() {
         }
 
         is ProfileScreenRoutes.ToBans -> {
-            //TODO
+            findNavController().navigate(R.id.ToBans)
         }
     }
 

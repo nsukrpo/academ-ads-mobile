@@ -10,6 +10,7 @@ import nsu.krpo.academads.data.daos.likes.LikesDao
 import nsu.krpo.academads.data.daos.purchases.PurchasesDao
 import nsu.krpo.academads.data.daos.saved_info.SavedRep
 import nsu.krpo.academads.data.daos.users.UsersDao
+import nsu.krpo.academads.data.network.mappers.PhotoToDomainMapper
 import nsu.krpo.academads.domain.model.ads.Advertisement
 import nsu.krpo.academads.domain.model.ads.User
 import nsu.krpo.academads.ui.base.live_data.SingleLiveEvent
@@ -88,13 +89,7 @@ class ProfileViewModel @Inject constructor(
                 it.map { advertisement ->
                     AdvertismentWrapper(
                         advertisement,
-                        BitmapDrawable(
-                            BitmapFactory.decodeByteArray(
-                                advertisement.photos[0].photo,
-                                0,
-                                advertisement.photos[0].photo.size
-                            )
-                        ),
+                        advertisement.photos[0].photo,
                     )
                 }
             }
@@ -112,13 +107,7 @@ class ProfileViewModel @Inject constructor(
                 it.map { purchase ->
                     PurchaseWrapper(
                         purchase,
-                        BitmapDrawable(
-                            BitmapFactory.decodeByteArray(
-                                purchase.ads.photos[0].photo,
-                                0,
-                                purchase.ads.photos[0].photo.size
-                            )
-                        )
+                        purchase.ads.photos[0].photo
                     )
                 }
             }
@@ -136,13 +125,7 @@ class ProfileViewModel @Inject constructor(
                 it.map { advertisement ->
                     LikedWrapper(
                         advertisement,
-                        BitmapDrawable(
-                            BitmapFactory.decodeByteArray(
-                                advertisement.photos[0].photo,
-                                0,
-                                advertisement.photos[0].photo.size
-                            )
-                        )
+                        advertisement.photos[0].photo
                     )
                 }
             }

@@ -1,5 +1,6 @@
 package nsu.krpo.academads.data.network
 
+import io.reactivex.rxjava3.core.Single
 import nsu.krpo.academads.data.network.models.AdvertisementCreate
 import nsu.krpo.academads.data.network.models.AdvertisementResponse
 import nsu.krpo.academads.data.network.models.AdvertisementUpdate
@@ -27,6 +28,7 @@ import nsu.krpo.academads.data.network.models.TokenResponse
 import nsu.krpo.academads.data.network.models.UserCreate
 import nsu.krpo.academads.data.network.models.UserResponse
 import nsu.krpo.academads.data.network.models.UserUpdate
+import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
@@ -40,112 +42,112 @@ interface AcademAdsAPIService {
     //TODO: add rest methods using Retrofit2
 
     @GET("/category")
-    suspend fun getCategoriesList(): Response<CategoryResponse>
+    fun getCategoriesList(): Single<CategoryResponse>
     @GET("/user/{id}")
-    suspend fun getUserById(@Path("id") userId: Long): Response<UserResponse>
+    fun getUserById(@Path("id") userId: Long): Single<UserResponse>
     @PUT("/user/{id}")
-    suspend fun updateUser(@Path("id") userId: Long, @Body updatedUser: UserUpdate): Response<ApiResponse>
+    fun updateUser(@Path("id") userId: Long, @Body updatedUser: UserUpdate): Single<ApiResponse>
     @POST("/user")
-    suspend fun createUser(@Body newUser: UserCreate): Response<ApiResponse>
+    fun createUser(@Body newUser: UserCreate): Single<ApiResponse>
     @GET("/user")
-    suspend fun getUsers(
+    fun getUsers(
         @Query("rejected_ads") rejectedAds: Long?,
         @Query("reject_reason") rejectReason: String?,
         @Query("published_ads") publishedAds: Long?,
         @Query("blockings") blockings: Int?,
         @Query("blocking_status") blockingStatus: Int?
-    ): Response<List<UserResponse>>
+    ): Single<List<UserResponse>>
     @PUT("/login")
-    suspend fun createLogin(@Body loginCreate: LoginCreate): Response<ApiResponse>
+    fun createLogin(@Body loginCreate: LoginCreate): Single<ApiResponse>
     @POST("/login")
-    suspend fun loginUser(@Body tokenRequest: TokenRequest): Response<TokenResponse>
+    fun loginUser(@Body tokenRequest: TokenRequest): Single<TokenResponse>
     @GET("/advertisment/{id}")
-    suspend fun getAdvertisementById(@Path("id") advertisementId: Long): Response<AdvertisementResponse>
+    fun getAdvertisementById(@Path("id") advertisementId: Long): Single<AdvertisementResponse>
     @PUT("/advertisment/{id}")
-    suspend fun updateAdvertisement(@Path("id") advertisementId: Long, @Body updatedAdvertisement: AdvertisementUpdate): Response<ApiResponse>
+    fun updateAdvertisement(@Path("id") advertisementId: Long, @Body updatedAdvertisement: AdvertisementUpdate): Single<ApiResponse>
     @DELETE("/advertisment/{id}")
-    suspend fun deleteAdvertisement(@Path("id") advertisementId: Long): Response<ApiResponse>
+    fun deleteAdvertisement(@Path("id") advertisementId: Long): Single<ApiResponse>
     @POST("/advertisment")
-    suspend fun createAdvertisement(@Body createAdvertisement: AdvertisementCreate): Response<ApiResponse>
+    fun createAdvertisement(@Body createAdvertisement: AdvertisementCreate): Single<ApiResponse>
     @GET("/advertisment")
-    suspend fun getAdvertisements(
-            @Query("category") categoryId: Long?,
-            @Query("date") publicationDate: String?,
-            @Query("countWatch") watchCount: Long?
-    ): Response<List<AdvertisementResponse>>
+    fun getAdvertisements(
+            @Query("category") categoryId: Long? = null,
+            @Query("date") publicationDate: String? = null,
+            @Query("countWatch") watchCount: Long? = null,
+    ): Call<List<AdvertisementResponse>>
     @GET("/media/avatar/{id}")
-    suspend fun getAvatarById(@Path("id") avatarId: Long): Response<Avatar>
+    fun getAvatarById(@Path("id") avatarId: Long): Single<Avatar>
     @POST("/media/avatar")
-    suspend fun createAvatar(@Query("user_id") userId: Long,
+    fun createAvatar(@Query("user_id") userId: Long,
                              @Body createAvatar: Avatar
-    ): Response<ApiResponse>
+    ): Single<ApiResponse>
     @GET("/media/photos/{id}")
-    suspend fun getPhotoById(@Path("id") photoId: Long): Response<Photo>
+    fun getPhotoById(@Path("id") photoId: Long): Single<Photo>
     @POST("/media/photos")
-    suspend fun createPhoto(@Body createPhoto: Photo): Response<ApiResponse>
+    fun createPhoto(@Body createPhoto: Photo): Single<ApiResponse>
     @GET("/blocking/{id}")
-    suspend fun getBlockingById(@Path("id") blockingId: Long): Response<BlockingResponse>
+    fun getBlockingById(@Path("id") blockingId: Long): Single<BlockingResponse>
     @PUT("/blocking/{id}")
-    suspend fun updateBlockingById(@Path("id") blockingId: Long, @Body updateBlocking: BlockingUpdate): Response<BlockingResponse>
+    fun updateBlockingById(@Path("id") blockingId: Long, @Body updateBlocking: BlockingUpdate): Single<BlockingResponse>
     @GET("/blocking")
-    suspend fun getBlockingByUserId(@Query("user_id") userId: Long): Response<List<BlockingResponse>>
+    fun getBlockingByUserId(@Query("user_id") userId: Long): Single<List<BlockingResponse>>
     @POST("/blocking")
-    suspend fun createBlocking(@Body newBlocking: BlockingCreate): Response<BlockingResponse>
+    fun createBlocking(@Body newBlocking: BlockingCreate): Single<BlockingResponse>
     @GET("/strike/{id}")
-    suspend fun getStrikeById(@Path("id") strikeId: Long): Response<StrikeResponse>
+    fun getStrikeById(@Path("id") strikeId: Long): Single<StrikeResponse>
     @PUT("/strike/{id}")
-    suspend fun updateStrikeById(@Path("id") strikeId: Long, @Body updateStrike: StrikeUpdate): Response<ApiResponse>
+    fun updateStrikeById(@Path("id") strikeId: Long, @Body updateStrike: StrikeUpdate): Single<ApiResponse>
     @GET("/strike")
-    suspend fun getStrikesByUserId(@Query("user_id") userId: Long): Response<List<StrikeResponse>>
+    fun getStrikesByUserId(@Query("user_id") userId: Long): Single<List<StrikeResponse>>
     @POST("/strike")
-    suspend fun createStrike(@Body createStrike: StrikeCreate): Response<ApiResponse>
+    fun createStrike(@Body createStrike: StrikeCreate): Single<ApiResponse>
     @GET("/message")
-    suspend fun getMessages(
+    fun getMessages(
             @Query("from") fromUserId: Long,
             @Query("to") toUserId: Long
-    ): Response<List<MessageResponse>>
+    ): Single<List<MessageResponse>>
    // @POST("/message")
    // suspend fun createMessage(@Body newMessage: NewMessage): Response<ApiResponse>
     @GET("/message/{id}")
-    suspend fun getMessageById(@Path("id") messageId: Long): Response<MessageResponse>
+    fun getMessageById(@Path("id") messageId: Long): Single<MessageResponse>
     @GET("/favorite/advertisment")
-    suspend fun getFavoriteAdvertisements(@Query("user_id") userId: Long): Response<List<AdvertisementResponse>>
+    fun getFavoriteAdvertisements(@Query("user_id") userId: Long): Single<List<AdvertisementResponse>>
     @POST("/favorite/advertisment")
-    suspend fun addToFavoriteAdvertisements(@Body favoriteAdvertisementsRequest: FavoriteAdvertisementsRequest): Response<ApiResponse>
+    fun addToFavoriteAdvertisements(@Body favoriteAdvertisementsRequest: FavoriteAdvertisementsRequest): Single<ApiResponse>
     @DELETE("/favorite/advertisment")
-    suspend fun removeFromFavorites(
+    fun removeFromFavorites(
             @Query("user_id") userId: Long,
             @Query("ads_id") advertisementId: Long
-    ): Response<ApiResponse>
+    ): Single<ApiResponse>
     @GET("/favorite/categories")
-    suspend fun getFavoriteCategories(@Query("user_id") userId: Long): Response<CategoryResponse>
+    fun getFavoriteCategories(@Query("user_id") userId: Long): Single<CategoryResponse>
     @POST("/favorite/categories")
-    suspend fun addToFavoriteCategories(@Body favoriteCategoryRequest: FavoriteCategoryRequest): Response<ApiResponse>
+    fun addToFavoriteCategories(@Body favoriteCategoryRequest: FavoriteCategoryRequest): Single<ApiResponse>
     @DELETE("/favorite/categories")
-    suspend fun removeFromFavoriteCategories(
+    fun removeFromFavoriteCategories(
             @Query("user_id") userId: Long,
             @Query("category_id") categoryId: Long
-    ): Response<ApiResponse>
+    ): Single<ApiResponse>
     @GET("/favorite/user")
-    suspend fun getFavoriteUser(@Query("subject_id") subjectId: Long): Response<List<UserResponse>>
+    fun getFavoriteUser(@Query("subject_id") subjectId: Long): Single<List<UserResponse>>
     @POST("/favorite/user")
-    suspend fun addToFavoriteUsers(@Body favoriteUserRequest: FavoriteUserRequest): Response<ApiResponse>
+    fun addToFavoriteUsers(@Body favoriteUserRequest: FavoriteUserRequest): Single<ApiResponse>
     @DELETE("/favorite/user")
-    suspend fun removeFromFavoriteUsers(
+    fun removeFromFavoriteUsers(
             @Query("subject_id") userId: Long,
             @Query("object_id") objectId: Long
-    ): Response<ApiResponse>
+    ): Single<ApiResponse>
     @GET("/booking")
-    suspend fun getBookings(@Query("user_id") userId: Long): Response<List<BookingResponse>>
+    fun getBookings(@Query("user_id") userId: Long): Single<List<BookingResponse>>
     @POST("/booking")
-    suspend fun createBooking(@Body bookingRequest: BookingRequest): Response<BookingResponse>
+    fun createBooking(@Body bookingRequest: BookingRequest): Single<BookingResponse>
     @DELETE("/booking")
-    suspend fun cancelBooking(@Query("booking_id") bookingId: Long): Response<ApiResponse>
+    fun cancelBooking(@Query("booking_id") bookingId: Long): Single<ApiResponse>
     @GET("/purchase")
-    suspend fun getPurchases(@Query("user_id") userId: Long): Response<List<PurchaseResponse>>
+    fun getPurchases(@Query("user_id") userId: Long): Single<List<PurchaseResponse>>
     @POST("/purchase")
-    suspend fun createPurchase(@Body purchaseRequest: PurchaseRequest): Response<ApiResponse>
+    fun createPurchase(@Body purchaseRequest: PurchaseRequest): Single<ApiResponse>
     @GET("/sales")
-    suspend fun getSales(@Query("user_id") userId: Long): Response<List<PurchaseResponse>>
+    fun getSales(@Query("user_id") userId: Long): Single<List<PurchaseResponse>>
 
 }

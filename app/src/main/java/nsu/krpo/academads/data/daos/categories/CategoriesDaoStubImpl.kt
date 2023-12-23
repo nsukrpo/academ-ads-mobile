@@ -15,4 +15,8 @@ class CategoriesDaoStubImpl @Inject constructor() : CategoriesDao {
                     Category.OTHER
                 )
             )
+
+    override fun getById(id: Long): Single<Category> {
+        return Single.just(Category.OTHER)
+    }
 }

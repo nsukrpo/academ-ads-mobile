@@ -6,4 +6,6 @@ import nsu.krpo.academads.domain.model.ads.Category
 interface CategoriesDao {
 
     fun getAll(): Single<List<Category>>
+
+    fun getById(id: Long): Single<Category>
 }

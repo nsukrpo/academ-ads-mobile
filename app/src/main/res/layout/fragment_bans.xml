@@ -30,6 +30,7 @@
         android:background="@drawable/dropshadow_to_white" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_bans"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"

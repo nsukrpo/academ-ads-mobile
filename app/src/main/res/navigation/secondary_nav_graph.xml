@@ -10,7 +10,11 @@
         android:id="@+id/categoriesFragment"
         android:name="nsu.krpo.academads.ui.categories.CategoriesFragment"
         android:label="CategoriesFragment"
-        tools:layout="@layout/fragment_categories"/>
+        tools:layout="@layout/fragment_categories">
+        <action
+            android:id="@+id/ToCategory"
+            app:destination="@id/categoryFragment" />
+    </fragment>
     <fragment
         android:id="@+id/recommendationsFragment"
         android:name="nsu.krpo.academads.ui.recommendations.RecommendationsFragment"
@@ -36,6 +40,9 @@
         <action
             android:id="@+id/ToLikes"
             app:destination="@id/myLikesFragment" />
+        <action
+            android:id="@+id/ToBans"
+            app:destination="@id/bans_graph" />
     </fragment>
     <fragment
         android:id="@+id/myAdsFragment"
@@ -46,7 +53,11 @@
         android:id="@+id/myAdvertisementFragment"
         android:name="nsu.krpo.academads.ui.my_advertisement.MyAdvertisementFragment"
         android:label="MyAdvertisementFragment"
-        tools:layout="@layout/fragment_my_ad"/>
+        tools:layout="@layout/fragment_my_ad">
+        <action
+            android:id="@+id/ToEdit"
+            app:destination="@id/edit_item_navigation" />
+    </fragment>
     <fragment
         android:id="@+id/purchasesFragment"
         android:name="nsu.krpo.academads.ui.purchases.PurchasesFragment"
@@ -58,5 +69,16 @@
         android:name="nsu.krpo.academads.ui.my_likes.MyLikesFragment"
         android:label="MyLikesFragment"
         tools:layout="@layout/fragment_liked"/>
+    <include app:graph="@navigation/edit_item_graph" />
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="nsu.krpo.academads.ui.category.CategoryFragment"
+        android:label="CategoryFragment"
+        tools:layout="@layout/fragment_category">
+        <action
+            android:id="@+id/CategoryToItem"
+            app:destination="@id/navigation" />
+    </fragment>
+    <include app:graph="@navigation/bans_graph" />
 
 </navigation>

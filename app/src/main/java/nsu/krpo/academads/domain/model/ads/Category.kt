@@ -1,12 +1,17 @@
 package nsu.krpo.academads.domain.model.ads
 
-enum class Category {
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
+enum class Category : Parcelable {
         EDUCATIONAL_SUPPLIES,
         APPLIANCES,
         ELECTRONICS,
         EDUCATIONAL_SERVICE,
-        OTHER,
+        OTHER
 }
+
 
 fun Category.title(): String {
         when(this) {
@@ -14,7 +19,7 @@ fun Category.title(): String {
                 Category.APPLIANCES -> return "Бытовая техника"
                 Category.ELECTRONICS -> return "Электроника"
                 Category.EDUCATIONAL_SERVICE -> return "Учебная услуга"
-                Category.OTHER -> return "Другое"
-                else -> return "Другое"
+                Category.OTHER -> return "Разное"
+                else -> return "Разное"
         }
 }

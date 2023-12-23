@@ -10,6 +10,8 @@ import dagger.hilt.components.SingletonComponent
 import nsu.krpo.academads.data.credentials.StubCredantialsStorageImpl
 import nsu.krpo.academads.data.daos.advertisments.AdvertisementsDao
 import nsu.krpo.academads.data.daos.advertisments.AdvertisementsDaoStubImpl
+import nsu.krpo.academads.data.daos.bans.BansDao
+import nsu.krpo.academads.data.daos.bans.BansDaoStubImpl
 import nsu.krpo.academads.data.daos.categories.CategoriesDao
 import nsu.krpo.academads.data.daos.categories.CategoriesDaoStubImpl
 import nsu.krpo.academads.data.daos.likes.LikesDao
@@ -43,6 +45,9 @@ abstract class DataModule {
 
     @Binds
     abstract fun bindLikesDao(impl: LikesDaoStubImpl): LikesDao
+
+    @Binds
+    abstract fun bindBansDao(impl: BansDaoStubImpl): BansDao
 
     companion object {
         @Singleton

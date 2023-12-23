@@ -1,5 +1,6 @@
 package nsu.krpo.academads.data.daos.purchases
 
+import android.graphics.drawable.BitmapDrawable
 import io.reactivex.rxjava3.core.Single
 import nsu.krpo.academads.domain.model.ads.Advertisement
 import nsu.krpo.academads.domain.model.ads.AdvertisementPhoto
@@ -38,7 +39,7 @@ class PurchasesDaoStubImpl @Inject constructor() : PurchasesDao {
         editDate = Timestamp(5656),
         photos = arrayListOf(
             AdvertisementPhoto(
-                ByteArray(0)
+                BitmapDrawable()
             )
         )
     )

@@ -1,5 +1,7 @@
 package nsu.krpo.academads.data.daos.advertisments
 
+import android.graphics.drawable.BitmapDrawable
+import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 import nsu.krpo.academads.domain.model.ads.Advertisement
 import nsu.krpo.academads.domain.model.ads.AdvertisementPhoto
@@ -37,10 +39,29 @@ class AdvertisementsDaoStubImpl @Inject constructor() : AdvertisementsDao {
         editDate = Timestamp(5656),
         photos = arrayListOf(
             AdvertisementPhoto(
-                ByteArray(0)
+                BitmapDrawable()
             )
         )
     )
+
+    val ad3 = Advertisement(
+        5,
+        "Репетитор по матанализу",
+        "Молодой",
+        BigDecimal(400),
+        Category.EDUCATIONAL_SUPPLIES,
+        user,
+        Timestamp(22028900),
+        countWatch = 0,
+        status = AdvertisementStatus.GRANTED,
+        editDate = Timestamp(22028900),
+        photos = arrayListOf(
+            AdvertisementPhoto(
+                BitmapDrawable()
+            )
+        )
+    )
+
 
     val secondAd = Advertisement(
         2,
@@ -55,7 +76,7 @@ class AdvertisementsDaoStubImpl @Inject constructor() : AdvertisementsDao {
         editDate = Timestamp(454564564),
         photos = arrayListOf(
             AdvertisementPhoto(
-                ByteArray(0)
+                BitmapDrawable()
             )
         )
     )
@@ -73,4 +94,50 @@ class AdvertisementsDaoStubImpl @Inject constructor() : AdvertisementsDao {
             ad,
         )
     )
+
+    override fun createAd(
+        header: String,
+        description: String,
+        price: BigDecimal,
+        category: Category,
+        authorId: Long
+    ): Completable {
+        return Completable.complete()
+    }
+
+    override fun editAd(
+        id: Long,
+        header: String,
+        description: String,
+        price: BigDecimal,
+        category: Category,
+        status: AdvertisementStatus
+    ): Completable {
+        return Completable.complete()
+    }
+
+    override fun getAllByCategory(category: Category): Single<List<Advertisement>> {
+        return Single.just(
+            listOf(
+                ad,
+                ad3,
+            )
+        )
+    }
+
+    override fun changeAdStatus(ad: Advertisement, status: AdvertisementStatus): Completable {
+        return Completable.complete()
+    }
+
+    override fun book(ad: Advertisement, userId: Long, until: Date): Completable {
+        return Completable.complete()
+    }
+
+    override fun like(ad: Advertisement, userId: Long): Completable {
+        return Completable.complete()
+    }
+
+    override fun subscribe(user: User, subscriberId: Long): Completable {
+        return Completable.complete()
+    }
 }

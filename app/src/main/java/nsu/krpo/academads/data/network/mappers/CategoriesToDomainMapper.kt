@@ -10,11 +10,11 @@ class CategoriesToDomainMapper {
         val domainCategories: MutableList<Category> = mutableListOf()
         response.categoriesItems.forEach {
             when(it.name) {
-                "EDUCATIONAL_SUPPLIES" -> domainCategories.add(Category.EDUCATIONAL_SUPPLIES)
-                "APPLIANCES" -> domainCategories.add(Category.APPLIANCES)
-                "ELECTRONICS" -> domainCategories.add(Category.ELECTRONICS)
-                "EDUCATIONAL_SERVICE" -> domainCategories.add(Category.EDUCATIONAL_SERVICE)
-                "OTHER" -> domainCategories.add(Category.OTHER)
+                "EDUCATIONAL_SUPPLIES" -> domainCategories.add(it.id.toInt(), Category.EDUCATIONAL_SUPPLIES)
+                "APPLIANCES" -> domainCategories.add(it.id.toInt(), Category.APPLIANCES)
+                "ELECTRONICS" -> domainCategories.add(it.id.toInt(), Category.ELECTRONICS)
+                "EDUCATIONAL_SERVICE" -> domainCategories.add(it.id.toInt(), Category.EDUCATIONAL_SERVICE)
+                "OTHER" -> domainCategories.add(it.id.toInt(), Category.OTHER)
             }
         }
         return domainCategories
