@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import nsu.krpo.academads.data.daos.advertisments.AdvertisementsDao
+import nsu.krpo.academads.data.daos.saved_info.SavedRep
 import nsu.krpo.academads.domain.model.ads.Advertisement
 import nsu.krpo.academads.domain.model.ads.Category
 import nsu.krpo.academads.ui.base.live_data.SingleLiveEvent
@@ -18,6 +19,7 @@ import javax.inject.Inject
 @HiltViewModel
 class CategoryViewModel @Inject constructor(
     private val advertisementsDao: AdvertisementsDao,
+    private val savedRep: SavedRep,
 ) : BaseViewModel() {
     private val _ads: MutableLiveData<List<AdvertisementWrapper>> = MutableLiveData()
     val ads: LiveData<List<AdvertisementWrapper>> = _ads
@@ -26,17 +28,27 @@ class CategoryViewModel @Inject constructor(
     val navEvent: LiveData<CategoryScreenRoutes> = _navEvent
 
     private var category: Category = Category.OTHER
+    private var userId: Long = 0L
 
     init {
-        loadAds()
+        userId = savedRep.getSavedUserId()
     }
 
     fun provideCategory(category: Category) {
         this.category = category
+        loadAds()
     }
 
     fun onItemClicked(ad: Advertisement) {
-        //_navEvent.update {  }
+        _navEvent.update { CategoryScreenRoutes.ToAd(ad) }
+    }
+
+    fun onItemLiked(ad: Advertisement) {
+        advertisementsDao.like(ad, userId)
+    }
+
+    fun onItemDisliked(ad: Advertisement) {
+        //TODO
     }
 
     private fun loadAds() {

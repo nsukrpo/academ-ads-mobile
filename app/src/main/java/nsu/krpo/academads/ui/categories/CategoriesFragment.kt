@@ -56,9 +56,6 @@ class CategoriesFragment : BaseFragment() {
             })
         }
     }
-
-
-
 }
 
 fun Category.getImage(context: Context) : Drawable = context.resources.getDrawable(R.drawable.category_example)

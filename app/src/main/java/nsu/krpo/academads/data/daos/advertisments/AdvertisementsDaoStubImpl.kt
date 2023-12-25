@@ -31,7 +31,7 @@ class AdvertisementsDaoStubImpl @Inject constructor() : AdvertisementsDao {
         "Репетитор",
         "Важный, большой",
         BigDecimal(700),
-        Category.EDUCATIONAL_SUPPLIES,
+        Category.EDUCATIONAL_SERVICE,
         user,
         Timestamp(220200),
         countWatch = 0,
@@ -49,12 +49,48 @@ class AdvertisementsDaoStubImpl @Inject constructor() : AdvertisementsDao {
         "Репетитор по матанализу",
         "Молодой",
         BigDecimal(400),
-        Category.EDUCATIONAL_SUPPLIES,
+        Category.EDUCATIONAL_SERVICE,
         user,
         Timestamp(22028900),
         countWatch = 0,
         status = AdvertisementStatus.GRANTED,
         editDate = Timestamp(22028900),
+        photos = arrayListOf(
+            AdvertisementPhoto(
+                BitmapDrawable()
+            )
+        )
+    )
+
+    private val adCalculator = Advertisement(
+        5,
+        "Программируемый калькулятор",
+        "Почти новый",
+        BigDecimal(1200),
+        Category.EDUCATIONAL_SUPPLIES,
+        user,
+        Timestamp(22028900),
+        countWatch = 0,
+        status = AdvertisementStatus.GRANTED,
+        editDate = Timestamp(22489028900),
+        photos = arrayListOf(
+            AdvertisementPhoto(
+                BitmapDrawable()
+            )
+        )
+    )
+
+    val adPan = Advertisement(
+        5,
+        "Сковорода",
+        "Антипригарное покрытик",
+        BigDecimal(750),
+        Category.APPLIANCES,
+        user,
+        Timestamp(22028956500),
+        countWatch = 0,
+        status = AdvertisementStatus.GRANTED,
+        editDate = Timestamp(665622489028900),
         photos = arrayListOf(
             AdvertisementPhoto(
                 BitmapDrawable()
@@ -96,11 +132,7 @@ class AdvertisementsDaoStubImpl @Inject constructor() : AdvertisementsDao {
     )
 
     override fun createAd(
-        header: String,
-        description: String,
-        price: BigDecimal,
-        category: Category,
-        authorId: Long
+        header: String, description: String, price: BigDecimal, category: Category, authorId: Long
     ): Completable {
         return Completable.complete()
     }
@@ -117,12 +149,20 @@ class AdvertisementsDaoStubImpl @Inject constructor() : AdvertisementsDao {
     }
 
     override fun getAllByCategory(category: Category): Single<List<Advertisement>> {
-        return Single.just(
-            listOf(
-                ad,
-                ad3,
-            )
-        )
+        val allItems = listOf(ad, ad3, adCalculator, secondAd, adPan)
+        return when (category) {
+            Category.EDUCATIONAL_SERVICE -> Single.just(allItems.filter { it.category == Category.EDUCATIONAL_SERVICE })
+
+            Category.EDUCATIONAL_SUPPLIES -> Single.just(allItems.filter { it.category == Category.EDUCATIONAL_SUPPLIES })
+
+            Category.APPLIANCES -> Single.just(allItems.filter { it.category == Category.APPLIANCES })
+
+            Category.ELECTRONICS -> Single.just(allItems.filter { it.category == Category.ELECTRONICS })
+
+            else -> Single.just(allItems.filter { it.category == Category.OTHER })
+
+
+        }
     }
 
     override fun changeAdStatus(ad: Advertisement, status: AdvertisementStatus): Completable {

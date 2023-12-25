@@ -28,7 +28,9 @@ class CategoryFragment : BaseFragment() {
 
     private val adsAdapter by lazy {
         AdAdapter(
-            viewModel::onItemClicked
+            viewModel::onItemClicked,
+            viewModel::onItemLiked,
+            viewModel::onItemDisliked
         )
     }
 
