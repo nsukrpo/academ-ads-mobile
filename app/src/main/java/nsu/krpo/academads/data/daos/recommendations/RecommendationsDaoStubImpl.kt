@@ -33,9 +33,61 @@ class RecommendationsDaoStubImpl @Inject constructor(): RecommendationsDao {
         Timestamp.valueOf("2023-12-12 13:45:34"),
         arrayListOf(AdvertisementPhoto(BitmapDrawable()))
     )
+
+    private val adCalculator = Advertisement(
+        5,
+        "Программируемый калькулятор",
+        "Почти новый",
+        BigDecimal(1200),
+        Category.EDUCATIONAL_SUPPLIES,
+        user,
+        Timestamp.valueOf("2023-02-12 13:45:34"),
+        countWatch = 0,
+        status = AdvertisementStatus.GRANTED,
+        Timestamp.valueOf("2023-02-12 13:45:34"),
+        photos = arrayListOf(
+            AdvertisementPhoto(
+                BitmapDrawable()
+            )
+        )
+    )
+    val adPan = Advertisement(
+        5,
+        "Сковорода",
+        "Антипригарное покрытик",
+        BigDecimal(750),
+        Category.APPLIANCES,
+        user,
+        Timestamp.valueOf("2023-12-12 13:45:34"),
+        countWatch = 0,
+        status = AdvertisementStatus.GRANTED,
+        Timestamp.valueOf("2023-02-12 13:45:34"),
+        photos = arrayListOf(
+            AdvertisementPhoto(
+                BitmapDrawable()
+            )
+        )
+    )
+    val secondAd = Advertisement(
+        2,
+        "Мультиварка",
+        "Нехорошее",
+        BigDecimal(5467),
+        Category.ELECTRONICS,
+        user,
+        Timestamp.valueOf("2023-12-12 13:45:34"),
+        countWatch = 0,
+        status = AdvertisementStatus.DECLINE_FRAUD,
+        Timestamp.valueOf("2023-02-12 13:45:34"),
+        photos = arrayListOf(
+            AdvertisementPhoto(
+                BitmapDrawable()
+            )
+        )
+    )
     override fun getAllByUserId(userId: Long): Single<List<Advertisement>> {
         return Single.just(
-            listOf(adCow)
+            listOf(adCow, adCalculator, secondAd, adPan)
         )
     }
 }
