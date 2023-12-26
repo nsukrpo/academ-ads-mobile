@@ -5,11 +5,15 @@ import io.reactivex.rxjava3.core.Single
 import nsu.krpo.academads.domain.model.security.Credentials
 import nsu.krpo.academads.domain.repository.CredentialsStorage
 import javax.inject.Inject
+import javax.inject.Singleton
 
-class StubCredantialsStorageImpl @Inject constructor() : CredentialsStorage {
-    override fun hasCredentials(): Single<Boolean> = Single.just(true)
+@Singleton
+class StubCredentialsStorageImpl @Inject constructor() : CredentialsStorage {
 
-    override fun hasCredentialsBlocking(): Boolean = true
+    private var isConnected = true;
+    override fun hasCredentials(): Single<Boolean> = Single.just(false)
+
+    override fun hasCredentialsBlocking(): Boolean = isConnected
 
     override fun saveCredentials(credentials: Credentials): Completable {
         return Completable.complete()
@@ -19,15 +23,16 @@ class StubCredantialsStorageImpl @Inject constructor() : CredentialsStorage {
 
     }
 
-    override fun getCredentials(): Single<Credentials> = Single.just(Credentials("hi", "ha"))
+    override fun getCredentials(): Single<Credentials> = Single.just(Credentials("user", "123"))
 
-    override fun getCredentialsBlocking(): Credentials = Credentials("hi", "ha")
+    override fun getCredentialsBlocking(): Credentials = Credentials("user", "12345")
 
     override fun clearCredentialsBlocking() {
         TODO("Not yet implemented")
     }
 
     override fun clearCredentials(): Completable {
-        TODO("Not yet implemented")
+        isConnected = false
+        return Completable.complete()
     }
 }

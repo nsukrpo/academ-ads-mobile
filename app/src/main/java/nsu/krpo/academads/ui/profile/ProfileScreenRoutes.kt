@@ -17,4 +17,6 @@ sealed interface ProfileScreenRoutes {
     class ToCreateAd(): ProfileScreenRoutes
 
     class ToBans(): ProfileScreenRoutes
+
+    class ToLogIn(): ProfileScreenRoutes
 }

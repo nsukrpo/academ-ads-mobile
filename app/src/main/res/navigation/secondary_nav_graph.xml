@@ -47,12 +47,22 @@
         <action
             android:id="@+id/ToBans"
             app:destination="@id/bans_graph" />
+        <action
+            android:id="@+id/ToLogIn"
+            app:destination="@id/nav_graph" />
+        <action
+            android:id="@+id/ToCreateAd"
+            app:destination="@id/createAdFragment" />
     </fragment>
     <fragment
         android:id="@+id/myAdsFragment"
         android:name="nsu.krpo.academads.ui.my_ads.MyAdsFragment"
         android:label="MyAdsFragment"
-        tools:layout="@layout/fragment_my_ads"/>
+        tools:layout="@layout/fragment_my_ads">
+        <action
+            android:id="@+id/ToItemMyAd"
+            app:destination="@id/myAdvertisementFragment" />
+    </fragment>
     <fragment
         android:id="@+id/myAdvertisementFragment"
         android:name="nsu.krpo.academads.ui.my_advertisement.MyAdvertisementFragment"
@@ -84,5 +94,14 @@
     </fragment>
     <include app:graph="@navigation/bans_graph" />
     <include app:graph="@navigation/item_graph" />
+    <include app:graph="@navigation/nav_graph" />
+    <fragment
+        android:id="@+id/createAdFragment"
+        android:name="nsu.krpo.academads.ui.create_ad.CreateAdFragment"
+        android:label="CreateAdFragment" >
+        <action
+            android:id="@+id/ToProf"
+            app:destination="@id/profileFragment" />
+    </fragment>
 
 </navigation>

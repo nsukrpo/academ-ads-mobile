@@ -37,22 +37,15 @@ class CategoriesViewModel @Inject constructor(
 
     private fun loadCategoriesList() {
 
-        Single.zip(
-            categoriesDao.getAll(),
-            advertisementsDao.getAll(),
-        ) {
-            categories, ads ->
-                categories.map { category ->
-                    var adCounter = 0
-                    ads.forEach { advertisement ->
-                        if (advertisement.category == category)  adCounter++
-                    }
-                    CategoryWrapper(
-                        category,
-                        adCounter,
-                        null
-                    )
-                }
+
+        categoriesDao.getAll().map { category ->
+            category.map {
+
+                CategoryWrapper(
+                    it,
+                    null
+                )
+            }
         }
             .setupDefaultSchedulers()
             .bindLoading()
@@ -68,5 +61,6 @@ class CategoriesViewModel @Inject constructor(
             categories
         }
 
-    fun onItemClicked(category: Category) = _navEvent.update { CategoriesScreenRoots.ToCategory(category) }
+    fun onItemClicked(category: Category) =
+        _navEvent.update { CategoriesScreenRoots.ToCategory(category) }
 }

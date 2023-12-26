@@ -13,6 +13,7 @@ import nsu.krpo.academads.data.daos.users.UsersDao
 import nsu.krpo.academads.data.network.mappers.PhotoToDomainMapper
 import nsu.krpo.academads.domain.model.ads.Advertisement
 import nsu.krpo.academads.domain.model.ads.User
+import nsu.krpo.academads.domain.repository.CredentialsStorage
 import nsu.krpo.academads.ui.base.live_data.SingleLiveEvent
 import nsu.krpo.academads.ui.base.live_data.update
 import nsu.krpo.academads.ui.base.view.BaseViewModel
@@ -24,6 +25,7 @@ import javax.inject.Inject
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
     private val savedRep: SavedRep,
+    private val credentialsStorage: CredentialsStorage,
     private val usersDao: UsersDao,
     private val advertisementsDao: AdvertisementsDao,
     private val purchasesDao: PurchasesDao,
@@ -71,6 +73,11 @@ class ProfileViewModel @Inject constructor(
     fun onCreateAd() = _navEvent.update { ProfileScreenRoutes.ToCreateAd() }
 
     fun onBans() = _navEvent.update { ProfileScreenRoutes.ToBans() }
+
+    fun onLogOut() {
+        credentialsStorage.clearCredentials()
+        _navEvent.update { ProfileScreenRoutes.ToLogIn() }
+    }
 
     private fun loadProfileInfo() {
         usersDao.getById(userId)

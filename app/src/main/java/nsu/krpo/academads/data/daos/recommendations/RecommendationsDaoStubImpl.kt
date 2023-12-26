@@ -27,10 +27,10 @@ class RecommendationsDaoStubImpl @Inject constructor(): RecommendationsDao {
         BigDecimal(1200),
         Category.OTHER,
         user,
-        Timestamp(45464845454878646),
+        Timestamp.valueOf("2023-12-12 13:45:34"),
         0,
         AdvertisementStatus.GRANTED,
-        Timestamp(4546454564754656545),
+        Timestamp.valueOf("2023-12-12 13:45:34"),
         arrayListOf(AdvertisementPhoto(BitmapDrawable()))
     )
     override fun getAllByUserId(userId: Long): Single<List<Advertisement>> {

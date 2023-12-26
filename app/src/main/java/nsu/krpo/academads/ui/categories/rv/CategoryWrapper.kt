@@ -8,7 +8,6 @@ import nsu.krpo.academads.domain.model.ads.Category
 
 class CategoryWrapper (
     val category: Category,
-    val itemsCount: Int,
     var image: Drawable?
 
 

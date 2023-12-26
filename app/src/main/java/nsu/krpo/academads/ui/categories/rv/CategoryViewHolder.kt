@@ -13,7 +13,6 @@ class CategoryViewHolder(
         fun bind(category: CategoryWrapper, onItemClicked: (Category) -> Unit) =
             binding.run {
                 categoryText.text = category.category.title()
-                countText.text = category.itemsCount.toString()
                 image.setImageDrawable(category.image)
                 root.setOnClickListener { onItemClicked(category.category) }
             }

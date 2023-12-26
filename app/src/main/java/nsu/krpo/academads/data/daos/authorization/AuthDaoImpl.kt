@@ -10,11 +10,12 @@ import nsu.krpo.academads.data.network.models.TokenResponse
 import nsu.krpo.academads.domain.model.security.Credentials
 import javax.inject.Inject
 
-class AuthDaoImpl @Inject constructor() : AuthDao {
-    var service = RetrofitInstance()
+class AuthDaoImpl @Inject constructor(
+    private val service: AcademAdsAPIService,
+) : AuthDao {
     override fun sendRegistrationInfo(login : String, password : String) : Single<TokenResponse> {
         val tokenRequest = TokenRequest(login, password)
-        return service.api.loginUser(tokenRequest)
+        return service.loginUser(tokenRequest)
     }
 
     override fun addRegistrationInfo(
@@ -23,6 +24,6 @@ class AuthDaoImpl @Inject constructor() : AuthDao {
         password: String
     ): Single<ApiResponse> {
         val request = LoginCreate(user, login, password)
-        return service.api.createLogin(request)
+        return service.createLogin(request)
     }
 }

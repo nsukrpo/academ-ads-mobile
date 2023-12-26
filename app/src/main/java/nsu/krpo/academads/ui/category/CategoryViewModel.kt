@@ -1,6 +1,7 @@
 package nsu.krpo.academads.ui.category
 
 import android.graphics.drawable.BitmapDrawable
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -55,8 +56,12 @@ class CategoryViewModel @Inject constructor(
         advertisementsDao.getAllByCategory(category)
             .setupDefaultSchedulers()
             .map { it.map { AdvertisementWrapper(it, it.photos[0].photo) } }
-            .subscribe{ it ->
+            .subscribe({
                 _ads.value = it
-            }.unsubscribeOnCleared()
+
+            },
+                { error ->
+                    Log.i("AD", error.message.toString())
+                }).unsubscribeOnCleared()
     }
 }

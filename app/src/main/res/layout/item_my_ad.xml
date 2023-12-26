@@ -81,22 +81,6 @@
             app:layout_constraintStart_toEndOf="@+id/price"
             app:layout_constraintTop_toBottomOf="@+id/date" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/edit"
-            android:layout_width="70dp"
-            android:layout_height="40dp"
-            android:backgroundTint="@color/white"
-            app:cornerRadius="8dp"
-            app:icon="@drawable/edit"
-            app:iconTint="#9586A8"
-            android:layout_marginStart="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/date"
-            app:layout_constraintTop_toBottomOf="@+id/status"
-            app:strokeColor="#D9D0E3"
-            app:strokeWidth="1dp" />
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

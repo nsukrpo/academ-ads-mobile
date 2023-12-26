@@ -90,6 +90,7 @@ class ProfileFragment : BaseFragment() {
             myLikesButton.setOnClickListener { viewModel.onMyLikes() }
             createAdButton.setOnClickListener { viewModel.onCreateAd() }
             bansButton.setOnClickListener { viewModel.onBans() }
+            logOutButton.setOnClickListener { viewModel.onLogOut() }
         }
     }
 
@@ -119,11 +120,14 @@ class ProfileFragment : BaseFragment() {
         }
 
         is ProfileScreenRoutes.ToCreateAd -> {
-            // TODO: findNavController().navigate()
+            findNavController().navigate(R.id.ToCreateAd)
         }
 
         is ProfileScreenRoutes.ToBans -> {
             findNavController().navigate(R.id.ToBans)
+        }
+        is ProfileScreenRoutes.ToLogIn -> {
+            findNavController().navigate(R.id.ToLogIn)
         }
     }
 
