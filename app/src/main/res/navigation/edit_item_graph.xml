@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/edit_item_navigation"
+    app:startDestination="@id/editFragment">
+    <fragment
+        android:id="@+id/editFragment"
+        android:name="nsu.krpo.academads.ui.edit_item.EditFragment"
+        android:label="EditFragment"
+        tools:layout="@layout/fragment_edit" >
+        <action
+            android:id="@+id/BackToAd"
+            app:destination="@id/myAdvertisementFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/myAdvertisementFragment2"
+        android:name="nsu.krpo.academads.ui.my_advertisement.MyAdvertisementFragment"
+        android:label="MyAdvertisementFragment"
+        tools:layout="@layout/fragment_my_ad"/>
+</navigation>

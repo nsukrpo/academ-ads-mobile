@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/secondary_nav_graph"
+    app:startDestination="@id/categoriesFragment">
+
+
+    <fragment
+        android:id="@+id/categoriesFragment"
+        android:name="nsu.krpo.academads.ui.categories.CategoriesFragment"
+        android:label="CategoriesFragment"
+        tools:layout="@layout/fragment_categories">
+        <action
+            android:id="@+id/ToCategory"
+            app:destination="@id/categoryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recommendationsFragment"
+        android:name="nsu.krpo.academads.ui.recommendations.RecommendationsFragment"
+        android:label="RecommendationsFragment"
+        tools:layout="@layout/fragment_recomendations">
+        <action
+            android:id="@+id/RecommendationsToItem"
+            app:destination="@id/itemGraph" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="nsu.krpo.academads.ui.profile.ProfileFragment"
+        android:label="ProfileFragment"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/ToMyAds"
+            app:destination="@id/myAdsFragment" />
+        <action
+            android:id="@+id/ToMyAd"
+            app:destination="@id/myAdvertisementFragment" />
+        <action
+            android:id="@+id/ToPurchases"
+            app:destination="@id/purchasesFragment" />
+        <action
+            android:id="@+id/ToItem"
+            app:destination="@id/itemGraph" />
+        <action
+            android:id="@+id/ToLikes"
+            app:destination="@id/myLikesFragment" />
+        <action
+            android:id="@+id/ToBans"
+            app:destination="@id/bans_graph" />
+        <action
+            android:id="@+id/ToLogIn"
+            app:destination="@id/nav_graph" />
+        <action
+            android:id="@+id/ToCreateAd"
+            app:destination="@id/createAdFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myAdsFragment"
+        android:name="nsu.krpo.academads.ui.my_ads.MyAdsFragment"
+        android:label="MyAdsFragment"
+        tools:layout="@layout/fragment_my_ads">
+        <action
+            android:id="@+id/ToItemMyAd"
+            app:destination="@id/myAdvertisementFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myAdvertisementFragment"
+        android:name="nsu.krpo.academads.ui.my_advertisement.MyAdvertisementFragment"
+        android:label="MyAdvertisementFragment"
+        tools:layout="@layout/fragment_my_ad">
+        <action
+            android:id="@+id/ToEdit"
+            app:destination="@id/edit_item_navigation" />
+    </fragment>
+    <fragment
+        android:id="@+id/purchasesFragment"
+        android:name="nsu.krpo.academads.ui.purchases.PurchasesFragment"
+        android:label="PurchasesFragment"
+        tools:layout="@layout/fragment_my_purchases"/>
+    <fragment
+        android:id="@+id/myLikesFragment"
+        android:name="nsu.krpo.academads.ui.my_likes.MyLikesFragment"
+        android:label="MyLikesFragment"
+        tools:layout="@layout/fragment_liked"/>
+    <include app:graph="@navigation/edit_item_graph" />
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="nsu.krpo.academads.ui.category.CategoryFragment"
+        android:label="CategoryFragment"
+        tools:layout="@layout/fragment_category">
+        <action
+            android:id="@+id/CategoryToItem"
+            app:destination="@id/itemGraph" />
+    </fragment>
+    <include app:graph="@navigation/bans_graph" />
+    <include app:graph="@navigation/item_graph" />
+    <include app:graph="@navigation/nav_graph" />
+    <fragment
+        android:id="@+id/createAdFragment"
+        android:name="nsu.krpo.academads.ui.create_ad.CreateAdFragment"
+        android:label="CreateAdFragment" >
+        <action
+            android:id="@+id/ToProf"
+            app:destination="@id/profileFragment" />
+    </fragment>
+
+</navigation>

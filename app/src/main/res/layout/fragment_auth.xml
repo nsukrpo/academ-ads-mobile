@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#F6F5F5">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/auth_text"
+        style="@style/TitleText"
+        android:layout_width="330dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="200dp"
+        android:breakStrategy="high_quality"
+        android:gravity="center_vertical|center_horizontal"
+        android:text="@string/auth_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/login_layout"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        app:boxCornerRadiusBottomEnd="27dp"
+        app:boxCornerRadiusBottomStart="27dp"
+        app:boxCornerRadiusTopEnd="27dp"
+        app:boxCornerRadiusTopStart="27dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/auth_text">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/login_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/login" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/password_layout"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        app:boxCornerRadiusBottomEnd="27dp"
+        app:boxCornerRadiusBottomStart="27dp"
+        app:boxCornerRadiusTopEnd="27dp"
+        app:boxCornerRadiusTopStart="27dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/login_layout">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/password_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="@string/password" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/log_in_button"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/PrimaryButtom"
+        android:paddingHorizontal="4dp"
+        android:text="@string/log_in"
+        android:textAppearance="@style/PrimaryButtonText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/password_layout"
+        app:shapeAppearanceOverlay="@style/RoundedRectangle" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/error_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="error"
+        app:layout_constraintTop_toBottomOf="@id/log_in_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="40dp"
+        android:textColor="#FF5555"
+        android:textSize="24sp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/registration_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="48dp"
+        android:backgroundTint="@color/Background"
+        android:gravity="start"
+        android:maxLines="1"
+        android:text="@string/registration"
+        android:textAppearance="@style/ProductTitle"
+        android:textColor="@color/TextPrimary"
+        android:textSize="22sp"
+        app:icon="@drawable/chevron_left"
+        app:iconGravity="end"
+        app:iconSize="25dp"
+        app:iconTint="@color/TextPrimary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+    <!---<com.google.android.material.button.MaterialButton
+        android:id="@+id/vk_sign_in_button"
+        style="@style/SignInButton"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="64dp"
+        app:cornerRadius="8dp"
+        app:icon="@drawable/ic_vk"
+        app:iconGravity="textStart"
+        app:iconTint="@null"
+        android:text="@string/sign_in_with_vk"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/auth_text" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/google_sign_in_button"
+        style="@style/SignInButton"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:paddingHorizontal="20dp"
+        app:icon="@drawable/ic_google"
+        app:iconTint="@null"
+        android:text="@string/sign_in_with_google"
+        app:iconGravity="start"
+        app:cornerRadius="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/vk_sign_in_button" /> -->
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

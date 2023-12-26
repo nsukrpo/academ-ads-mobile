@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/authFragment"
+        android:name="nsu.krpo.academads.ui.auth.AuthFragment"
+        android:label="AuthFragment"
+        tools:layout="@layout/fragment_auth">
+        <action
+            android:id="@+id/ToRegistration"
+            app:destination="@id/registrationFragment" />
+        <action
+            android:id="@+id/AuthToMainScreen"
+            app:destination="@id/mainScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainScreenFragment"
+        android:name="nsu.krpo.academads.ui.main_screen.MainScreenFragment"
+        android:label="MainScreenFragment"
+        tools:layout="@layout/fragment_main_screen">
+        <action
+            android:id="@+id/ToItem"
+            app:destination="@id/itemGraph" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="nsu.krpo.academads.ui.splash_screen.SplashFragment"
+        android:label="SplashFragment" >
+        <action
+            android:id="@+id/toMainScreen"
+            app:destination="@id/mainScreenFragment" />
+        <action
+            android:id="@+id/toLogin"
+            app:destination="@id/authFragment" />
+    </fragment>
+    <include app:graph="@navigation/item_graph" />
+    <fragment
+        android:id="@+id/registrationFragment"
+        android:name="nsu.krpo.academads.ui.registration.RegistrationFragment"
+        android:label="RegistrationFragment"
+        tools:layout="@layout/fragment_registration"/>
+
+</navigation>

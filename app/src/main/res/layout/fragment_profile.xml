@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Background"
+    android:orientation="vertical">
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/user_info"
+                style="@style/ProductTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="40dp"
+                android:text="@string/user_info"
+                android:textSize="22sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/user_avatar"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
+                android:src="@drawable/seller"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/user_info" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/user_name"
+                style="@style/SimpleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toEndOf="@id/user_avatar"
+                app:layout_constraintTop_toBottomOf="@id/user_info"
+                tools:text="Фамилия Имя" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/email"
+                style="@style/SimpleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/user_avatar"
+                app:layout_constraintTop_toBottomOf="@id/user_name"
+                tools:text="email@g.nsu.ru" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/registration_date"
+                style="@style/SimpleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@id/user_avatar"
+                app:layout_constraintTop_toBottomOf="@id/email"
+                tools:text="Дата регистрации: 19.10.2023" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/log_out_button"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="#FF5555"
+                android:paddingHorizontal="4dp"
+                android:text="ВЫЙТИ"
+                android:textAppearance="@style/PrimaryButtonText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/registration_date"
+                app:shapeAppearanceOverlay="@style/RoundedRectangle" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/my_advertisments_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/Background"
+                android:gravity="start"
+                android:maxLines="1"
+                android:text="Мои объявления"
+                android:textAppearance="@style/ProductTitle"
+                android:textColor="@color/TextPrimary"
+                android:textSize="22sp"
+                app:icon="@drawable/chevron_left"
+                app:iconGravity="end"
+                app:iconSize="25dp"
+                app:iconTint="@color/TextPrimary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/log_out_button" />
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_my_ads"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/my_advertisments_button"
+                tools:listitem="@layout/item_product_mini" />
+
+
+            <com.google.android.material.materialswitch.MaterialSwitch
+                android:id="@+id/dont_show_switch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:checked="false"
+                android:text="@string/dont_show_text"
+                app:thumbTint="@color/Background"
+                app:trackDecorationTint="@color/Background"
+                android:textAppearance="@style/ProductTitle"
+                android:textColor="@color/TextPrimary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rv_my_ads"
+                app:trackTint="#E2CBFF" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/my_items_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/Background"
+                android:gravity="start"
+                android:maxLines="1"
+                android:text="Мои покупки"
+                android:textAppearance="@style/ProductTitle"
+                android:textColor="@color/TextPrimary"
+                android:textSize="22sp"
+                app:icon="@drawable/chevron_left"
+                app:iconGravity="end"
+                app:iconSize="25dp"
+                app:iconTint="@color/TextPrimary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dont_show_switch" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_my_items"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/my_items_button"
+                tools:listitem="@layout/item_purchase_mini" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/my_likes_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/Background"
+                android:gravity="start"
+                android:maxLines="1"
+                android:text="Избранное"
+                android:textAppearance="@style/ProductTitle"
+                android:textColor="@color/TextPrimary"
+                android:textSize="22sp"
+                app:icon="@drawable/chevron_left"
+                app:iconGravity="end"
+                app:iconSize="25dp"
+                app:iconTint="@color/TextPrimary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rv_my_items" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_my_likes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/my_likes_button"
+                tools:listitem="@layout/item_product_mini" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/create_ad_button"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="24dp"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="@color/PrimaryButtom"
+                android:paddingHorizontal="4dp"
+                android:text="@string/create_ad"
+                android:textAppearance="@style/PrimaryButtonText"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/rv_my_likes"
+                app:shapeAppearanceOverlay="@style/RoundedRectangle" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bans_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:backgroundTint="@color/Background"
+                android:gravity="start"
+                android:maxLines="1"
+                android:text="@string/bans"
+                android:textAppearance="@style/ProductTitle"
+                android:textColor="@color/TextPrimary"
+                android:textSize="22sp"
+                app:icon="@drawable/chevron_left"
+                app:iconGravity="end"
+                app:iconSize="25dp"
+                app:iconTint="@color/TextPrimary"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/create_ad_button" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>
