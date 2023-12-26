@@ -16,7 +16,7 @@ data class AdvertisementResponse(
         val price: Double,
 
         @Json(name = "category")
-        val category: Long,
+        val category: String,
 
         @Json(name = "author")
         val author: Long,

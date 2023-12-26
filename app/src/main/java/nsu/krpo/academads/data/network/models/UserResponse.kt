@@ -10,7 +10,7 @@ data class UserResponse(
         val name: String,
 
         @Json(name = "avatar")
-        val avatar: Int,
+        val avatar: Long,
 
         @Json(name = "regDate")
         val regDate: String,
