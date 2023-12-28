@@ -21,6 +21,7 @@ import nsu.krpo.academads.ui.base.view.BaseFragment
 import nsu.krpo.academads.ui.base.view.viewBinding
 import nsu.krpo.academads.ui.image_slider.ImageSliderAdapter
 import java.text.SimpleDateFormat
+import java.time.ZoneId
 
 @AndroidEntryPoint
 class AdvertisementFragment : BaseFragment() {
@@ -58,7 +59,7 @@ class AdvertisementFragment : BaseFragment() {
         with(binding) {
             itemTitle.text = ad.header
             price.text = ad.price.toPlainString()
-            date.text = SimpleDateFormat("dd.mm.yyyy").format(ad.publicationDate)
+            date.text = ad.publicationDate.atZone(ZoneId.systemDefault()).toLocalDate().toString()
             chipCategory.text = ad.category.title()
             views.text = "%s просмотров".format(ad.countWatch)
             description.text = ad.description

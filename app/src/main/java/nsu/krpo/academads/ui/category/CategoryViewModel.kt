@@ -29,10 +29,10 @@ class CategoryViewModel @Inject constructor(
     val navEvent: LiveData<CategoryScreenRoutes> = _navEvent
 
     private var category: Category = Category.OTHER
-    private var userId: Long = 0L
+    private var userId: Long = 1L
 
     init {
-        userId = savedRep.getSavedUserId()
+    //    userId = savedRep.getSavedUserId()
     }
 
     fun provideCategory(category: Category) {
@@ -46,6 +46,15 @@ class CategoryViewModel @Inject constructor(
 
     fun onItemLiked(ad: Advertisement) {
         advertisementsDao.like(ad, userId)
+            .setupDefaultSchedulers()
+            .subscribe(
+                {},
+                {
+                    error ->
+                    Log.i("LIKE", error.message!!)
+                }
+            )
+            .unsubscribeOnCleared()
     }
 
     fun onItemDisliked(ad: Advertisement) {

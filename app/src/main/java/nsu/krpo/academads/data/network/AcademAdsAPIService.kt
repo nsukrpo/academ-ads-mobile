@@ -44,7 +44,7 @@ interface AcademAdsAPIService {
     @GET("/category")
     fun getCategoriesList(): Single<CategoryResponse>
     @GET("/user/{id}")
-    fun getUserById(@Path("id") userId: Long): Single<UserResponse>
+    fun getUserById(@Path("id") userId: Long): Call<UserResponse>
     @PUT("/user/{id}")
     fun updateUser(@Path("id") userId: Long, @Body updatedUser: UserUpdate): Single<ApiResponse>
     @POST("/user")
@@ -61,15 +61,15 @@ interface AcademAdsAPIService {
     fun createLogin(@Body loginCreate: LoginCreate): Single<ApiResponse>
     @POST("/login")
     fun loginUser(@Body tokenRequest: TokenRequest): Single<TokenResponse>
-    @GET("/advertisment/{id}")
+    @GET("/advertisement/{id}")
     fun getAdvertisementById(@Path("id") advertisementId: Long): Single<AdvertisementResponse>
-    @PUT("/advertisment/{id}")
+    @PUT("/advertisement/{id}")
     fun updateAdvertisement(@Path("id") advertisementId: Long, @Body updatedAdvertisement: AdvertisementUpdate): Single<ApiResponse>
-    @DELETE("/advertisment/{id}")
+    @DELETE("/advertisement/{id}")
     fun deleteAdvertisement(@Path("id") advertisementId: Long): Single<ApiResponse>
-    @POST("/advertisment")
+    @POST("/advertisement")
     fun createAdvertisement(@Body createAdvertisement: AdvertisementCreate): Single<ApiResponse>
-    @GET("/advertisment")
+    @GET("/advertisement")
     fun getAdvertisements(
             @Query("category") categoryId: Long? = null,
             @Query("date") publicationDate: String? = null,
@@ -110,11 +110,11 @@ interface AcademAdsAPIService {
    // suspend fun createMessage(@Body newMessage: NewMessage): Response<ApiResponse>
     @GET("/message/{id}")
     fun getMessageById(@Path("id") messageId: Long): Single<MessageResponse>
-    @GET("/favorite/advertisment")
+    @GET("/favorite/advertisement")
     fun getFavoriteAdvertisements(@Query("user_id") userId: Long): Single<List<AdvertisementResponse>>
-    @POST("/favorite/advertisment")
+    @POST("/favorite/advertisement")
     fun addToFavoriteAdvertisements(@Body favoriteAdvertisementsRequest: FavoriteAdvertisementsRequest): Single<ApiResponse>
-    @DELETE("/favorite/advertisment")
+    @DELETE("/favorite/advertisement")
     fun removeFromFavorites(
             @Query("user_id") userId: Long,
             @Query("ads_id") advertisementId: Long

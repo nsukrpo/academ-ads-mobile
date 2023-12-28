@@ -44,12 +44,12 @@ class RecommendationsFragment : BaseFragment() {
         viewModel.ads.observe(viewLifecycleOwner, ::onAdsLoaded)
     }
     private fun obtainNavEvent(direction: RecommendationsScreenRoutes) {
-        when(direction) {
+      /*  when(direction) {
             is RecommendationsScreenRoutes.ToAd -> findNavController().navigate(R.id.RecommendationsToItem, Bundle().apply {
                 putParcelable(AdvertisementFragment.ARGS_KEY, direction.ad)
             })
         }
-    }
+   */ }
 
     private fun onAdsLoaded(ads: List<AdvertisementWrapper>) {
         recommendationsAdapter.items = ads

@@ -15,7 +15,7 @@
             android:id="@+id/ToCategory"
             app:destination="@id/categoryFragment" />
     </fragment>
-    <fragment
+    <!--<fragment
         android:id="@+id/recommendationsFragment"
         android:name="nsu.krpo.academads.ui.recommendations.RecommendationsFragment"
         android:label="RecommendationsFragment"
@@ -23,7 +23,7 @@
         <action
             android:id="@+id/RecommendationsToItem"
             app:destination="@id/itemGraph" />
-    </fragment>
+    </fragment> -->
     <fragment
         android:id="@+id/profileFragment"
         android:name="nsu.krpo.academads.ui.profile.ProfileFragment"
@@ -81,7 +81,11 @@
         android:id="@+id/myLikesFragment"
         android:name="nsu.krpo.academads.ui.my_likes.MyLikesFragment"
         android:label="MyLikesFragment"
-        tools:layout="@layout/fragment_liked"/>
+        tools:layout="@layout/fragment_liked">
+        <action
+            android:id="@+id/ToLikedAd"
+            app:destination="@id/itemGraph" />
+    </fragment>
     <include app:graph="@navigation/edit_item_graph" />
     <fragment
         android:id="@+id/categoryFragment"

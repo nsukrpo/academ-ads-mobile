@@ -7,8 +7,7 @@ import nsu.krpo.academads.domain.model.ads.AdvertisementStatus
 import nsu.krpo.academads.domain.model.ads.Category
 import nsu.krpo.academads.domain.model.ads.User
 import java.math.BigDecimal
-import java.sql.Timestamp
-import java.text.SimpleDateFormat
+import java.time.ZonedDateTime
 import java.util.Locale
 
 class AdvertisementToDomainMapper {
@@ -19,9 +18,9 @@ class AdvertisementToDomainMapper {
         val description = response.description
         val price = BigDecimal.valueOf(response.price)
 
-        val sdf = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault())
-        val publicationDate = Timestamp(sdf.parse(response.publicationDate).time)
-        val editDate = Timestamp(sdf.parse(response.editDate).time)
+//        val sdf = SimpleDateFormat("dd.MM.yyyy HH:mm:ss:", Locale.getDefault())
+        val publicationDate = ZonedDateTime.parse(response.publicationDate).toInstant()
+        val editDate = ZonedDateTime.parse(response.editDate).toInstant()
 
         val countWatch = response.countWatch.toInt()
 

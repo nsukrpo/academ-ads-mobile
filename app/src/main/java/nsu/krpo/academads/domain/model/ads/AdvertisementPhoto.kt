@@ -5,5 +5,5 @@ import android.graphics.drawable.Drawable
 import java.io.Serializable
 
 data class AdvertisementPhoto(
-    val photo: BitmapDrawable
+    val photo: Drawable
 ) : Serializable

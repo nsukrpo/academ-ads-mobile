@@ -27,6 +27,8 @@ interface AdvertisementsDao {
 
     fun like(ad: Advertisement, userId: Long): Completable
 
+    fun dislike(ad: Advertisement, userId: Long): Completable
+
     fun subscribe(user: User, subscriberId: Long): Completable
 
 

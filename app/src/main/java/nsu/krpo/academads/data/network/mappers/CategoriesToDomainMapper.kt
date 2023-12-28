@@ -30,6 +30,17 @@ class CategoriesToDomainMapper {
         return fromName(name)
     }
 
+    fun fromInt(num: Int): Category {
+        return when(num) {
+            1 -> return Category.EDUCATIONAL_SUPPLIES
+            2 -> return Category.APPLIANCES
+            3 -> return Category.ELECTRONICS
+            4 -> return Category.EDUCATIONAL_SERVICE
+            5 -> return Category.OTHER
+            else -> return Category.OTHER
+        }
+    }
+
     fun fromName(name: String): Category {
         return when(name) {
             "EDUCATIONAL_STUFF" -> Category.EDUCATIONAL_SUPPLIES

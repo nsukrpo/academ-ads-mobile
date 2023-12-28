@@ -3,7 +3,7 @@ package nsu.krpo.academads.domain.model.ads
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 import java.math.BigDecimal
-import java.sql.Timestamp
+import java.time.Instant
 
 @Parcelize
 data class Advertisement(
@@ -13,9 +13,9 @@ data class Advertisement(
     val price: BigDecimal,
     val category: Category,
     val author: User,
-    val publicationDate: Timestamp,
+    val publicationDate: Instant,
     val countWatch: Int,
     val status: AdvertisementStatus,
-    val editDate: Timestamp,
+    val editDate: Instant,
     val photos: List<AdvertisementPhoto>,
 ) : Parcelable
