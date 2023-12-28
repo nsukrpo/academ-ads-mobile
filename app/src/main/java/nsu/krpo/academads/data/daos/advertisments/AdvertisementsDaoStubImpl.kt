@@ -13,6 +13,7 @@ import nsu.krpo.academads.domain.model.ads.UserType
 import nsu.krpo.academads.domain.model.ads.UsersAvatar
 import java.math.BigDecimal
 import java.sql.Timestamp
+import java.time.Instant
 import java.util.Date
 import java.util.EnumSet
 import javax.inject.Inject
@@ -34,10 +35,11 @@ class AdvertisementsDaoStubImpl @Inject constructor() : AdvertisementsDao {
         BigDecimal(700),
         Category.EDUCATIONAL_SERVICE,
         user,
-        Timestamp.valueOf("2023-12-12 13:45:34"),
+//        Timestamp.valueOf("2023-12-12 13:45:34"),
+        Instant.now(),
         countWatch = 0,
         status = AdvertisementStatus.GRANTED,
-        editDate = Timestamp(5656),
+        editDate = Instant.now(),
         photos = arrayListOf(
             AdvertisementPhoto(
                 BitmapDrawable()
@@ -51,10 +53,12 @@ class AdvertisementsDaoStubImpl @Inject constructor() : AdvertisementsDao {
         BigDecimal(400),
         Category.EDUCATIONAL_SERVICE,
         user,
-        Timestamp.valueOf("2023-12-12 13:45:34"),
+//        Timestamp.valueOf("2023-12-12 13:45:34"),
+        Instant.now(),
         countWatch = 0,
         status = AdvertisementStatus.GRANTED,
-        editDate = Timestamp(22028900),
+//        editDate = Timestamp(22028900),
+        editDate = Instant.now(),
         photos = arrayListOf(
             AdvertisementPhoto(
                 BitmapDrawable()
@@ -68,10 +72,12 @@ class AdvertisementsDaoStubImpl @Inject constructor() : AdvertisementsDao {
         BigDecimal(1200),
         Category.EDUCATIONAL_SUPPLIES,
         user,
-        Timestamp.valueOf("2023-02-12 13:45:34"),
+//        Timestamp.valueOf("2023-02-12 13:45:34"),
+        Instant.now(),
         countWatch = 0,
         status = AdvertisementStatus.GRANTED,
-        Timestamp.valueOf("2023-02-12 13:45:34"),
+//        Timestamp.valueOf("2023-02-12 13:45:34"),
+        Instant.now(),
         photos = arrayListOf(
             AdvertisementPhoto(
                 BitmapDrawable()
@@ -85,10 +91,12 @@ class AdvertisementsDaoStubImpl @Inject constructor() : AdvertisementsDao {
         BigDecimal(750),
         Category.APPLIANCES,
         user,
-        Timestamp.valueOf("2023-12-12 13:45:34"),
+//        Timestamp.valueOf("2023-12-12 13:45:34"),
+        Instant.now(),
         countWatch = 0,
         status = AdvertisementStatus.GRANTED,
-        Timestamp.valueOf("2023-02-12 13:45:34"),
+//        Timestamp.valueOf("2023-02-12 13:45:34"),
+        Instant.now(),
         photos = arrayListOf(
             AdvertisementPhoto(
                 BitmapDrawable()
@@ -102,10 +110,12 @@ class AdvertisementsDaoStubImpl @Inject constructor() : AdvertisementsDao {
         BigDecimal(5467),
         Category.ELECTRONICS,
         user,
-        Timestamp.valueOf("2023-12-12 13:45:34"),
+//        Timestamp.valueOf("2023-12-12 13:45:34"),
+        Instant.now(),
         countWatch = 0,
         status = AdvertisementStatus.DECLINE_FRAUD,
-        Timestamp.valueOf("2023-02-12 13:45:34"),
+//        Timestamp.valueOf("2023-02-12 13:45:34"),
+        Instant.now(),
         photos = arrayListOf(
             AdvertisementPhoto(
                 BitmapDrawable()
@@ -179,6 +189,10 @@ class AdvertisementsDaoStubImpl @Inject constructor() : AdvertisementsDao {
 
 
     override fun like(ad: Advertisement, userId: Long): Completable {
+        return Completable.complete()
+    }
+
+    override fun dislike(ad: Advertisement, userId: Long): Completable {
         return Completable.complete()
     }
 

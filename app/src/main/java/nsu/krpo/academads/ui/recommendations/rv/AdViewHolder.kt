@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import nsu.krpo.academads.databinding.ItemProductBinding
 import nsu.krpo.academads.domain.model.ads.Advertisement
 import java.text.SimpleDateFormat
+import java.time.ZoneId
 
 class AdViewHolder(
     private val binding: ItemProductBinding,
@@ -20,7 +21,8 @@ class AdViewHolder(
     fun bind(ad: AdvertisementWrapper, onItemClicked: (Advertisement) -> Unit, onItemLiked: (Advertisement) -> Unit, onItemDisliked: (Advertisement) -> Unit) =
         binding.run {
             productItem.text = ad.ad.header
-            date.text = SimpleDateFormat("dd.mm.yyyy").format(ad.ad.publicationDate)
+//            date.text = SimpleDateFormat("dd.mm.yyyy").format(ad.ad.publicationDate)
+            date.text = ad.ad.publicationDate.atZone(ZoneId.systemDefault()).toLocalDate().toString()
             price.text = ad.ad.price.toPlainString()
             image.setImageDrawable(ad.cover)
             onLike = onItemLiked

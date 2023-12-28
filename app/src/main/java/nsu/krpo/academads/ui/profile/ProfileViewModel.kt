@@ -47,13 +47,13 @@ class ProfileViewModel @Inject constructor(
     private val _likes: MutableLiveData<List<LikedWrapper>> = MutableLiveData()
     val likes: LiveData<List<LikedWrapper>> = _likes
 
-    private var userId: Long = 0L
+    private var userId: Long = 1L
     var myAdsList = listOf<AdvertismentWrapper>()
 
     init {
-        userId = savedRep.getSavedUserId()
-        loadProfileInfo()
+       // userId = savedRep.getSavedUserId()
         loadMyAdvertisements()
+        loadProfileInfo()
         loadMyPurchases()
         loadMyLikes()
     }

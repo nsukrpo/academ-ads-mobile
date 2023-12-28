@@ -11,7 +11,7 @@ import javax.inject.Singleton
 class StubCredentialsStorageImpl @Inject constructor() : CredentialsStorage {
 
     private var isConnected = true;
-    override fun hasCredentials(): Single<Boolean> = Single.just(false)
+    override fun hasCredentials(): Single<Boolean> = Single.just(true)
 
     override fun hasCredentialsBlocking(): Boolean = isConnected
 

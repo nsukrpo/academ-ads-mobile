@@ -10,10 +10,13 @@ import nsu.krpo.academads.domain.model.ads.User
 import nsu.krpo.academads.domain.model.ads.UserType
 import nsu.krpo.academads.domain.model.ads.UsersAvatar
 import java.math.BigDecimal
-import java.sql.Timestamp
+import java.time.Instant
+import java.time.LocalDate
+import java.time.ZoneOffset
 import java.util.Date
 import java.util.EnumSet
 import javax.inject.Inject
+
 
 class RecommendationsDaoStubImpl @Inject constructor(): RecommendationsDao {
 
@@ -27,10 +30,10 @@ class RecommendationsDaoStubImpl @Inject constructor(): RecommendationsDao {
         BigDecimal(1200),
         Category.OTHER,
         user,
-        Timestamp.valueOf("2023-12-12 13:45:34"),
+        Instant.parse("2023-12-22T00:00:00Z"),
         0,
         AdvertisementStatus.GRANTED,
-        Timestamp.valueOf("2023-12-12 13:45:34"),
+        Instant.now().minusSeconds(50000),
         arrayListOf(AdvertisementPhoto(BitmapDrawable()))
     )
     override fun getAllByUserId(userId: Long): Single<List<Advertisement>> {

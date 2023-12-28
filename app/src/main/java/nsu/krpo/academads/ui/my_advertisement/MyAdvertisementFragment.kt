@@ -17,6 +17,7 @@ import nsu.krpo.academads.ui.base.view.BaseFragment
 import nsu.krpo.academads.ui.base.view.viewBinding
 import nsu.krpo.academads.ui.edit_item.EditFragment
 import java.text.SimpleDateFormat
+import java.time.ZoneId
 
 @AndroidEntryPoint
 class MyAdvertisementFragment : BaseFragment() {
@@ -52,8 +53,10 @@ class MyAdvertisementFragment : BaseFragment() {
 
         with(binding) {
             productItem.text = ad.header
-            date.text = SimpleDateFormat("dd.mm.yyyy").format(ad.publicationDate)
+            date.text = ad.publicationDate.atZone(ZoneId.systemDefault()).toLocalDate().toString()
+//            date.text = SimpleDateFormat("dd.mm.yyyy").format(ad.publicationDate)
             price.text = ad.price.toPlainString()
+            description.text = ad.description
             watches.text = "Просмотров: %s".format(ad.countWatch)
             status.text = ad.status.title()
             image.setImageDrawable(ad.photos[0].photo)

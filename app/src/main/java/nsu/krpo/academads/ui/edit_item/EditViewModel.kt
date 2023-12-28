@@ -1,8 +1,5 @@
 package nsu.krpo.academads.ui.edit_item
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.PixelFormat
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import androidx.core.graphics.drawable.toBitmap
@@ -18,10 +15,9 @@ import nsu.krpo.academads.ui.base.live_data.SingleLiveEvent
 import nsu.krpo.academads.ui.base.live_data.update
 import nsu.krpo.academads.ui.base.view.BaseViewModel
 import nsu.krpo.academads.ui.edit_item.photos_rv.ItemPhotoWrapper
-import nsu.krpo.academads.ui.my_advertisement.MyAdvertisementScreenRoutes
-import java.io.ByteArrayOutputStream
 import java.math.BigDecimal
 import java.sql.Timestamp
+import java.time.Instant
 import javax.inject.Inject
 
 
@@ -77,7 +73,7 @@ class EditViewModel @Inject constructor(
             oldAd.publicationDate,
             oldAd.countWatch,
             status,
-            Timestamp(System.currentTimeMillis()),
+            Instant.now(),
             myPhotos.map {
                 AdvertisementPhoto(
                     it.photo

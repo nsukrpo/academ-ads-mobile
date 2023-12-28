@@ -8,4 +8,5 @@
     <color name="Background">#F6F5F5</color>
     <color name="Violet">#7203FF</color>
     <color name="PrimaryButtom">#0BCE83</color>
+    <color name="Error">#CF0000</color>
 </resources>

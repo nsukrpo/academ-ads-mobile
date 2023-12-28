@@ -8,11 +8,6 @@
         android:title="Categories"
         />
     <item
-        android:id="@+id/recommendationsFragment"
-        android:icon="@drawable/star_svgrepo_com"
-        android:title="Recomendations"
-        />
-    <item
         android:id="@+id/profileFragment"
         android:icon="@drawable/user"
         android:title="Profile"

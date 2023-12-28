@@ -12,6 +12,7 @@ import nsu.krpo.academads.domain.model.ads.UserType
 import nsu.krpo.academads.domain.model.ads.UsersAvatar
 import java.math.BigDecimal
 import java.sql.Timestamp
+import java.time.Instant
 import java.util.Date
 import java.util.EnumSet
 import javax.inject.Inject
@@ -33,10 +34,11 @@ class PurchasesDaoStubImpl @Inject constructor() : PurchasesDao {
         BigDecimal(700),
         Category.EDUCATIONAL_SUPPLIES,
         user,
-        Timestamp(220200),
+//        Timestamp(220200),
+        Instant.now(),
         countWatch = 0,
         status = AdvertisementStatus.GRANTED,
-        editDate = Timestamp(5656),
+        editDate = Instant.now(),
         photos = arrayListOf(
             AdvertisementPhoto(
                 BitmapDrawable()
