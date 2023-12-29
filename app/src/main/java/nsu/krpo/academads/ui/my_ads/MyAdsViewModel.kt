@@ -35,7 +35,7 @@ class MyAdsViewModel @Inject constructor(
     }
 
     private fun getAds() {
-        advertisementsDao.getAllById(0)
+        advertisementsDao.getAllById(1)
             .map {
                 it.map { advertisement ->
                     AdWrapper(

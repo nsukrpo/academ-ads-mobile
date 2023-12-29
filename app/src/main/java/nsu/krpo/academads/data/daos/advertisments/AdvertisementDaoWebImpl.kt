@@ -111,7 +111,7 @@ class AdvertisementsDaoWebImpl @Inject constructor(
         val list: List<Advertisement> =
             getAllBlocking()
         return list.filter {
-            ((it.category == category)  && (it.status == AdvertisementStatus.GRANTED))
+            ((it.category == category) )
         }
     }
 
