@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
 import nsu.krpo.academads.data.daos.purchases.PurchasesDao
+import nsu.krpo.academads.data.daos.saved_info.SavedRep
 import nsu.krpo.academads.domain.model.ads.Advertisement
 import nsu.krpo.academads.ui.base.live_data.SingleLiveEvent
 import nsu.krpo.academads.ui.base.live_data.update
@@ -14,6 +15,7 @@ import javax.inject.Inject
 @HiltViewModel
 class PurchaseViewModel @Inject constructor(
     private val purchasesDao: PurchasesDao,
+    private val savedRep: SavedRep,
 ) : BaseViewModel() {
 
     private val _navEvent: SingleLiveEvent<PurchasesScreenRoutes> = SingleLiveEvent()
@@ -25,6 +27,7 @@ class PurchaseViewModel @Inject constructor(
     private var userId = 1L
 
     init {
+        userId = savedRep.getSavedUserId()
         loadAds()
     }
 

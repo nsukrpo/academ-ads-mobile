@@ -32,6 +32,9 @@ class CreateAdViewModel @Inject constructor(
     private val _photo: MutableLiveData<List<ItemPhotoWrapper>> = MutableLiveData()
     val photo: LiveData<List<ItemPhotoWrapper>> = _photo
 
+    private val _error: MutableLiveData<String> = MutableLiveData()
+    val error: LiveData<String> = _error
+
     private val myPhotos: MutableList<ItemPhotoWrapper> = mutableListOf()
 
     private var myId = 1L
@@ -75,9 +78,10 @@ class CreateAdViewModel @Inject constructor(
             .setupDefaultSchedulers()
             .bindLoading()
             .subscribe(
-                ::onAdCreated,
-                ::onError
-            ).unsubscribeOnCleared()
+                ::onAdCreated
+            ) { error ->
+                _error.value = error.message
+            }.unsubscribeOnCleared()
         if (photo != null) {
             adsDao.addPhotoAd(bitmap2Bytes(photo.toBitmap(photo.intrinsicWidth, photo.intrinsicHeight)))
         }

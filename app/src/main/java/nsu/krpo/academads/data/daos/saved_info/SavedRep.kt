@@ -4,4 +4,6 @@ interface SavedRep {
 
     fun getSavedUserId(): Long
 
+    fun setSavedUserId(id: Long)
+
 }

@@ -2,6 +2,7 @@ package nsu.krpo.academads.ui.profile
 
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -51,7 +52,7 @@ class ProfileViewModel @Inject constructor(
     var myAdsList = listOf<AdvertismentWrapper>()
 
     init {
-       // userId = savedRep.getSavedUserId()
+        userId = savedRep.getSavedUserId()
         loadMyAdvertisements()
         loadProfileInfo()
         loadMyPurchases()
@@ -92,7 +93,9 @@ class ProfileViewModel @Inject constructor(
             .bindLoading()
             .subscribe(
                 ::onLoadProfileResult,
-                ::onError
+                {
+                    Log.i("PROF", it.toString())
+                }
             ).unsubscribeOnCleared()
 
     }
@@ -111,7 +114,9 @@ class ProfileViewModel @Inject constructor(
             .bindLoading()
             .subscribe(
                 ::onAdvertisementsResult,
-                ::onError
+                {
+                    Log.i("MYADS", it.message.toString())
+                }
             ).unsubscribeOnCleared()
     }
 
@@ -129,7 +134,9 @@ class ProfileViewModel @Inject constructor(
             .bindLoading()
             .subscribe(
                 ::onPurchasesResult,
-                ::onError
+                {
+                    Log.i("PURCH", it.toString())
+                }
             ).unsubscribeOnCleared()
     }
 
@@ -147,7 +154,9 @@ class ProfileViewModel @Inject constructor(
             .bindLoading()
             .subscribe(
                 ::onLikesResult,
-                ::onError
+                {
+                    Log.i("LIKES", it.toString())
+                }
             ).unsubscribeOnCleared()
     }
 

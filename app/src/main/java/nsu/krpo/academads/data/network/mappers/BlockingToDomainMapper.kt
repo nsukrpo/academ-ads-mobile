@@ -3,6 +3,7 @@ package nsu.krpo.academads.data.network.mappers
 import nsu.krpo.academads.data.network.models.BlockingResponse
 import nsu.krpo.academads.domain.model.ads.Blocking
 import java.sql.Timestamp
+import java.time.ZonedDateTime
 
 class BlockingToDomainMapper {
 
@@ -13,7 +14,7 @@ class BlockingToDomainMapper {
             id = response.id,
             blockingReason = reason,
             time = response.time.toInt(),
-            blockDate = Timestamp.valueOf(response.blockDate)
+            blockDate = ZonedDateTime.parse(response.blockDate).toInstant()
         )
     }
 

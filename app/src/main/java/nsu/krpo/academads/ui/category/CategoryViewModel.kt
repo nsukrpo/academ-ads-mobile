@@ -15,6 +15,8 @@ import nsu.krpo.academads.ui.base.view.BaseViewModel
 import nsu.krpo.academads.ui.categories.CategoriesScreenRoots
 import nsu.krpo.academads.ui.categories.rv.CategoryWrapper
 import nsu.krpo.academads.ui.category.rv.AdvertisementWrapper
+import java.time.Instant
+import java.time.LocalDate
 import javax.inject.Inject
 
 @HiltViewModel
@@ -32,7 +34,7 @@ class CategoryViewModel @Inject constructor(
     private var userId: Long = 1L
 
     init {
-    //    userId = savedRep.getSavedUserId()
+        userId = savedRep.getSavedUserId()
     }
 
     fun provideCategory(category: Category) {
@@ -44,13 +46,25 @@ class CategoryViewModel @Inject constructor(
         _navEvent.update { CategoryScreenRoutes.ToAd(ad) }
     }
 
+    fun findAdsByDate(date: LocalDate) {
+        advertisementsDao.getAllByDate(date.toString(), category)
+            .setupDefaultSchedulers()
+            .map { it.map { AdvertisementWrapper(it, it.photos[0].photo) } }
+            .subscribe({
+                _ads.value = it
+            },
+                { error ->
+                    Log.i("AD", error.message.toString())
+                }).unsubscribeOnCleared()
+
+    }
+
     fun onItemLiked(ad: Advertisement) {
         advertisementsDao.like(ad, userId)
             .setupDefaultSchedulers()
             .subscribe(
                 {},
-                {
-                    error ->
+                { error ->
                     Log.i("LIKE", error.message!!)
                 }
             )

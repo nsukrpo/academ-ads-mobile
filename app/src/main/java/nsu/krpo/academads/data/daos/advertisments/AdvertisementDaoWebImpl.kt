@@ -133,15 +133,58 @@ class AdvertisementsDaoWebImpl @Inject constructor(
         }
     }
 
+    override fun getAllByDate(date: String, category: Category): Single<List<Advertisement>> =
+        Single.fromCallable { getAllByDateBlocking(date, category) }
+
+    private fun getAllByDateBlocking(date: String, category: Category): List<Advertisement> {
+        val mapper = AdvertisementToDomainMapper()
+        val categoryMapper = CategoriesToDomainMapper()
+        val userMapper = UserToDomainMapper()
+        val ads = service.getAdvertisements(publicationDate = date, categoryId = category.number().toLong()).execute()
+        val list: List<AdvertisementResponse> =
+            ads.body()!!
+        return list.map {
+            val userResponse = service.getUserById(it.author).execute().body()!!
+            val user = userMapper.fromResponse(
+                userResponse,
+                getUserAvatarBlockingOrDefault(userResponse)
+            )
+            val photo = getAdvPhotoBlockingOrDefault(it)
+
+            mapper.fromResponse(
+                it,
+                categoryMapper.fromInt(it.category),
+                user,
+                listOf(photo)
+            )
+        }
+    }
+
     override fun getAllByCategory(category: Category): Single<List<Advertisement>> =
         Single.fromCallable { getAllByCategoryBlocking(category) }
 
     private fun getAllByCategoryBlocking(category: Category): List<Advertisement> {
 
-        val list: List<Advertisement> =
-            getAllBlocking()
-        return list.filter {
-            ((it.category == category) && (it.status == AdvertisementStatus.ON_ADS_BOARD))
+        val mapper = AdvertisementToDomainMapper()
+        val categoryMapper = CategoriesToDomainMapper()
+        val userMapper = UserToDomainMapper()
+        val ads = service.getAdvertisements(categoryId = category.number().toLong()).execute()
+        val list: List<AdvertisementResponse> =
+            ads.body()!!
+        return list.map {
+            val userResponse = service.getUserById(it.author).execute().body()!!
+            val user = userMapper.fromResponse(
+                userResponse,
+                getUserAvatarBlockingOrDefault(userResponse)
+            )
+            val photo = getAdvPhotoBlockingOrDefault(it)
+
+            mapper.fromResponse(
+                it,
+                categoryMapper.fromInt(it.category),
+                user,
+                listOf(photo)
+            )
         }
     }
 
@@ -189,7 +232,7 @@ class AdvertisementsDaoWebImpl @Inject constructor(
         return try {
             service.createBooking(bookingRequest).blockingGet()
             Completable.complete()
-        }catch (ex: Exception) {
+        } catch (ex: Exception) {
             Completable.error(ex)
         }
     }

@@ -7,11 +7,9 @@ import java.sql.Timestamp
 import javax.inject.Inject
 
 class BansDaoStubImpl @Inject constructor(): BansDao {
-    override fun getAll(): Single<List<Blocking>> {
-        return Single.just(
-            listOf<Blocking>(
-                Blocking(0, BlockingReason.STRIKES_LIMIT, 12000, Timestamp(8998989555))
-            )
-        )
+
+
+    override fun getAllByUseId(userId: Long): Single<List<Blocking>> {
+        return Single.just(emptyList())
     }
 }
