@@ -11,9 +11,7 @@ import nsu.krpo.academads.domain.model.ads.User
 import nsu.krpo.academads.domain.model.ads.UserType
 import nsu.krpo.academads.domain.model.ads.UsersAvatar
 import java.math.BigDecimal
-import java.sql.Timestamp
 import java.time.Instant
-import java.util.Date
 import java.util.EnumSet
 import javax.inject.Inject
 
@@ -23,7 +21,7 @@ class PurchasesDaoStubImpl @Inject constructor() : PurchasesDao {
         1,
         "Evgeny",
         UsersAvatar(byteArrayOf(1, 123, 56, 89)),
-        Date(18999),
+        Instant.now(),
         EnumSet.of(UserType.USER)
     )
 
@@ -32,12 +30,12 @@ class PurchasesDaoStubImpl @Inject constructor() : PurchasesDao {
         "Репетитор",
         "Важный, большой",
         BigDecimal(700),
-        Category.EDUCATIONAL_SUPPLIES,
+        Category.EDUCATIONAL_STUFF,
         user,
 //        Timestamp(220200),
         Instant.now(),
         countWatch = 0,
-        status = AdvertisementStatus.GRANTED,
+        status = AdvertisementStatus.ON_ADS_BOARD,
         editDate = Instant.now(),
         photos = arrayListOf(
             AdvertisementPhoto(
@@ -52,7 +50,7 @@ class PurchasesDaoStubImpl @Inject constructor() : PurchasesDao {
         user,
         user,
         BigDecimal(800),
-        Timestamp(5545)
+        Instant.now()
     )
     override fun getById(userId: Long): Single<List<Purchase>> = Single.just(
         listOf(

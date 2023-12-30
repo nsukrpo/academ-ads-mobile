@@ -26,13 +26,15 @@ import nsu.krpo.academads.domain.model.ads.AdvertisementPhoto
 import nsu.krpo.academads.domain.model.ads.AdvertisementStatus
 import nsu.krpo.academads.domain.model.ads.Category
 import nsu.krpo.academads.domain.model.ads.User
+import nsu.krpo.academads.domain.model.ads.number
+import okhttp3.MediaType
+import okhttp3.RequestBody
 import java.math.BigDecimal
 import java.util.Date
 import javax.inject.Inject
-import retrofit2.HttpException
 import java.io.ByteArrayOutputStream
-import java.io.EOFException
-import java.io.IOException
+import java.sql.Timestamp
+import java.time.Instant
 
 class AdvertisementsDaoWebImpl @Inject constructor(
     private val context: Context,
@@ -85,8 +87,31 @@ class AdvertisementsDaoWebImpl @Inject constructor(
         authorId: Long
     ): Completable {
         val createAd = AdvertisementCreate(header, description, price, category.name, authorId)
-        service.createAdvertisement(createAd)
-        return Completable.complete()
+        return try {
+            val res = service.createAdvertisement(createAd).blockingGet()
+            if (res.code == null) {
+                Completable.complete()
+            } else {
+                Completable.error(Throwable(res.message))
+            }
+        } catch (ex: Exception) {
+            Completable.error(ex)
+        }
+    }
+
+    override fun addPhotoAd(photo: ByteArray): Completable {
+        val mediaType = MediaType.get("application/json; charset=utf-8")
+        val photo = RequestBody.create(mediaType, photo)
+        return try {
+            val res = service.createPhoto(photo).blockingGet()
+            if (res.code == null) {
+                return Completable.complete()
+            } else {
+                return Completable.error(Throwable(res.message))
+            }
+        } catch (ex: Exception) {
+            return Completable.error(ex)
+        }
     }
 
     override fun editAd(
@@ -98,9 +123,14 @@ class AdvertisementsDaoWebImpl @Inject constructor(
         status: AdvertisementStatus
     ): Completable {
         val updateAd =
-            AdvertisementUpdate(id, header, description, price, category.name, status.name)
-        service.updateAdvertisement(id, updateAd)
-        return Completable.complete()
+            AdvertisementUpdate(id, header, description, price, category.number(), status.name)
+        return try {
+            service.updateAdvertisement(id, updateAd).blockingGet()
+            service.updateAdvertisement(id, updateAd).blockingGet()
+            Completable.complete()
+        } catch (ex: Exception) {
+            Completable.error(ex)
+        }
     }
 
     override fun getAllByCategory(category: Category): Single<List<Advertisement>> =
@@ -111,7 +141,7 @@ class AdvertisementsDaoWebImpl @Inject constructor(
         val list: List<Advertisement> =
             getAllBlocking()
         return list.filter {
-            ((it.category == category) )
+            ((it.category == category) && (it.status == AdvertisementStatus.ON_ADS_BOARD))
         }
     }
 
@@ -134,16 +164,17 @@ class AdvertisementsDaoWebImpl @Inject constructor(
             return AdvertisementPhoto(drawable)
         }
 
-        var photo: Photo;
+
         try {
-            photo = service.getPhotoById(advResponse.id).blockingGet()
+            val photoStr = service.getPhotoById(advResponse.id).blockingGet()
+            val photo = Photo(photoStr.bytes())
             return AdvertisementPhoto(
                 BitmapDrawable(
                     null,
                     BitmapFactory.decodeByteArray(photo.image, 0, photo.image.size)
                 )
             )
-        } catch (e: HttpException) {
+        } catch (e: Exception) {
             val drawable = context.resources.getDrawable(R.drawable.camera)
             return AdvertisementPhoto(drawable)
         }
@@ -153,32 +184,43 @@ class AdvertisementsDaoWebImpl @Inject constructor(
         return editAd(ad.id, ad.header, ad.description, ad.price, ad.category, status)
     }
 
-    override fun book(ad: Advertisement, userId: Long, until: Date): Completable {
-        val bookingRequest = BookingRequest(ad.id, ad.price, until.toString())
-        service.createBooking(bookingRequest)
-        return Completable.complete()
+    override fun book(ad: Advertisement, userId: Long, until: Instant): Completable {
+        val bookingRequest = BookingRequest(ad.id, userId, until.toString())
+        return try {
+            service.createBooking(bookingRequest).blockingGet()
+            Completable.complete()
+        }catch (ex: Exception) {
+            Completable.error(ex)
+        }
     }
 
     override fun like(ad: Advertisement, userId: Long): Completable {
         val request = FavoriteAdvertisementsRequest(ad.id, userId)
-        val result = service.addToFavoriteAdvertisements(request).blockingGet()
-        if (result.id != null) {
-            return Completable.complete()
+        try {
+            val result = service.addToFavoriteAdvertisements(request).blockingGet()
+            if (result.id != null) {
+                return Completable.complete()
+            }
+            return Completable.error(Throwable(result.message))
+
+        } catch (e: Exception) {
+            return Completable.error(Throwable(e.message))
         }
-        return Completable.error(Throwable(result.message))
+
     }
 
     override fun dislike(ad: Advertisement, userId: Long): Completable {
-        try {
+        return try {
             val result = service.removeFromFavorites(userId, ad.id).blockingGet()
             if (result.code != 200) {
-                return Completable.error(Throwable(result.message))
+                Completable.error(Throwable(result.message))
+            } else {
+                Completable.complete()
             }
         } catch (ex: Exception) {
-
-            return Completable.complete()
+            Completable.error(Throwable(ex.message))
         }
-        return Completable.complete()
+
     }
 
     override fun subscribe(user: User, subscriberId: Long): Completable {

@@ -29,12 +29,12 @@ class ItemFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        imagesModel?.images?.let {
+      /*  imagesModel?.images?.let {
             viewPagerAdapter = ImageSliderAdapter(requireContext(), it)
             binding.viewPager.adapter = viewPagerAdapter
             binding.viewPager.currentItem = 0
             indicator = requireView().findViewById(R.id.indicator) as CircleIndicator
             indicator.setViewPager(binding.viewPager)
-        }
+        }*/
     }
 }

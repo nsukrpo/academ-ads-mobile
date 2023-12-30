@@ -73,16 +73,16 @@ class PurchasesDaoWebImpl @Inject constructor(
             return AdvertisementPhoto(drawable)
         }
 
-        var photo: Photo;
         try {
-            photo = webService.getPhotoById(advResponse.id).blockingGet()
+            val photoString = webService.getPhotoById(advResponse.id).blockingGet()
+            val photo = Photo(photoString.bytes())
             return AdvertisementPhoto(
                 BitmapDrawable(
                     null,
                     BitmapFactory.decodeByteArray(photo.image, 0, photo.image.size)
                 )
             )
-        } catch (e: HttpException) {
+        } catch (e: Exception) {
             val drawable = context.resources.getDrawable(R.drawable.camera)
             return AdvertisementPhoto(drawable)
         }

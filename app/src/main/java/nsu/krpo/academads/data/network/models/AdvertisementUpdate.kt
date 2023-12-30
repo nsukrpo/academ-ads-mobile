@@ -17,7 +17,7 @@ data class AdvertisementUpdate(
         val price: BigDecimal,
 
         @Json(name = "category")
-        val category: String,
+        val category: Int,
 
         @Json(name = "status")
         val status: String

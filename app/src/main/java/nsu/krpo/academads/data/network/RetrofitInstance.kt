@@ -28,7 +28,7 @@ class RetrofitInstance {
 
         Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .addConverterFactory(MoshiConverterFactory.create(moshi).asLenient())
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .build()
             .create(AcademAdsAPIService::class.java)

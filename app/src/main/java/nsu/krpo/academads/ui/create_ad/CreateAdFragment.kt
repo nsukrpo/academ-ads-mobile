@@ -90,11 +90,11 @@ class CreateAdFragment : BaseFragment() {
         binding.createAdButton.setOnClickListener {
             val category =
                 when (binding.chipsCategory.checkedChipId) {
-                    binding.chipEdServices.id -> Category.EDUCATIONAL_SERVICE
-                    binding.chipEdServices.id -> Category.EDUCATIONAL_SERVICE
-                    binding.chipEdSupplies.id -> Category.EDUCATIONAL_SUPPLIES
-                    binding.chipAppliances.id -> Category.APPLIANCES
-                    binding.chipElectronics.id -> Category.ELECTRONICS
+                    binding.chipEdServices.id -> Category.STUDY_SERVICE
+                    binding.chipEdServices.id -> Category.STUDY_SERVICE
+                    binding.chipEdSupplies.id -> Category.EDUCATIONAL_STUFF
+                    binding.chipAppliances.id -> Category.HOUSEHOLD_APPLIANCE
+                    binding.chipElectronics.id -> Category.DEVICES
                     else -> Category.OTHER
                 }
 
@@ -109,11 +109,13 @@ class CreateAdFragment : BaseFragment() {
             )
 
             dataValidation.onSuccess {
+                val photo = if (adapter.items.isNotEmpty()) adapter.items[0].photo else null
                 viewModel.createAd(
                     title = binding.titleEt.text.toString(),
                     description = binding.descriptionEt.text.toString(),
                     priceText = price,
-                    category = category
+                    category = category,
+                    photo = photo
                 )
             }
 

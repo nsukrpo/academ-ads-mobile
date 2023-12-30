@@ -4,7 +4,9 @@ import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.view.View
+import androidx.fragment.app.commit
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import dagger.hilt.android.AndroidEntryPoint
 import nsu.krpo.academads.R
@@ -21,6 +23,8 @@ import nsu.krpo.academads.ui.profile.likes_rv.LikedAdapter
 import nsu.krpo.academads.ui.profile.likes_rv.LikedWrapper
 import nsu.krpo.academads.ui.profile.purchases_rv.PurchaseWrapper
 import nsu.krpo.academads.ui.profile.purchases_rv.PurchasesAdapter
+import nsu.krpo.academads.ui.splash_screen.SplashFragment
+import java.time.ZoneId
 
 @AndroidEntryPoint
 class ProfileFragment : BaseFragment() {
@@ -57,6 +61,7 @@ class ProfileFragment : BaseFragment() {
         setupSwitchListener()
         setupVmObservers()
         setupViewListeners()
+        viewModel.update()
     }
 
     private fun setupVmObservers() = viewModel.run {
@@ -90,7 +95,7 @@ class ProfileFragment : BaseFragment() {
             myLikesButton.setOnClickListener { viewModel.onMyLikes() }
             createAdButton.setOnClickListener { viewModel.onCreateAd() }
             bansButton.setOnClickListener { viewModel.onBans() }
-            logOutButton.setOnClickListener { viewModel.onLogOut() }
+            //logOutButton.setOnClickListener { viewModel.onLogOut() }
         }
     }
 
@@ -126,8 +131,9 @@ class ProfileFragment : BaseFragment() {
         is ProfileScreenRoutes.ToBans -> {
             findNavController().navigate(R.id.ToBans)
         }
+
         is ProfileScreenRoutes.ToLogIn -> {
-            findNavController().navigate(R.id.ToLogIn)
+            findNavController().navigate(R.id.toLogin)
         }
     }
 
@@ -141,9 +147,7 @@ class ProfileFragment : BaseFragment() {
         )
         binding.userName.text = user.name
         binding.registrationDate.text = "Дата регистрации: %s".format(
-            "%s %s, %s".format(
-                monthByNumber(user.regDate.month), user.regDate.day, user.regDate.year
-            )
+            user.regDate.atZone(ZoneId.systemDefault()).toLocalDate().toString()
         )
     }
 
@@ -160,23 +164,5 @@ class ProfileFragment : BaseFragment() {
     private fun onLikesLoaded(likes: List<LikedWrapper>) {
         binding.myLikesButton.text = "Избранное (%s)".format(likes.size)
         likesAdapter.items = likes
-    }
-
-    private fun monthByNumber(number: Int): String {
-        when (number) {
-            0 -> return "Jan"
-            1 -> return "Feb"
-            2 -> return "Mar"
-            3 -> return "Apr"
-            4 -> return "May"
-            5 -> return "Jun"
-            6 -> return "Jul"
-            7 -> return "Aug"
-            8 -> return "Sep"
-            9 -> return "Oct"
-            10 -> return "Nov"
-            11 -> return "Dec"
-        }
-        return "Unknown"
     }
 }

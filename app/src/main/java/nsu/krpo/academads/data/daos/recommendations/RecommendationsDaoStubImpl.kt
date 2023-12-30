@@ -11,9 +11,6 @@ import nsu.krpo.academads.domain.model.ads.UserType
 import nsu.krpo.academads.domain.model.ads.UsersAvatar
 import java.math.BigDecimal
 import java.time.Instant
-import java.time.LocalDate
-import java.time.ZoneOffset
-import java.util.Date
 import java.util.EnumSet
 import javax.inject.Inject
 
@@ -21,7 +18,7 @@ import javax.inject.Inject
 class RecommendationsDaoStubImpl @Inject constructor(): RecommendationsDao {
 
     private val user = User(
-        0, "Roman", UsersAvatar(ByteArray(5)), Date(5565695656), EnumSet.of(UserType.USER))
+        0, "Roman", UsersAvatar(ByteArray(5)), Instant.now(), EnumSet.of(UserType.USER))
 
     private val adCow = Advertisement (
         0,
@@ -32,7 +29,7 @@ class RecommendationsDaoStubImpl @Inject constructor(): RecommendationsDao {
         user,
         Instant.parse("2023-12-22T00:00:00Z"),
         0,
-        AdvertisementStatus.GRANTED,
+        AdvertisementStatus.ON_ADS_BOARD,
         Instant.now().minusSeconds(50000),
         arrayListOf(AdvertisementPhoto(BitmapDrawable()))
     )

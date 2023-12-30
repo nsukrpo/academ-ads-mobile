@@ -25,6 +25,9 @@
         <action
             android:id="@+id/ToItem"
             app:destination="@id/itemGraph" />
+        <action
+            android:id="@+id/ToSplash"
+            app:destination="@id/splashFragment" />
     </fragment>
     <fragment
         android:id="@+id/splashFragment"

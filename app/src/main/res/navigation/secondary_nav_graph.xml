@@ -48,11 +48,12 @@
             android:id="@+id/ToBans"
             app:destination="@id/bans_graph" />
         <action
-            android:id="@+id/ToLogIn"
-            app:destination="@id/nav_graph" />
-        <action
             android:id="@+id/ToCreateAd"
             app:destination="@id/createAdFragment" />
+        <action
+            android:id="@+id/toLogin"
+            app:popUpTo="@id/secondary_nav_graph"
+            app:destination="@id/nav_graph" />
     </fragment>
     <fragment
         android:id="@+id/myAdsFragment"
@@ -76,7 +77,11 @@
         android:id="@+id/purchasesFragment"
         android:name="nsu.krpo.academads.ui.purchases.PurchasesFragment"
         android:label="PurchasesFragment"
-        tools:layout="@layout/fragment_my_purchases"/>
+        tools:layout="@layout/fragment_my_purchases">
+        <action
+            android:id="@+id/PurchasesToAd"
+            app:destination="@id/itemGraph" />
+    </fragment>
     <fragment
         android:id="@+id/myLikesFragment"
         android:name="nsu.krpo.academads.ui.my_likes.MyLikesFragment"

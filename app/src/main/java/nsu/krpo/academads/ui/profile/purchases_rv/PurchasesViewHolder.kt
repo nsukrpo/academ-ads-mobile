@@ -4,6 +4,8 @@ import androidx.recyclerview.widget.RecyclerView
 import nsu.krpo.academads.databinding.ItemPurchaseMiniBinding
 import nsu.krpo.academads.domain.model.ads.Advertisement
 import java.text.SimpleDateFormat
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
 
 class PurchasesViewHolder(
     private val binding: ItemPurchaseMiniBinding
@@ -13,7 +15,8 @@ class PurchasesViewHolder(
         binding.run {
             image.setImageDrawable(purchase.cover)
             titleText.text = purchase.purchase.ads.header
-            date.text = SimpleDateFormat("dd.MM.yyyy").format(purchase.purchase.date)
+            date.text = DateTimeFormatter.ofPattern("dd.MM.yyyy").withZone(
+                ZoneId.systemDefault()).format(purchase.purchase.date)
             price.text = purchase.purchase.price.toPlainString()
             binding.root.setOnClickListener { onItemClicked(purchase.purchase.ads) }
         }

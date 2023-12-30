@@ -5,6 +5,7 @@ import nsu.krpo.academads.domain.model.ads.Purchase
 import nsu.krpo.academads.domain.model.ads.User
 import java.math.BigDecimal
 import java.sql.Timestamp
+import java.time.ZonedDateTime
 
 class PurchaseToDomainMapper {
     fun fromResponse(
@@ -14,7 +15,8 @@ class PurchaseToDomainMapper {
         buyer: User,
         ): Purchase {
 
-        val timestamp = Timestamp.valueOf(response.date)
+        val timestamp = ZonedDateTime.parse(response.date).toInstant()
+
 
         return Purchase(
             id = response.id,

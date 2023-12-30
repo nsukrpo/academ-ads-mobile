@@ -1,13 +1,11 @@
 package nsu.krpo.academads.ui.advertisement
 
 import android.graphics.BitmapFactory
-import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.core.content.res.ResourcesCompat
+import androidx.core.view.isGone
 import androidx.fragment.app.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 import me.relex.circleindicator.CircleIndicator
@@ -20,7 +18,6 @@ import nsu.krpo.academads.domain.model.ads.title
 import nsu.krpo.academads.ui.base.view.BaseFragment
 import nsu.krpo.academads.ui.base.view.viewBinding
 import nsu.krpo.academads.ui.image_slider.ImageSliderAdapter
-import java.text.SimpleDateFormat
 import java.time.ZoneId
 
 @AndroidEntryPoint
@@ -48,8 +45,8 @@ class AdvertisementFragment : BaseFragment() {
 
 
     private fun setupView() {
-        imagesModel = ImagesModel()
-        imagesModel?.images?.let {
+
+        ad.photos.let {
             viewPagerAdapter = ImageSliderAdapter(requireContext(), it)
             binding.viewPager.adapter = viewPagerAdapter
             binding.viewPager.currentItem = 0
@@ -66,23 +63,27 @@ class AdvertisementFragment : BaseFragment() {
             sellerAvatar.setImageDrawable(BitmapDrawable(BitmapFactory.decodeByteArray(ad.author.avatar.photo, 0, ad.author.avatar.photo.size)))
             sellerName.text = ad.author.name
         }
-        if (ad.status != AdvertisementStatus.GRANTED) {
-            binding.bookButton.isEnabled = false
+        if (ad.status != AdvertisementStatus.ON_ADS_BOARD) {
+            binding.bookButton.isGone = true
         }
     }
 
     private fun setupViewListeners() {
         binding.bookButton.setOnClickListener {
             viewModel.bookAd(ad)
+            binding.bookButton.isEnabled = false
         }
         binding.like.setOnClickListener {
             isLiked = !isLiked
             if (isLiked) {
                 binding.like.icon = AppCompatResources.getDrawable(requireContext(), R.drawable.heart_red)
+                viewModel.likeAd(ad)
+
             } else {
                 binding.like.icon = AppCompatResources.getDrawable(requireContext(), R.drawable.heart)
+                viewModel.dislikeAd(ad)
+
             }
-            viewModel.likeAd(ad)
         }
 
         binding.subscribeButton.setOnClickListener {

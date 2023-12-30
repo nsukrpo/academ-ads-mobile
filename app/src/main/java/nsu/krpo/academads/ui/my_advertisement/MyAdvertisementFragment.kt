@@ -1,7 +1,5 @@
 package nsu.krpo.academads.ui.my_advertisement
 
-import android.graphics.BitmapFactory
-import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
@@ -12,11 +10,9 @@ import nsu.krpo.academads.databinding.FragmentMyAdBinding
 import nsu.krpo.academads.domain.model.ads.Advertisement
 import nsu.krpo.academads.domain.model.ads.AdvertisementStatus
 import nsu.krpo.academads.domain.model.ads.title
-import nsu.krpo.academads.ui.advertisement.AdvertisementFragment
 import nsu.krpo.academads.ui.base.view.BaseFragment
 import nsu.krpo.academads.ui.base.view.viewBinding
 import nsu.krpo.academads.ui.edit_item.EditFragment
-import java.text.SimpleDateFormat
 import java.time.ZoneId
 
 @AndroidEntryPoint
@@ -45,9 +41,9 @@ class MyAdvertisementFragment : BaseFragment() {
     }
 
     private fun setupView() {
-        binding.soldButton.isEnabled = (ad.status == AdvertisementStatus.GRANTED) || (ad.status == AdvertisementStatus.BOOKED)
-        binding.deleteButton.isEnabled = (ad.status == AdvertisementStatus.GRANTED) || (ad.status == AdvertisementStatus.BOOKED)
-        binding.editButton.isEnabled = (ad.status == AdvertisementStatus.GRANTED) || (ad.status == AdvertisementStatus.BOOKED)
+        binding.soldButton.isEnabled = (ad.status == AdvertisementStatus.ON_ADS_BOARD) || (ad.status == AdvertisementStatus.BOOKED)
+        binding.deleteButton.isEnabled = (ad.status == AdvertisementStatus.ON_ADS_BOARD) || (ad.status == AdvertisementStatus.BOOKED)
+        binding.editButton.isEnabled = (ad.status == AdvertisementStatus.ON_ADS_BOARD) || (ad.status == AdvertisementStatus.BOOKED)
 
 
 

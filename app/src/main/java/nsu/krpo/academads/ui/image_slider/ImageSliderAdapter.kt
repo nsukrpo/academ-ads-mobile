@@ -9,14 +9,14 @@ import androidx.viewpager.widget.PagerAdapter
 import androidx.viewpager.widget.ViewPager
 import com.bumptech.glide.Glide
 import nsu.krpo.academads.R
+import nsu.krpo.academads.domain.model.ads.AdvertisementPhoto
 
 class ImageSliderAdapter(
     private val context: Context,
-    private val imageList: ArrayList<String>
+    private val imageList: List<AdvertisementPhoto>
 ) : PagerAdapter() {
 
-    val ids: IntArray = intArrayOf(R.drawable.category_example, R.drawable.product_example)
-    override fun getCount(): Int = ids.size
+    override fun getCount(): Int = imageList.count()
 
     override fun isViewFromObject(view: View, `object`: Any): Boolean = (view === `object`)
 
@@ -31,7 +31,7 @@ class ImageSliderAdapter(
 
 
             Glide.with(context)
-                .load(ids[position])
+                .load(imageList[position].photo)
                 .into(ivImages)
 
 

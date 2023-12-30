@@ -58,6 +58,13 @@ class ProfileViewModel @Inject constructor(
         loadMyLikes()
     }
 
+    fun update() {
+        loadMyAdvertisements()
+        loadProfileInfo()
+        loadMyPurchases()
+        loadMyLikes()
+    }
+
     fun onAdItemClicked(ad: Advertisement) = _navEvent.update { ProfileScreenRoutes.ToMyAd(ad) }
 
     fun onPurchaseItemClicked(ad: Advertisement) = _navEvent.update { ProfileScreenRoutes.ToAd(ad) }

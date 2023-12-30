@@ -1,6 +1,8 @@
 package nsu.krpo.academads.ui.create_ad
 
+import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
+import androidx.core.graphics.drawable.toBitmap
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -11,8 +13,11 @@ import nsu.krpo.academads.ui.base.live_data.SingleLiveEvent
 import nsu.krpo.academads.ui.base.live_data.update
 import nsu.krpo.academads.ui.base.view.BaseViewModel
 import nsu.krpo.academads.ui.create_ad.rv_photos.ItemPhotoWrapper
+import java.io.ByteArrayOutputStream
 import java.math.BigDecimal
+import java.util.Objects
 import javax.inject.Inject
+
 
 @HiltViewModel
 class CreateAdViewModel @Inject constructor(
@@ -57,7 +62,8 @@ class CreateAdViewModel @Inject constructor(
         title: String,
         description: String,
         priceText: String,
-        category: Category
+        category: Category,
+        photo: Drawable?
     ) {
         adsDao.createAd(
             title,
@@ -72,10 +78,19 @@ class CreateAdViewModel @Inject constructor(
                 ::onAdCreated,
                 ::onError
             ).unsubscribeOnCleared()
+        if (photo != null) {
+            adsDao.addPhotoAd(bitmap2Bytes(photo.toBitmap(photo.intrinsicWidth, photo.intrinsicHeight)))
+        }
     }
 
     private fun onAdCreated() {
         _createAdEvent.update { "Объявление отправлено на модерацию" }
+    }
+
+    fun bitmap2Bytes(bm: Bitmap): ByteArray {
+        val baos = ByteArrayOutputStream()
+        bm.compress(Bitmap.CompressFormat.PNG, 100, baos)
+        return baos.toByteArray()
     }
 
     companion object ValidationErrors {
