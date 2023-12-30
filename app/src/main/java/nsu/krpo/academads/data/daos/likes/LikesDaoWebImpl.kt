@@ -65,9 +65,10 @@ class LikesDaoWebImpl @Inject constructor(
             return AdvertisementPhoto(drawable)
         }
 
-        var photo: Photo;
+
         try {
-            photo = webAPIService.getPhotoById(advResponse.id).blockingGet()
+            val photoString = webAPIService.getPhotoById(advResponse.id).blockingGet()
+            val photo = Photo(photoString.bytes())
             return AdvertisementPhoto(
                 BitmapDrawable(
                     null,

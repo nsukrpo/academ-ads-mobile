@@ -2,8 +2,8 @@ package nsu.krpo.academads.domain.model.ads
 
 
 enum class AdvertisementStatus {
-    MODERATING,
-    GRANTED,
+    SENT_MODERATION,
+    ON_ADS_BOARD,
     DECLINE_UNINFORMATIVE,
     DECLINE_RUDE_WORDS,
     DECLINE_NUDITY,
@@ -17,8 +17,8 @@ enum class AdvertisementStatus {
 
 fun AdvertisementStatus.title(): String {
     when(this) {
-        AdvertisementStatus.MODERATING -> return "В модерации"
-        AdvertisementStatus.GRANTED -> return "Опубликовано"
+        AdvertisementStatus.SENT_MODERATION -> return "В модерации"
+        AdvertisementStatus.ON_ADS_BOARD -> return "Опубликовано"
         AdvertisementStatus.DECLINE_UNINFORMATIVE -> return "Отклонено по причине неинформативности"
         AdvertisementStatus.DECLINE_RUDE_WORDS -> return "Отклонено по причине содержания нецензурных выражений"
         AdvertisementStatus.DECLINE_NUDITY -> return "Отклонено по причине содержания наготы"

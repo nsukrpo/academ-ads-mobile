@@ -8,7 +8,6 @@ import nsu.krpo.academads.domain.model.ads.Category
 import nsu.krpo.academads.domain.model.ads.User
 import java.math.BigDecimal
 import java.time.ZonedDateTime
-import java.util.Locale
 
 class AdvertisementToDomainMapper {
 
@@ -25,8 +24,8 @@ class AdvertisementToDomainMapper {
         val countWatch = response.countWatch.toInt()
 
         val status = when (response.status) {
-            "SENT_MODERATION" -> AdvertisementStatus.MODERATING
-            "ON_ADS_BOARD" -> AdvertisementStatus.GRANTED
+            "SENT_MODERATION" -> AdvertisementStatus.SENT_MODERATION
+            "ON_ADS_BOARD" -> AdvertisementStatus.ON_ADS_BOARD
             "DECLINE_UNINFORMATIVE" -> AdvertisementStatus.DECLINE_UNINFORMATIVE
             "DECLINE_RUDE_WORDS" -> AdvertisementStatus.DECLINE_RUDE_WORDS
             "DECLINE_NUDITY" -> AdvertisementStatus.DECLINE_NUDITY

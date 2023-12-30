@@ -1,8 +1,6 @@
 package nsu.krpo.academads.ui.edit_item
 
 import android.content.Intent
-import android.graphics.BitmapFactory
-import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.view.View
@@ -76,10 +74,10 @@ class EditFragment : BaseFragment() {
                 forFreeSwitch.isChecked = true
             }
             when (ad.category) {
-                Category.EDUCATIONAL_SUPPLIES -> binding.edSupplies.isChecked = true
-                Category.APPLIANCES -> binding.appliances.isChecked = true
-                Category.ELECTRONICS -> binding.electronics.isChecked = true
-                Category.EDUCATIONAL_SERVICE -> binding.edServices.isChecked = true
+                Category.EDUCATIONAL_STUFF -> binding.edSupplies.isChecked = true
+                Category.HOUSEHOLD_APPLIANCE -> binding.appliances.isChecked = true
+                Category.DEVICES -> binding.electronics.isChecked = true
+                Category.STUDY_SERVICE -> binding.edServices.isChecked = true
                 Category.OTHER -> binding.other.isChecked = true
             }
         }
@@ -146,21 +144,21 @@ class EditFragment : BaseFragment() {
         binding.moderationButton.setOnClickListener {
             var price = BigDecimal(0)
             if (!binding.forFreeSwitch.isChecked) {
-                price = BigDecimal(binding.priceEt.text.toString().toBigInteger())
+                price = BigDecimal(binding.priceEt.text.toString())
             }
 
             var category = ad.category
             if (binding.edServices.isChecked) {
-                category = Category.EDUCATIONAL_SERVICE
+                category = Category.STUDY_SERVICE
             }
             if (binding.edSupplies.isChecked) {
-                category = Category.EDUCATIONAL_SUPPLIES
+                category = Category.EDUCATIONAL_STUFF
             }
             if (binding.appliances.isChecked) {
-                category = Category.APPLIANCES
+                category = Category.HOUSEHOLD_APPLIANCE
             }
             if (binding.electronics.isChecked) {
-                category = Category.ELECTRONICS
+                category = Category.DEVICES
             }
             if (binding.other.isChecked) {
                 category = Category.OTHER
@@ -171,7 +169,7 @@ class EditFragment : BaseFragment() {
                 binding.descriptionEt.text.toString(),
                 price,
                 category,
-                AdvertisementStatus.MODERATING
+                AdvertisementStatus.SENT_MODERATION
             )
         }
     }

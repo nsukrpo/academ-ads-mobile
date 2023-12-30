@@ -2,6 +2,7 @@ package nsu.krpo.academads.domain.model.ads
 
 import java.math.BigDecimal
 import java.sql.Timestamp
+import java.time.Instant
 
 data class Purchase(
     val id: Long,
@@ -9,5 +10,5 @@ data class Purchase(
     val seller: User,
     val buyer: User?,
     val price: BigDecimal,
-    val date: Timestamp
+    val date: Instant
 )

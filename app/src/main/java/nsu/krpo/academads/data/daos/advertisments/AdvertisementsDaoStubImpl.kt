@@ -12,9 +12,7 @@ import nsu.krpo.academads.domain.model.ads.User
 import nsu.krpo.academads.domain.model.ads.UserType
 import nsu.krpo.academads.domain.model.ads.UsersAvatar
 import java.math.BigDecimal
-import java.sql.Timestamp
 import java.time.Instant
-import java.util.Date
 import java.util.EnumSet
 import javax.inject.Inject
 
@@ -25,7 +23,7 @@ class AdvertisementsDaoStubImpl @Inject constructor() : AdvertisementsDao {
         1,
         "Evgeny",
         UsersAvatar(byteArrayOf(1, 123, 56, 89)),
-        Date(18999),
+        Instant.now(),
         EnumSet.of(UserType.USER)
     )
     val ad = Advertisement(
@@ -33,12 +31,12 @@ class AdvertisementsDaoStubImpl @Inject constructor() : AdvertisementsDao {
         "Репетитор",
         "Важный, большой",
         BigDecimal(700),
-        Category.EDUCATIONAL_SERVICE,
+        Category.STUDY_SERVICE,
         user,
 //        Timestamp.valueOf("2023-12-12 13:45:34"),
         Instant.now(),
         countWatch = 0,
-        status = AdvertisementStatus.GRANTED,
+        status = AdvertisementStatus.ON_ADS_BOARD,
         editDate = Instant.now(),
         photos = arrayListOf(
             AdvertisementPhoto(
@@ -51,12 +49,12 @@ class AdvertisementsDaoStubImpl @Inject constructor() : AdvertisementsDao {
         "Репетитор по матанализу",
         "Молодой",
         BigDecimal(400),
-        Category.EDUCATIONAL_SERVICE,
+        Category.STUDY_SERVICE,
         user,
 //        Timestamp.valueOf("2023-12-12 13:45:34"),
         Instant.now(),
         countWatch = 0,
-        status = AdvertisementStatus.GRANTED,
+        status = AdvertisementStatus.ON_ADS_BOARD,
 //        editDate = Timestamp(22028900),
         editDate = Instant.now(),
         photos = arrayListOf(
@@ -70,12 +68,12 @@ class AdvertisementsDaoStubImpl @Inject constructor() : AdvertisementsDao {
         "Программируемый калькулятор",
         "Почти новый",
         BigDecimal(1200),
-        Category.EDUCATIONAL_SUPPLIES,
+        Category.EDUCATIONAL_STUFF,
         user,
 //        Timestamp.valueOf("2023-02-12 13:45:34"),
         Instant.now(),
         countWatch = 0,
-        status = AdvertisementStatus.GRANTED,
+        status = AdvertisementStatus.ON_ADS_BOARD,
 //        Timestamp.valueOf("2023-02-12 13:45:34"),
         Instant.now(),
         photos = arrayListOf(
@@ -89,12 +87,12 @@ class AdvertisementsDaoStubImpl @Inject constructor() : AdvertisementsDao {
         "Сковорода",
         "Антипригарное покрытик",
         BigDecimal(750),
-        Category.APPLIANCES,
+        Category.HOUSEHOLD_APPLIANCE,
         user,
 //        Timestamp.valueOf("2023-12-12 13:45:34"),
         Instant.now(),
         countWatch = 0,
-        status = AdvertisementStatus.GRANTED,
+        status = AdvertisementStatus.ON_ADS_BOARD,
 //        Timestamp.valueOf("2023-02-12 13:45:34"),
         Instant.now(),
         photos = arrayListOf(
@@ -108,7 +106,7 @@ class AdvertisementsDaoStubImpl @Inject constructor() : AdvertisementsDao {
         "Мультиварка",
         "Нехорошее",
         BigDecimal(5467),
-        Category.ELECTRONICS,
+        Category.DEVICES,
         user,
 //        Timestamp.valueOf("2023-12-12 13:45:34"),
         Instant.now(),
@@ -143,6 +141,10 @@ class AdvertisementsDaoStubImpl @Inject constructor() : AdvertisementsDao {
         return Completable.complete()
     }
 
+    override fun addPhotoAd(photo: ByteArray): Completable {
+        return Completable.complete()
+    }
+
 
     override fun editAd(
         id: Long,
@@ -159,16 +161,16 @@ class AdvertisementsDaoStubImpl @Inject constructor() : AdvertisementsDao {
     override fun getAllByCategory(category: Category): Single<List<Advertisement>> {
         val allItems = listOf(ad, ad3, adCalculator, secondAd, adPan)
         return when (category) {
-            Category.EDUCATIONAL_SERVICE -> Single.just(allItems.filter { it.category == Category.EDUCATIONAL_SERVICE })
+            Category.STUDY_SERVICE -> Single.just(allItems.filter { it.category == Category.STUDY_SERVICE })
 
 
-            Category.EDUCATIONAL_SUPPLIES -> Single.just(allItems.filter { it.category == Category.EDUCATIONAL_SUPPLIES })
+            Category.EDUCATIONAL_STUFF -> Single.just(allItems.filter { it.category == Category.EDUCATIONAL_STUFF })
 
 
-            Category.APPLIANCES -> Single.just(allItems.filter { it.category == Category.APPLIANCES })
+            Category.HOUSEHOLD_APPLIANCE -> Single.just(allItems.filter { it.category == Category.HOUSEHOLD_APPLIANCE })
 
 
-            Category.ELECTRONICS -> Single.just(allItems.filter { it.category == Category.ELECTRONICS })
+            Category.DEVICES -> Single.just(allItems.filter { it.category == Category.DEVICES })
 
 
             else -> Single.just(allItems.filter { it.category == Category.OTHER })
@@ -183,7 +185,7 @@ class AdvertisementsDaoStubImpl @Inject constructor() : AdvertisementsDao {
     }
 
 
-    override fun book(ad: Advertisement, userId: Long, until: Date): Completable {
+    override fun book(ad: Advertisement, userId: Long, until: Instant): Completable {
         return Completable.complete()
     }
 

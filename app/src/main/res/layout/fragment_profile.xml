@@ -68,7 +68,7 @@
                 app:layout_constraintTop_toBottomOf="@id/email"
                 tools:text="Дата регистрации: 19.10.2023" />
 
-            <com.google.android.material.button.MaterialButton
+           <!-- <com.google.android.material.button.MaterialButton
                 android:id="@+id/log_out_button"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
                 android:textAppearance="@style/PrimaryButtonText"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/registration_date"
-                app:shapeAppearanceOverlay="@style/RoundedRectangle" />
+                app:shapeAppearanceOverlay="@style/RoundedRectangle" /> -->
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/my_advertisments_button"
@@ -99,7 +99,7 @@
                 app:iconSize="25dp"
                 app:iconTint="@color/TextPrimary"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/log_out_button" />
+                app:layout_constraintTop_toBottomOf="@+id/registration_date" />
 
 
             <androidx.recyclerview.widget.RecyclerView

@@ -8,10 +8,10 @@ class CategoriesDaoStubImpl @Inject constructor() : CategoriesDao {
     override fun getAll(): Single<List<Category>> =
             Single.just(
                 listOf(
-                    Category.EDUCATIONAL_SUPPLIES,
-                    Category.ELECTRONICS,
-                    Category.APPLIANCES,
-                    Category.EDUCATIONAL_SERVICE,
+                    Category.EDUCATIONAL_STUFF,
+                    Category.DEVICES,
+                    Category.HOUSEHOLD_APPLIANCE,
+                    Category.STUDY_SERVICE,
                     Category.OTHER
                 )
             )

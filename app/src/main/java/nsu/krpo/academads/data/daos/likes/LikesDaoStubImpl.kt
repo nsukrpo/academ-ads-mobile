@@ -10,9 +10,7 @@ import nsu.krpo.academads.domain.model.ads.User
 import nsu.krpo.academads.domain.model.ads.UserType
 import nsu.krpo.academads.domain.model.ads.UsersAvatar
 import java.math.BigDecimal
-import java.sql.Timestamp
 import java.time.Instant
-import java.util.Date
 import java.util.EnumSet
 import javax.inject.Inject
 
@@ -22,7 +20,7 @@ class LikesDaoStubImpl @Inject constructor() : LikesDao {
         1,
         "Evgeny",
         UsersAvatar(byteArrayOf(1, 123, 56, 89)),
-        Date(18999),
+        Instant.now(),
         EnumSet.of(UserType.USER)
     )
 
@@ -31,12 +29,12 @@ class LikesDaoStubImpl @Inject constructor() : LikesDao {
         "Репетитор",
         "Важный, большой",
         BigDecimal(700),
-        Category.EDUCATIONAL_SUPPLIES,
+        Category.EDUCATIONAL_STUFF,
         user,
 //        Timestamp(220200),
         Instant.now(),
         countWatch = 0,
-        status = AdvertisementStatus.GRANTED,
+        status = AdvertisementStatus.ON_ADS_BOARD,
 //        editDate = Timestamp(5656),
         editDate = Instant.now(),
         photos = arrayListOf(

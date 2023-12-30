@@ -15,6 +15,7 @@ import nsu.krpo.academads.data.network.models.CategoryResponse
 import nsu.krpo.academads.data.network.models.FavoriteAdvertisementsRequest
 import nsu.krpo.academads.data.network.models.FavoriteCategoryRequest
 import nsu.krpo.academads.data.network.models.FavoriteUserRequest
+import nsu.krpo.academads.data.network.models.IdResponse
 import nsu.krpo.academads.data.network.models.LoginCreate
 import nsu.krpo.academads.data.network.models.MessageResponse
 import nsu.krpo.academads.data.network.models.Photo
@@ -28,11 +29,14 @@ import nsu.krpo.academads.data.network.models.TokenResponse
 import nsu.krpo.academads.data.network.models.UserCreate
 import nsu.krpo.academads.data.network.models.UserResponse
 import nsu.krpo.academads.data.network.models.UserUpdate
+import okhttp3.RequestBody
+import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
+import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.PUT
 import retrofit2.http.Path
@@ -82,9 +86,9 @@ interface AcademAdsAPIService {
                              @Body createAvatar: Avatar
     ): Single<ApiResponse>
     @GET("/media/photos/{id}")
-    fun getPhotoById(@Path("id") photoId: Long): Single<Photo>
+    fun getPhotoById(@Path("id") photoId: Long): Single<ResponseBody>
     @POST("/media/photos")
-    fun createPhoto(@Body createPhoto: Photo): Single<ApiResponse>
+    fun createPhoto(@Body createPhoto: RequestBody): Single<ApiResponse>
     @GET("/blocking/{id}")
     fun getBlockingById(@Path("id") blockingId: Long): Single<BlockingResponse>
     @PUT("/blocking/{id}")
@@ -140,7 +144,7 @@ interface AcademAdsAPIService {
     @GET("/booking")
     fun getBookings(@Query("user_id") userId: Long): Single<List<BookingResponse>>
     @POST("/booking")
-    fun createBooking(@Body bookingRequest: BookingRequest): Single<BookingResponse>
+    fun createBooking(@Body bookingRequest: BookingRequest): Single<IdResponse>
     @DELETE("/booking")
     fun cancelBooking(@Query("booking_id") bookingId: Long): Single<ApiResponse>
     @GET("/purchase")
