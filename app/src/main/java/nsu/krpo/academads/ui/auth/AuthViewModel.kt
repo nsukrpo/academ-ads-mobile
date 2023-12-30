@@ -31,7 +31,7 @@ class AuthViewModel @Inject constructor(
             .subscribe({
                 token = it
                 if (token != "0") {
-                    savedRep.setSavedUserId(3)
+                    savedRep.setSavedUserId(1)
                     _navEvent.update { AuthScreenRoutes.ToMainScreen() }
                 } else {
                     _errorMessage.value = ERROR_USER

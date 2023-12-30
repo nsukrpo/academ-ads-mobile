@@ -40,7 +40,7 @@ class CreateAdViewModel @Inject constructor(
     private var myId = 1L
 
     init {
-        //myId = savedRep.getSavedUserId()
+        myId = savedRep.getSavedUserId()
     }
 
     fun addPhotoToList(photo: Drawable) {
