@@ -7,5 +7,12 @@ class SavedRepImpl @Inject constructor(
     private val context: Context
 ) : SavedRep {
     override fun getSavedUserId(): Long =
-        context.getSharedPreferences("LOCAL_USER", Context.MODE_PRIVATE).getLong("USER_ID", 0L)
+        context.getSharedPreferences("LOCAL_USER", Context.MODE_PRIVATE).getLong("USER_ID", 1L)
+
+    override fun setSavedUserId(id: Long) {
+        context.getSharedPreferences("LOCAL_USER", Context.MODE_PRIVATE)
+            .edit()
+            .putLong("USER_ID", id)
+            .apply()
+    }
 }

@@ -20,6 +20,9 @@ interface AdvertisementsDao {
 
     fun getAllByCategory(category: Category): Single<List<Advertisement>>
 
+    fun getAllByDate(date: String, category: Category): Single<List<Advertisement>>
+
+
     fun createAd(header: String, description: String, price: BigDecimal, category: Category, authorId: Long): Completable
 
     fun addPhotoAd(photo: ByteArray): Completable

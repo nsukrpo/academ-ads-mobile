@@ -13,9 +13,12 @@ import javax.inject.Inject
 class AuthDaoImpl @Inject constructor(
     private val service: AcademAdsAPIService,
 ) : AuthDao {
-    override fun sendRegistrationInfo(login : String, password : String) : Single<TokenResponse> {
+    override fun sendRegistrationInfo(login : String, password : String) =
+        Single.just(TokenResponse(sendRegInfoBlocking(login, password)))
+
+    private fun sendRegInfoBlocking(login: String, password: String): String {
         val tokenRequest = TokenRequest(login, password)
-        return service.loginUser(tokenRequest)
+        return service.loginUser(tokenRequest).blockingGet().bytes().toString()
     }
 
     override fun addRegistrationInfo(

@@ -21,7 +21,7 @@ class AdvertisementViewModel @Inject constructor(
 ): BaseViewModel() {
     var userId = 1L
     init {
-        savedRep.getSavedUserId()
+        userId = savedRep.getSavedUserId()
     }
 //todo
     fun bookAd(ad: Advertisement) {

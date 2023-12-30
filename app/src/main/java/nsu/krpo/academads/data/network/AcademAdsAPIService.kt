@@ -36,6 +36,8 @@ import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.DELETE
 import retrofit2.http.GET
+import retrofit2.http.Header
+import retrofit2.http.Headers
 import retrofit2.http.Multipart
 import retrofit2.http.POST
 import retrofit2.http.PUT
@@ -64,7 +66,8 @@ interface AcademAdsAPIService {
     @PUT("/login")
     fun createLogin(@Body loginCreate: LoginCreate): Single<ApiResponse>
     @POST("/login")
-    fun loginUser(@Body tokenRequest: TokenRequest): Single<TokenResponse>
+    fun loginUser(@Body tokenRequest: TokenRequest): Single<ResponseBody>
+
     @GET("/advertisement/{id}")
     fun getAdvertisementById(@Path("id") advertisementId: Long): Single<AdvertisementResponse>
     @PUT("/advertisement/{id}")
@@ -73,6 +76,7 @@ interface AcademAdsAPIService {
     fun deleteAdvertisement(@Path("id") advertisementId: Long): Single<ApiResponse>
     @POST("/advertisement")
     fun createAdvertisement(@Body createAdvertisement: AdvertisementCreate): Single<ApiResponse>
+
     @GET("/advertisement")
     fun getAdvertisements(
             @Query("category") categoryId: Long? = null,

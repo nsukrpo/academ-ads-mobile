@@ -16,6 +16,7 @@ import nsu.krpo.academads.data.daos.authorization.AuthDaoImpl
 import nsu.krpo.academads.data.daos.authorization.AuthDaoStubImpl
 import nsu.krpo.academads.data.daos.bans.BansDao
 import nsu.krpo.academads.data.daos.bans.BansDaoStubImpl
+import nsu.krpo.academads.data.daos.bans.BansDaoWebImpl
 import nsu.krpo.academads.data.daos.categories.CategoriesDao
 import nsu.krpo.academads.data.daos.categories.CategoriesDaoStubImpl
 import nsu.krpo.academads.data.daos.likes.LikesDao
@@ -58,10 +59,10 @@ abstract class DataModule {
     //abstract fun bindLikesDao(impl: LikesDaoStubImpl): LikesDao
 
     @Binds
-    abstract fun bindBansDao(impl: BansDaoStubImpl): BansDao
+    abstract fun bindBansDao(impl: BansDaoWebImpl): BansDao
 
     @Binds
-    abstract fun bindAuthDao(impl: AuthDaoStubImpl): AuthDao
+    abstract fun bindAuthDao(impl: AuthDaoImpl): AuthDao
 
     @Binds
     abstract fun bindRecommendationsDao(impl: RecommendationsDaoStubImpl): RecommendationsDao

@@ -179,6 +179,10 @@ class AdvertisementsDaoStubImpl @Inject constructor() : AdvertisementsDao {
         }
     }
 
+    override fun getAllByDate(date: String, category: Category): Single<List<Advertisement>> {
+        return Single.just(emptyList())
+    }
+
 
     override fun changeAdStatus(ad: Advertisement, status: AdvertisementStatus): Completable {
         return Completable.complete()

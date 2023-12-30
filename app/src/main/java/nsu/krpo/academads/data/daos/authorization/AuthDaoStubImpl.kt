@@ -13,9 +13,9 @@ class AuthDaoStubImpl @Inject constructor(
     override fun sendRegistrationInfo(login: String, password: String): Single<TokenResponse> {
         val creds = credentialsStorage.getCredentialsBlocking()
         if ((login == creds.login) && (password == creds.password)) {
-            return Single.just(TokenResponse(1234))
+            return Single.just(TokenResponse("1"))
         } else
-            return Single.just(TokenResponse(0))
+            return Single.just(TokenResponse("0"))
     }
 
     override fun addRegistrationInfo(

@@ -52,6 +52,10 @@ class CreateAdFragment : BaseFragment() {
         ) { photos ->
             adapter.items = photos
         }
+        viewModel.error.observe(viewLifecycleOwner
+        ) { err ->
+            binding.errorTv.text = "Ошибка"
+        }
     }
 
 

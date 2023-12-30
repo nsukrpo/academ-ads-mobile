@@ -30,13 +30,13 @@
                 android:id="@+id/rv_ads"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/searchBar"
+                android:layout_below="@+id/tvSelectedDate"
                 android:layout_marginVertical="16dp"
                 app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/searchBar"
+                app:layout_constraintTop_toBottomOf="@id/tvSelectedDate"
                 tools:listitem="@layout/item_product" />
 
             <com.google.android.material.textview.MaterialTextView
@@ -68,25 +68,36 @@
                 app:strokeColor="#0BCE83"
                 app:strokeWidth="1dp" />
 
-            <com.google.android.material.search.SearchBar
-                android:id="@+id/searchBar"
-                style="@style/ShapeAppearanceOverlay.Material3.SearchBar"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/dateButton"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
                 android:layout_marginTop="12dp"
-                android:backgroundTint="#FFFFFF"
-                android:hint="@string/search_hint"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:backgroundTint="#F6F5F5"
+                android:text="Select Date"
+                android:textColor="#2D0C57"
+                android:textSize="12sp"
+                app:cornerRadius="8dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/subscribe_button"
-                app:menu="@menu/search_menu"
-                app:navigationIcon="@drawable/search"
-                app:strokeColor="#D9D0E3"
-                app:strokeWidth="1.5dp" />
+                app:strokeColor="#0BCE83"
+                app:strokeWidth="1dp" />
+
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="120dp"
-                app:layout_constraintTop_toBottomOf="@+id/rv_ads"/>
+                android:id="@+id/tvSelectedDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="20dp"
+                android:textAppearance="@style/SimpleText"
+                android:padding="16dp"
+                android:textSize="18sp"
+                tools:text = "02.10.2023"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/dateButton" />
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
